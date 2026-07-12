@@ -1,0 +1,2522 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a2a4a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Japán 2026">
+<link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22Jap%C3%A1n+%C3%9Atiterv+2026%22%2C%22short_name%22%3A%22Jap%C3%A1n+2026%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230a2a4a%22%2C%22theme_color%22%3A%22%230a2a4a%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg+xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'+viewBox%3D'0+0+100+100'%253E%253Crect+width%3D'100'+height%3D'100'+fill%3D'%25230a2a4a'%2F%253E%253Ctext+y%3D'.9em'+font-size%3D'90'%253E%F0%9F%97%BE%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22any%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+<title>Japán Útiterv 2026 – Zsombor & csapat</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --blue:#1E90FF; --blue-dark:#0066CC; --blue-light:#EBF5FF;
+    --orange:#FFB74D; --orange-light:#FFF3E0;
+    --red:#E53935; --red-light:#FFEBEE;
+    --yellow:#FFF9C4; --green:#E8F5E9; --green-dark:#2E7D32;
+    --purple:#7B1FA2; --purple-light:#F3E5F5;
+    --teal:#00695C; --teal-light:#E0F2F1;
+    --gray-50:#FAFAFA; --gray-100:#F5F5F5; --gray-200:#EEEEEE;
+    --gray-400:#BDBDBD; --gray-600:#757575; --gray-800:#424242; --gray-900:#212121;
+    --serif:'DM Serif Display',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif;
+  }
+  body { font-family:var(--sans); color:var(--gray-900); background:#f0f4f8; font-size:14px; line-height:1.6; }
+  .page { max-width:900px; margin:0 auto; background:white; box-shadow:0 4px 40px rgba(0,0,0,0.1); }
+
+  /* COVER */
+  .cover { background:linear-gradient(135deg,#0a2a4a 0%,#1E90FF 60%,#38b6ff 100%); min-height:420px; padding:60px 64px 52px; position:relative; overflow:hidden; color:white; }
+  .cover::before { content:'🗾'; position:absolute; font-size:260px; right:-20px; top:30px; opacity:.08; line-height:1; }
+  .cover-tag { display:inline-block; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.35); font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; padding:5px 14px; border-radius:20px; margin-bottom:28px; }
+  .cover h1 { font-family:var(--serif); font-size:62px; font-weight:400; line-height:1.05; letter-spacing:-1px; margin-bottom:6px; }
+  .cover h1 span { color:var(--orange); }
+  .cover-sub { font-size:18px; font-weight:300; opacity:.85; margin-bottom:40px; }
+  .cover-meta { display:flex; gap:32px; flex-wrap:wrap; }
+  .cover-meta-item label { display:block; font-size:10px; text-transform:uppercase; letter-spacing:.12em; opacity:.6; margin-bottom:3px; }
+  .cover-meta-item span { font-size:15px; font-weight:500; }
+  .cover-stripe { position:absolute; bottom:0; left:0; right:0; height:6px; background:var(--orange); }
+
+  /* PAGE NUMBER */
+  .page-num { text-align:right; padding:6px 64px 0; font-size:11px; font-weight:700; color:var(--blue); letter-spacing:.06em; }
+  .page-num.kyoto-pn { color:var(--purple); }
+  .page-num.dark-pn { background:#1a1a2e; color:var(--orange); padding-bottom:12px; }
+  .page-num.navy-pn { background:#0a2a4a; color:var(--orange); padding-bottom:12px; }
+
+  /* CITY BANNER */
+  .city-banner { padding:18px 64px; display:flex; align-items:center; gap:16px; }
+  .cb-tokyo { background:#0a2a4a; color:white; }
+  .cb-kyoto { background:#4a1a6e; color:white; }
+  .cb-other { background:#8B0000; color:white; }
+  .cb-nagasaki { background:#004a6e; color:white; }
+  .cb-fukuoka { background:#5d2e8c; color:white; }
+  .dh-fukuoka { background:#6a35a0; }
+  .ds-fukuoka { border-color:#6a35a0; }
+  .ct-fukuoka { color:#5d2e8c; font-weight:700; }
+  .cost-box.fk { background:#f3eaff; border-color:rgba(93,46,140,.2); }
+  .cost-box.fk .box-title { color:#5d2e8c; }
+  .ci.fk-last { border:none; font-weight:600; color:#5d2e8c; }
+  .cb-tokyo2 { background:#1a3d5c; color:white; }
+  .dh-tokyo2 { background:#235a7f; }
+  .ds-tokyo2 { border-color:#235a7f; }
+  .ct-tokyo2 { color:#1a3d5c; font-weight:700; }
+  .cost-box.t2 { background:#e6f0fa; border-color:rgba(26,61,92,.2); }
+  .cost-box.t2 .box-title { color:#1a3d5c; }
+  .ci.t2-last { border:none; font-weight:600; color:#1a3d5c; }
+  .dh-nagasaki { background:#005f8e; }
+  .ds-nagasaki { border-color:#005f8e; }
+  .ct-nagasaki { color:#01579B; font-weight:700; }
+  .cost-box.ng { background:#e8f4fd; border-color:rgba(0,74,110,.2); }
+  .cost-box.ng .box-title { color:#004a6e; }
+  .ci.ng-last { border:none; font-weight:600; color:#004a6e; }
+  .cb-osaka { background:#7a1515; color:white; }
+  .dh-osaka { background:#a31515; }
+  .ds-osaka { border-color:#a31515; }
+  .ct-osaka { color:#c0392b; font-weight:700; }
+  .cost-box.os { background:#fff5f5; border-color:rgba(163,21,21,.2); }
+  .cost-box.os .box-title { color:#8B0000; }
+  .ci.os-last { border:none; font-weight:600; color:#8B0000; }
+  .cb-finale { background:#004d40; color:white; }
+  .city-emoji { font-size:36px; }
+  .city-label { font-size:10px; text-transform:uppercase; letter-spacing:.14em; opacity:.6; }
+  .city-name { font-family:var(--serif); font-size:28px; font-weight:400; }
+  .city-dates { font-size:13px; opacity:.75; }
+
+  /* PRE-TRIP */
+  .pretip { background:#1a1a2e; color:white; padding:48px 64px; }
+  .pretip h2 { font-family:var(--serif); font-size:28px; color:var(--orange); margin-bottom:8px; }
+  .pretip-intro { font-size:13px; opacity:.75; margin-bottom:28px; }
+  .pretip-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .pretip-card { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:18px 20px; }
+  .pretip-card h3 { font-size:12px; text-transform:uppercase; letter-spacing:.1em; margin-bottom:10px; }
+  .pc-urgent h3 { color:#FF8A65; }
+  .pc-info h3 { color:#81D4FA; }
+  .pc-money h3 { color:#A5D6A7; }
+  .pc-pack h3 { color:#CE93D8; }
+  .pretip-card p, .pretip-card li { font-size:12.5px; opacity:.88; line-height:1.7; }
+  .pretip-card ul { padding-left:16px; }
+  .pc-cost { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid rgba(255,255,255,.08); font-size:12.5px; opacity:.88; }
+  .pc-cost:last-child { border:none; font-weight:600; opacity:1; }
+
+  /* TOC */
+  .toc { background:var(--blue-light); padding:36px 64px; }
+  .toc h2 { font-family:var(--serif); font-size:24px; color:var(--blue-dark); margin-bottom:20px; }
+  .toc-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px 32px; }
+  .toc-item { display:flex; align-items:center; gap:10px; padding:7px 0; border-bottom:1px dashed rgba(30,144,255,.25); font-size:12.5px; }
+  .dbadge { display:inline-block; font-size:10px; font-weight:600; padding:2px 8px; border-radius:10px; white-space:nowrap; color:white; }
+  .dbadge.tokyo { background:var(--blue); }
+  .dbadge.kyoto { background:var(--purple); }
+  .dbadge.misc { background:var(--gray-600); }
+
+  /* DAY HEADER */
+  .dh { color:white; padding:28px 64px 22px; display:flex; align-items:flex-start; gap:20px; }
+  .dh-tokyo { background:var(--blue); }
+  .dh-kyoto { background:var(--purple); }
+  .dh-finale { background:#1a1a2e; }
+  .dh-home { background:var(--teal); }
+  .day-emoji { font-size:48px; line-height:1; flex-shrink:0; }
+  .day-label { font-size:11px; text-transform:uppercase; letter-spacing:.14em; opacity:.7; margin-bottom:2px; }
+  .day-title { font-family:var(--serif); font-size:30px; font-weight:400; line-height:1.1; }
+  .day-sub { font-size:14px; opacity:.8; margin-top:6px; }
+
+  /* DAY BODY */
+  .day-body { padding:36px 64px 44px; background:white; }
+  .day-summary { border-left:4px solid var(--blue); background:var(--gray-50); padding:14px 18px; border-radius:0 8px 8px 0; font-size:13.5px; color:var(--gray-800); margin-bottom:28px; font-style:italic; }
+  .ds-kyoto { border-color:var(--purple); }
+  .ds-finale { border-color:var(--teal); }
+  .ds-home { border-color:#1a1a2e; }
+
+  /* TABLE */
+  .dt { width:100%; border-collapse:collapse; font-size:12.5px; margin-bottom:28px; }
+  .dt thead tr { background:var(--gray-900); color:white; }
+  .dt thead th { padding:9px 12px; text-align:left; font-weight:500; font-size:11px; letter-spacing:.06em; text-transform:uppercase; }
+  .dt tbody tr { border-bottom:1px solid var(--gray-200); }
+  .dt tbody tr:hover { background:var(--blue-light); }
+  .dt tbody tr.chill { background:var(--green); }
+  .dt tbody tr.chill:hover { background:#d0ebd0; }
+  .dt td { padding:9px 12px; vertical-align:top; }
+  .ct { white-space:nowrap; font-weight:600; font-size:12px; color:var(--blue-dark); }
+  .ct-kyoto { color:var(--purple); }
+  .ct-red { color:var(--red); font-weight:700; }
+  .ct-home { color:var(--teal); }
+  .ca { font-weight:500; }
+  .ca small { display:block; font-weight:400; color:var(--gray-600); font-size:11px; margin-top:2px; }
+  .cn { color:var(--gray-700); font-size:11.5px; }
+  .tag-free { background:var(--green); color:var(--green-dark); font-size:10px; font-weight:600; padding:2px 7px; border-radius:8px; display:inline-block; }
+  .tag-tip { background:var(--orange-light); color:#bf6000; font-size:10px; font-weight:600; padding:2px 7px; border-radius:8px; display:inline-block; }
+  .tag-warn { background:var(--red-light); color:var(--red); font-size:10px; font-weight:600; padding:2px 7px; border-radius:8px; display:inline-block; }
+
+  /* DAY BOTTOM */
+  .day-bottom { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .tips-box { background:var(--orange-light); border:1px solid rgba(255,183,77,.4); border-radius:10px; padding:18px 20px; }
+  .cost-box { background:var(--blue-light); border:1px solid rgba(30,144,255,.2); border-radius:10px; padding:18px 20px; }
+  .cost-box.ky { background:var(--purple-light); border-color:rgba(123,31,162,.2); }
+  .box-title { font-size:11px; text-transform:uppercase; letter-spacing:.1em; font-weight:600; margin-bottom:12px; }
+  .tips-box .box-title { color:#bf6000; }
+  .cost-box .box-title { color:var(--blue-dark); }
+  .cost-box.ky .box-title { color:var(--purple); }
+  .tips-box ul { padding-left:16px; }
+  .tips-box ul li { font-size:12.5px; margin-bottom:5px; color:var(--gray-800); }
+  .ci { display:flex; justify-content:space-between; font-size:12.5px; padding:4px 0; border-bottom:1px dashed rgba(30,144,255,.2); }
+  .ci:last-child { border:none; font-weight:600; color:var(--blue-dark); }
+  .ci.ky-last { border:none; font-weight:600; color:var(--purple); }
+
+  /* ── DAILY COST CATEGORIES (collapsible) ── */
+  .cost-box .ci.cat { padding:7px 11px; border-radius:6px; border-bottom:none; margin-bottom:3px; font-size:12.5px; line-height:1.4; display:flex; justify-content:space-between; }
+  .cost-box .ci.cat-food { background: rgba(255,152,0,.12); }
+  .cost-box .ci.cat-trans { background: rgba(33,150,243,.12); }
+  .cost-box .ci.cat-tix { background: rgba(156,39,176,.12); }
+  .cost-box .ci.cat-misc { background: rgba(233,30,99,.10); }
+  .cost-box .ci.cat-total { background:transparent !important; border-top:2px solid currentColor !important; padding:9px 11px 4px !important; margin-top:6px !important; font-weight:700 !important; border-radius:0 !important; }
+  .cost-box .ci.cat-shink { background:linear-gradient(90deg, rgba(255,193,7,.20), rgba(255,193,7,.06)); border-left:3px solid #FF9800; margin-top:8px; font-size:11.5px; padding:7px 11px; border-radius:0 6px 6px 0; color:#6d4c00; }
+  .cost-box .ci.cat-shink span:last-child { color:#B26500; font-weight:700; }
+
+  /* Collapsible details */
+  .cb-detail { margin-bottom:3px; border-radius:6px; }
+  .cb-detail summary { cursor:pointer; list-style:none; padding:7px 11px; border-radius:6px; display:flex; justify-content:space-between; align-items:center; font-size:12.5px; line-height:1.4; transition:background .15s; }
+  .cb-detail summary::-webkit-details-marker { display:none; }
+  .cb-detail summary::after { content:'▾'; font-size:10px; margin-left:8px; opacity:.45; transition:transform .25s ease, opacity .15s; flex-shrink:0; }
+  .cb-detail[open] summary::after { transform:rotate(180deg); opacity:.8; }
+  .cb-detail summary:hover { filter:brightness(0.97); }
+  .cb-detail summary span:first-child { font-weight:500; }
+  .cb-detail summary span:nth-child(2) { font-weight:600; flex-shrink:0; margin-left:auto; padding-right:4px; }
+  .cb-detail summary.cat-food { background: rgba(255,152,0,.12); }
+  .cb-detail summary.cat-trans { background: rgba(33,150,243,.12); }
+  .cb-detail summary.cat-tix { background: rgba(156,39,176,.12); }
+  .cb-detail summary.cat-misc { background: rgba(233,30,99,.10); }
+  .cb-detail[open] summary.cat-food { background: rgba(255,152,0,.22); }
+  .cb-detail[open] summary.cat-trans { background: rgba(33,150,243,.22); }
+  .cb-detail[open] summary.cat-tix { background: rgba(156,39,176,.22); }
+  .cb-detail[open] summary.cat-misc { background: rgba(233,30,99,.18); }
+  .cb-breakdown { padding:8px 14px 10px; font-size:11.5px; color:#555; line-height:1.55; background: rgba(255,255,255,.55); border-radius:0 0 6px 6px; margin-top:-2px; }
+  .cb-bd-item { padding:4px 0; border-bottom:1px dashed rgba(0,0,0,.07); }
+  .cb-bd-item:last-child { border:none; }
+  .cb-bd-item em { color:#888; font-size:10.5px; }
+
+  @media print {
+    .cb-detail { display:block !important; }
+    .cb-detail > .cb-breakdown { display:block !important; }
+    .cb-detail summary::after { display:none; }
+    details > summary ~ * { display:block !important; }
+  }
+
+  /* HIGHLIGHT / ALT */
+  .hl { background:var(--yellow); border:1.5px solid #f9c40f; border-radius:8px; padding:12px 16px; font-size:12.5px; margin:16px 0; }
+  .hl strong { display:block; font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:#856a00; margin-bottom:4px; }
+  .hl.danger { background:var(--red-light); border-color:var(--red); }
+  .hl.danger strong { color:var(--red); }
+  .hl.ok { background:var(--green); border-color:#4CAF50; }
+  .hl.ok strong { color:var(--green-dark); }
+  .alt { background:#EDE7F6; border:1px solid #B39DDB; border-radius:8px; padding:14px 18px; font-size:12.5px; margin-top:16px; }
+  .alt strong { color:#512DA8; }
+
+  /* PLACEHOLDER */
+  .placeholder { padding:36px 64px; background:var(--gray-50); border-left:6px solid var(--gray-400); }
+  .placeholder h3 { font-family:var(--serif); font-size:22px; color:var(--gray-600); margin-bottom:8px; }
+  .placeholder p { font-size:13px; color:var(--gray-600); }
+  .ph-chips { display:flex; gap:12px; margin-top:16px; flex-wrap:wrap; }
+  .ph-chip { background:var(--gray-200); border:1px solid var(--gray-400); border-radius:8px; padding:10px 16px; font-size:12px; color:var(--gray-600); text-align:center; }
+  .ph-chip strong { display:block; font-size:14px; color:var(--gray-800); }
+
+  /* DIVIDER */
+  .divider { height:6px; background:var(--orange); }
+  .divider.ky { background:#CE93D8; }
+
+  /* COST SUMMARY */
+  .csec { padding:52px 64px; background:white; }
+  .csec h2 { font-family:var(--serif); font-size:32px; margin-bottom:6px; }
+  .cs-intro { font-size:13px; color:var(--gray-600); margin-bottom:32px; }
+  .answer-box { background:var(--green); border:2px solid #4CAF50; border-radius:10px; padding:20px 24px; margin-bottom:32px; }
+  .answer-box h3 { font-size:14px; font-weight:600; color:var(--green-dark); margin-bottom:10px; }
+  .answer-box p { font-size:13px; color:var(--gray-800); line-height:1.7; }
+  .meal-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:14px; }
+  .meal-item { background:white; border-radius:6px; padding:8px 10px; text-align:center; font-size:11px; }
+  .meal-item strong { display:block; font-size:13px; color:var(--green-dark); }
+  .cs-group { margin-bottom:28px; }
+  .csg-head { background:var(--gray-900); color:white; padding:10px 16px; border-radius:8px 8px 0 0; display:flex; justify-content:space-between; align-items:center; }
+  .csg-head h3 { font-size:13px; font-weight:500; letter-spacing:.06em; text-transform:uppercase; }
+  .csg-sub { font-size:14px; font-weight:600; color:var(--orange); }
+  .cs-table { width:100%; border-collapse:collapse; border:1px solid var(--gray-200); border-top:none; }
+  .cs-table td { padding:9px 16px; font-size:12.5px; border-bottom:1px solid var(--gray-100); vertical-align:top; }
+  .cs-table tr:last-child td { border-bottom:none; }
+  .cs-jpy { text-align:right; color:var(--gray-600); font-size:11.5px; }
+  .cs-huf { text-align:right; font-weight:500; }
+  .cs-sub-row { background:var(--gray-50); }
+  .cs-sub-row td { font-weight:600; color:var(--gray-800); }
+  .cs-grand { background:#0a2a4a; color:white; border-radius:12px; padding:24px 28px; margin-top:32px; display:flex; justify-content:space-between; align-items:center; }
+  .cs-grand-label { font-family:var(--serif); font-size:22px; font-weight:400; }
+  .cs-grand-label small { display:block; font-size:12px; opacity:.6; font-family:var(--sans); margin-bottom:4px; }
+  .cs-grand-right { text-align:right; }
+  .grand-huf { font-family:var(--serif); font-size:38px; color:var(--orange); }
+  .grand-jpy { font-size:13px; opacity:.6; }
+  .cs-extras { margin-top:20px; background:var(--orange-light); border:1px solid rgba(255,183,77,.5); border-radius:10px; padding:16px 20px; }
+  .cs-extras h4 { font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:#bf6000; margin-bottom:10px; }
+  .cs-extras-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  .cs-extra-item { font-size:12px; color:var(--gray-800); padding:4px 0; }
+
+  /* PRACTICAL */
+  .practical { background:#0a2a4a; color:white; padding:48px 64px; }
+  .practical h2 { font-family:var(--serif); font-size:28px; font-weight:400; margin-bottom:28px; color:var(--orange); }
+  .prac-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .prac-card { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:20px; }
+  .prac-card h3 { font-size:12px; text-transform:uppercase; letter-spacing:.12em; color:var(--orange); margin-bottom:12px; }
+  .prac-card p, .prac-card li { font-size:13px; opacity:.88; line-height:1.7; }
+  .prac-card ul { padding-left:16px; }
+  .emergency { background:rgba(229,57,53,.2); border-color:rgba(229,57,53,.4); }
+  .emergency h3 { color:#EF9A9A; }
+  .phone-row { display:flex; gap:12px; margin-top:8px; flex-wrap:wrap; }
+  .phone-badge { background:var(--red); color:white; font-size:12px; font-weight:600; padding:5px 12px; border-radius:6px; }
+
+  /* TODO */
+  .todo-section { padding:48px 64px; background:white; }
+  .todo-section h2 { font-family:var(--serif); font-size:28px; margin-bottom:24px; }
+  .todo-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .todo-item { display:flex; align-items:center; gap:10px; padding:11px 14px; background:var(--gray-50); border-radius:8px; border:1px solid var(--gray-200); font-size:13px; }
+  .todo-cb { width:16px; height:16px; border:2px solid var(--blue); border-radius:4px; flex-shrink:0; }
+
+  /* FOOTER */
+  .footer { background:var(--blue); color:white; padding:24px 64px; display:flex; justify-content:space-between; align-items:center; font-size:12px; }
+  .footer span { opacity:.75; }
+
+
+  /* SAVE / OFFLINE BAR */
+  .save-bar { background:#0a2a4a; padding:10px 64px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .save-bar-text { font-size:12px; color:rgba(255,255,255,.75); }
+  .save-bar-text strong { color:var(--orange); }
+  .save-btns { display:flex; gap:10px; flex-shrink:0; }
+  .save-btn { background:var(--orange); color:#0a2a4a; font-size:12px; font-weight:700; padding:7px 18px; border:none; border-radius:20px; cursor:pointer; font-family:var(--sans); letter-spacing:.04em; }
+  .save-btn.sec { background:transparent; color:var(--orange); border:1.5px solid var(--orange); }
+  .save-btn:hover { opacity:.85; }
+
+  /* PRINT */
+
+  /* ── SMOOTH SCROLL ── */
+  html { scroll-behavior: smooth; }
+  
+  /* ── TOC LINKS ── */
+  .toc-link { color:inherit; text-decoration:none; flex:1; transition:color .15s; }
+  .toc-item:hover .toc-link { color:var(--blue); }
+  .toc-item { cursor:pointer; transition:background .15s; border-radius:4px; padding:7px 6px; }
+  .toc-item:hover { background:rgba(30,144,255,.08); }
+  .toc-item.active-section .toc-link { color:var(--blue); font-weight:600; }
+  .toc-item.active-section .dbadge.tokyo { background:var(--blue-dark); }
+
+  /* ── PROGRESS BAR ── */
+  #progress-bar { position:fixed; top:0; left:0; width:0%; height:3px;
+    background:linear-gradient(90deg,#1E90FF,#FFB74D); z-index:9999;
+    transition:width .1s; border-radius:0 2px 2px 0; }
+
+  /* ── STICKY MINI NAV ── */
+    z-index:1000; background:#0a2a4a; color:white; border-radius:0 0 14px 14px;
+    padding:6px 16px 8px; display:flex; gap:4px; align-items:center;
+    box-shadow:0 4px 20px rgba(0,0,0,.3); opacity:0; pointer-events:none;
+    transition:opacity .25s; max-width:860px; width:100%; justify-content:center;
+    flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    padding:4px 10px; border-radius:20px; cursor:pointer; text-decoration:none;
+    white-space:nowrap; letter-spacing:.03em; transition:all .15s; border:none;
+    background:transparent; font-family:var(--sans); }
+
+  /* ── BACK TO TOP ── */
+  #back-top { position:fixed; bottom:24px; right:24px; width:44px; height:44px;
+    background:#0a2a4a; color:white; border:none; border-radius:50%; font-size:18px;
+    cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,.25); z-index:1000;
+    opacity:0; pointer-events:none; transition:all .25s; font-family:var(--sans);
+    display:flex; align-items:center; justify-content:center; }
+  #back-top.visible { opacity:1; pointer-events:auto; }
+  #back-top:hover { background:var(--blue); transform:translateY(-2px); }
+
+  /* ── COLLAPSIBLE DAYS ── */
+  .dh { cursor:pointer; user-select:none; position:relative; }
+  .dh::after { content:'▲'; position:absolute; right:24px; top:50%;
+    transform:translateY(-50%); font-size:12px; opacity:.5; transition:transform .3s; }
+  .dh.collapsed::after { transform:translateY(-50%) rotate(180deg); }
+  .day-body { transition:max-height .35s ease, opacity .3s ease, padding .3s;
+    overflow:hidden; max-height:9999px; opacity:1; }
+  .day-body.collapsed { max-height:0 !important; opacity:0; padding-top:0; padding-bottom:0; }
+  .page-num { transition:background .2s; }
+
+  /* ── SECTION HIGHLIGHT FLASH ── */
+  @keyframes flash { 0%{background:rgba(30,144,255,.12)} 100%{background:transparent} }
+  .dh:target + * { animation:flash .8s ease; }
+
+  @media print {
+    .dh::after { display:none; }
+    .day-body.collapsed { max-height:9999px !important; opacity:1 !important; padding:36px 64px 44px !important; }
+  }
+  @media (max-width:700px) {
+    #back-top { bottom:16px; right:16px; width:40px; height:40px; font-size:16px; }
+    .dh::after { right:14px; }
+  }
+
+
+  /* ── SIDEBAR ── */
+  /* ── SIDEBAR — desktop: floats left of the page ── */
+  #side-nav {
+    position: fixed;
+    /* visible from start — no scroll trigger needed */
+    /* right edge = page left edge - 12px gap = (50vw - 450px) - 12px */
+    left: max(4px, calc(50vw - 462px - 182px));
+    top: 50%;
+    transform: translateY(-50%) translateX(0);
+    width: 182px;
+    background: #0a2a4a;
+    border-radius: 14px;
+    padding: 10px 0;
+    box-shadow: 0 8px 32px rgba(0,0,0,.28);
+    z-index: 900;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity .28s ease, transform .28s ease;
+    max-height: 88vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  #side-nav::-webkit-scrollbar { display: none; }
+  #side-nav.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  /* ── MOBILE DRAWER OVERLAY ── */
+  #nav-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 1100;
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    transition: opacity .25s;
+  }
+  #nav-overlay.open { opacity: 1; }
+
+  /* ── MOBILE DRAWER ── */
+  #mobile-drawer {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: 260px;
+    background: #0a2a4a;
+    z-index: 1200;
+    transform: translateX(-100%);
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 0 24px;
+    box-shadow: 4px 0 24px rgba(0,0,0,.4);
+    scrollbar-width: none;
+  }
+  #mobile-drawer::-webkit-scrollbar { display: none; }
+  #mobile-drawer.open { transform: translateX(0); }
+
+  .drawer-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 16px 14px;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+    position: sticky; top: 0;
+    background: #0a2a4a;
+    z-index: 1;
+  }
+  .drawer-title { font-size: 13px; font-weight: 700; color: var(--orange); letter-spacing: .06em; }
+  .drawer-close {
+    background: rgba(255,255,255,.12); border: none; color: white;
+    width: 30px; height: 30px; border-radius: 50%; font-size: 16px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-family: var(--sans);
+  }
+  .drawer-close:hover { background: rgba(255,255,255,.22); }
+
+  /* ── HAMBURGER BUTTON (mobile only) ── */
+  #nav-toggle {
+    display: none;
+    position: fixed;
+    bottom: 24px; left: 20px;
+    width: 48px; height: 48px;
+    background: #0a2a4a;
+    color: white; border: none; border-radius: 50%;
+    font-size: 20px; cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,.3);
+    z-index: 1000;
+    align-items: center; justify-content: center;
+    font-family: var(--sans);
+    transition: background .2s;
+  }
+  #nav-toggle:hover { background: var(--blue); }
+  .sn-group { padding: 4px 0; }
+  .sn-group + .sn-group { border-top: 1px solid rgba(255,255,255,.1); margin-top:2px; padding-top:6px; }
+  .sn-city {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+    padding: 0 14px 4px;
+  }
+  .sn-link {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 14px;
+    font-size: 11.5px;
+    color: rgba(255,255,255,.72);
+    text-decoration: none;
+    border-radius: 0;
+    transition: background .15s, color .15s;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-left: 3px solid transparent;
+    line-height: 1.3;
+  }
+  .sn-link:hover {
+    background: rgba(255,255,255,.1);
+    color: white;
+  }
+  .sn-link.sn-active {
+    background: rgba(30,144,255,.2);
+    color: white;
+    border-left-color: var(--blue);
+    font-weight: 600;
+  }
+  .sn-link.sn-active.ky { border-left-color: #CE93D8; background: rgba(123,31,162,.25); }
+  .sn-link.sn-active.fi { border-left-color: #4DB6AC; background: rgba(0,105,92,.25); }
+  .sn-link.sn-active.bl { border-left-color: #81D4FA; }
+  .sn-em { font-size: 13px; flex-shrink: 0; }
+  .sn-date { font-size: 10px; opacity:.6; display:block; }
+
+  /* Show desktop sidebar only when there's room outside the 900px page */
+  @media (max-width: 1290px) { #side-nav { display: none !important; } }
+
+  /* Show hamburger on mobile */
+  @media (max-width: 1289px) {
+    #nav-toggle { display: flex; }
+  }
+  @media print { #side-nav { display: none !important; } }
+
+  @media print {
+    .save-bar { display:none !important; }
+    body { background:white; font-size:12px; }
+    .page { box-shadow:none; max-width:100%; }
+    .city-banner,.dh,.cover,.divider,.practical,.cs-grand,.pretip,.hl,.hl.danger,.hl.ok { -webkit-print-color-adjust:exact; print-color-adjust:exact; color-adjust:exact; }
+    .dh { page-break-after:avoid; }
+    .day-body { page-break-inside:avoid; }
+    .city-banner { page-break-before:always; }
+    .pretip { page-break-before:always; }
+  }
+
+  /* CORRECTION BOX */
+    
+  
+  @media print {
+    body { background:white; }
+    .page { box-shadow:none; }
+    .city-banner,.dh,.cover,.divider,.practical,.cs-grand,.pretip { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  }
+  @media (max-width:700px) {
+    .save-bar { padding-left:20px; padding-right:20px; flex-direction:column; align-items:flex-start; }
+    
+    #nav-toggle { bottom: 20px; left: 16px; width: 44px; height: 44px; font-size: 18px; }
+    .day-body,.dh,.toc,.practical,.todo-section,.footer,.cover,.pretip,.csec,.placeholder,.city-banner,.page-num { padding-left:20px; padding-right:20px; }
+    .cover h1 { font-size:38px; }
+    .toc-grid,.day-bottom,.prac-grid,.todo-grid,.pretip-grid,.cs-extras-grid,.meal-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── PROGRESS BAR ── -->
+<div id="progress-bar"></div>
+
+<!-- ── NAV OVERLAY ── -->
+<div id="nav-overlay" onclick="closeDrawer()"></div>
+
+<!-- ── MOBILE DRAWER ── -->
+<div id="mobile-drawer" aria-label="Navigáció" role="navigation">
+  <div class="drawer-header">
+    <span class="drawer-title">🗾 Japán 2026</span>
+    <button class="drawer-close" onclick="closeDrawer()" aria-label="Bezárás">✕</button>
+  </div>
+  <div class="sn-group">
+    <div class="sn-city">🗼 Tokió I. (5 nap)</div>
+    <a class="sn-link" href="#nap-1" onclick="closeDrawer()"><span class="sn-em">🌆</span><span><span class="sn-date">Júl. 15. · szerda</span>Érkezés, Shinjuku fényei</span></a>
+    <a class="sn-link" href="#nap-2" onclick="closeDrawer()"><span class="sn-em">⛩️</span><span><span class="sn-date">Júl. 16. · csütörtök</span>Asakusa, Nakameguro</span></a>
+    <a class="sn-link" href="#nap-3" onclick="closeDrawer()"><span class="sn-em">🏯</span><span><span class="sn-date">Júl. 17. · péntek</span>Palota, Shimokitazawa</span></a>
+    <a class="sn-link" href="#nap-4" onclick="closeDrawer()"><span class="sn-em">🌊</span><span><span class="sn-date">Júl. 18. · szombat</span>Kamakura &amp; Enoshima</span></a>
+    <a class="sn-link" href="#nap-5" onclick="closeDrawer()"><span class="sn-em">🛍️</span><span><span class="sn-date">Júl. 19. · vasárnap</span>Shibuya, Akihabara</span></a>
+  </div>
+  <div class="sn-group">
+    <div class="sn-city">⛩️ Kiotó (4 nap)</div>
+    <a class="sn-link ky" href="#nap-6" onclick="closeDrawer()"><span class="sn-em">🚄</span><span><span class="sn-date">Júl. 20. · hétfő</span>Shinkansen, sake negyed</span></a>
+    <a class="sn-link ky" href="#nap-7" onclick="closeDrawer()"><span class="sn-em">🏰</span><span><span class="sn-date">Júl. 21. · kedd</span>Nijo kastély, Aranytemplom</span></a>
+    <a class="sn-link ky" href="#nap-8" onclick="closeDrawer()"><span class="sn-em">🐒</span><span><span class="sn-date">Júl. 22. · szerda</span>Bambusz, majomhegy</span></a>
+    <a class="sn-link ky" href="#nap-9" onclick="closeDrawer()"><span class="sn-em">🦊</span><span><span class="sn-date">Júl. 23. · csütörtök</span>Fushimi Inari, Gion</span></a>
+  </div>
+  <div class="sn-group">
+    <div class="sn-city">🦑 Oszaka (3 nap)</div>
+    <a class="sn-link" href="#nap-10" onclick="closeDrawer()" style="border-left-color:#a31515"><span class="sn-em">🎆</span><span><span class="sn-date">Júl. 24. · péntek</span>Shinsekai, Umeda, Spo-Cha</span></a>
+    <a class="sn-link" href="#nap-11" onclick="closeDrawer()" style="border-left-color:#a31515"><span class="sn-em">🏮</span><span><span class="sn-date">Júl. 25. · szombat</span>Tenjin Matsuri</span></a>
+    <a class="sn-link" href="#nap-12" onclick="closeDrawer()" style="border-left-color:#a31515"><span class="sn-em">🦌</span><span><span class="sn-date">Júl. 26. · vasárnap</span>Nara, Dotonbori</span></a>
+  </div>
+  <div class="sn-group">
+    <div class="sn-city">☮️ Nagaszaki (3 nap)</div>
+    <a class="sn-link" href="#nap-13" onclick="closeDrawer()" style="border-left-color:#005f8e"><span class="sn-em">🚢</span><span><span class="sn-date">Júl. 27. · hétfő</span>Érkezés, kikötői este</span></a>
+    <a class="sn-link" href="#nap-14" onclick="closeDrawer()" style="border-left-color:#005f8e"><span class="sn-em">☮️</span><span><span class="sn-date">Júl. 28. · kedd</span>Peace Park, Inasa-hegy</span></a>
+    <a class="sn-link" href="#nap-15" onclick="closeDrawer()" style="border-left-color:#005f8e"><span class="sn-em">🌿</span><span><span class="sn-date">Júl. 29. · szerda</span>Glover Garden, Chinatown</span></a>
+  </div>
+  <div class="sn-group">
+    <div class="sn-city">🍜 Fukuoka (2 nap)</div>
+    <a class="sn-link" href="#nap-16" onclick="closeDrawer()" style="border-left-color:#6a35a0"><span class="sn-em">🍜</span><span><span class="sn-date">Júl. 30. · csütörtök</span>Daimyo, Ohori, Yatai éjszaka</span></a>
+    <a class="sn-link" href="#nap-17" onclick="closeDrawer()" style="border-left-color:#6a35a0"><span class="sn-em">🌊</span><span><span class="sn-date">Júl. 31. · péntek</span>Dazaifu, tengerpart, búcsú</span></a>
+  </div>
+  <div class="sn-group">
+    <div class="sn-city">🗼 Tokió II. (3 nap, 2 fő)</div>
+    <a class="sn-link" href="#nap-18" onclick="closeDrawer()" style="border-left-color:#235a7f"><span class="sn-em">🚄</span><span><span class="sn-date">Aug. 1. · szombat</span>Vissza Tokióba, Kinshicho</span></a>
+    <a class="sn-link" href="#nap-19" onclick="closeDrawer()" style="border-left-color:#235a7f"><span class="sn-em">⛩️</span><span><span class="sn-date">Aug. 2. · vasárnap</span>Nikko, sushi, Donki</span></a>
+    <a class="sn-link" href="#nap-20" onclick="closeDrawer()" style="border-left-color:#235a7f"><span class="sn-em">✈️</span><span><span class="sn-date">Aug. 3. · hétfő</span>Hazarepülés 14:35</span></a>
+  </div>
+  <div class="sn-group">
+    <div class="sn-city">📌 Gyors elérés</div>
+    <a class="sn-link" href="#praktikus" onclick="closeDrawer()"><span class="sn-em">🛂</span><span>Praktikus infók</span></a>
+    <a class="sn-link" href="#koltseg" onclick="closeDrawer()"><span class="sn-em">💰</span><span>Költségösszesítő</span></a>
+    <a class="sn-link" href="#teendok" onclick="closeDrawer()"><span class="sn-em">✅</span><span>Teendők listája</span></a>
+  </div>
+</div>
+
+
+
+<!-- ── HAMBURGER ── -->
+<button id="nav-toggle" onclick="openDrawer()" aria-label="Menü megnyitása">☰</button>
+
+
+<!-- ── SIDE NAV ── -->
+<nav id="side-nav" aria-label="Oldalsó navigáció">
+  <div class="sn-group">
+    <div class="sn-city">🗼 Tokió I. (5 nap)</div>
+    <a class="sn-link" href="#nap-1" data-id="nap-1"><span class="sn-em">🌆</span><span><span class="sn-date">Júl. 15. · szerda</span>Érkezés, Shinjuku</span></a>
+    <a class="sn-link" href="#nap-2" data-id="nap-2"><span class="sn-em">⛩️</span><span><span class="sn-date">Júl. 16. · csütörtök</span>Asakusa, Nakameguro</span></a>
+    <a class="sn-link" href="#nap-3" data-id="nap-3"><span class="sn-em">🏯</span><span><span class="sn-date">Júl. 17. · péntek</span>Palota, Shimokitazawa</span></a>
+    <a class="sn-link" href="#nap-4" data-id="nap-4"><span class="sn-em">🌊</span><span><span class="sn-date">Júl. 18. · szombat</span>Kamakura, Enoshima</span></a>
+    <a class="sn-link" href="#nap-5" data-id="nap-5"><span class="sn-em">🛍️</span><span><span class="sn-date">Júl. 19. · vasárnap</span>Shibuya, Akihabara</span></a>
+  </div>
+  <div class="sn-group">
+    <div class="sn-city">⛩️ Kiotó (4 nap)</div>
+    <a class="sn-link ky" href="#nap-6" data-id="nap-6"><span class="sn-em">🚄</span><span><span class="sn-date">Júl. 20. · hétfő</span>Shinkansen, sake negyed</span></a>
+    <a class="sn-link ky" href="#nap-7" data-id="nap-7"><span class="sn-em">🏰</span><span><span class="sn-date">Júl. 21. · kedd</span>Nijo, Aranytemplom</span></a>
+    <a class="sn-link ky" href="#nap-8" data-id="nap-8"><span class="sn-em">🐒</span><span><span class="sn-date">Júl. 22. · szerda</span>Bambusz, majomhegy</span></a>
+    <a class="sn-link ky" href="#nap-9" data-id="nap-9"><span class="sn-em">🦊</span><span><span class="sn-date">Júl. 23. · csütörtök</span>Fushimi Inari, Gion</span></a>
+  </div>
+  <div class="sn-group">
+    <div class="sn-city">🦑 Oszaka (3 nap)</div>
+    <a class="sn-link" href="#nap-10" data-id="nap-10" style="border-left-color:#a31515"><span class="sn-em">🎆</span><span><span class="sn-date">Júl. 24. · péntek</span>Shinsekai, Umeda, Spo-Cha</span></a>
+    <a class="sn-link" href="#nap-11" data-id="nap-11" style="border-left-color:#a31515"><span class="sn-em">🏮</span><span><span class="sn-date">Júl. 25. · szombat</span>Tenjin Matsuri</span></a>
+    <a class="sn-link" href="#nap-12" data-id="nap-12" style="border-left-color:#a31515"><span class="sn-em">🦌</span><span><span class="sn-date">Júl. 26. · vasárnap</span>Nara, Dotonbori</span></a>
+  </div>
+  <div class="sn-group">
+    <div class="sn-city">☮️ Nagaszaki (3 nap)</div>
+    <a class="sn-link" href="#nap-13" data-id="nap-13" style="border-left-color:#005f8e"><span class="sn-em">🚢</span><span><span class="sn-date">Júl. 27. · hétfő</span>Érkezés, kikötő</span></a>
+    <a class="sn-link" href="#nap-14" data-id="nap-14" style="border-left-color:#005f8e"><span class="sn-em">☮️</span><span><span class="sn-date">Júl. 28. · kedd</span>Peace Park, Inasa</span></a>
+    <a class="sn-link" href="#nap-15" data-id="nap-15" style="border-left-color:#005f8e"><span class="sn-em">🌿</span><span><span class="sn-date">Júl. 29. · szerda</span>Glover, Chinatown</span></a>
+  </div>
+  <div class="sn-group">
+    <div class="sn-city">🍜 Fukuoka (2 nap)</div>
+    <a class="sn-link" href="#nap-16" data-id="nap-16" style="border-left-color:#6a35a0"><span class="sn-em">🍜</span><span><span class="sn-date">Júl. 30. · csütörtök</span>Daimyo, Yatai</span></a>
+    <a class="sn-link" href="#nap-17" data-id="nap-17" style="border-left-color:#6a35a0"><span class="sn-em">🌊</span><span><span class="sn-date">Júl. 31. · péntek</span>Dazaifu, tengerpart, búcsú</span></a>
+  </div>
+  <div class="sn-group">
+    <div class="sn-city">🗼 Tokió II. (3 nap, 2 fő)</div>
+    <a class="sn-link" href="#nap-18" data-id="nap-18" style="border-left-color:#235a7f"><span class="sn-em">🚄</span><span><span class="sn-date">Aug. 1. · szombat</span>Vissza Tokióba, Kinshicho</span></a>
+    <a class="sn-link" href="#nap-19" data-id="nap-19" style="border-left-color:#235a7f"><span class="sn-em">⛩️</span><span><span class="sn-date">Aug. 2. · vasárnap</span>Nikko, sushi, Donki</span></a>
+    <a class="sn-link" href="#nap-20" data-id="nap-20" style="border-left-color:#235a7f"><span class="sn-em">✈️</span><span><span class="sn-date">Aug. 3. · hétfő</span>Hazarepülés 14:35</span></a>
+  </div>
+  <div class="sn-group">
+    <div class="sn-city">📌 Gyors elérés</div>
+    <a class="sn-link" href="#praktikus" data-id="praktikus"><span class="sn-em">🛂</span><span>Praktikus infók</span></a>
+    <a class="sn-link" href="#koltseg" data-id="koltseg"><span class="sn-em">💰</span><span>Költségösszesítő</span></a>
+    <a class="sn-link" href="#teendok" data-id="teendok"><span class="sn-em">✅</span><span>Teendők listája</span></a>
+  </div>
+</nav>
+
+
+<!-- ── BACK TO TOP ── -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Tetejére">↑</button>
+<div class="page">
+
+<!-- ═══ COVER ═══ -->
+<div class="cover">
+  <div class="cover-tag">🗾 Úti dokumentum · 2026 · Munka alatt</div>
+  <h1>Japán<br><span>Útiterv</span></h1>
+  <p class="cover-sub">Tokiótól Fukuokáig — kultúra, gasztronómia, kaland, 4 srác</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><label>Időszak</label><span>2026. júl. 15. – aug. 3.</span></div>
+    <div class="cover-meta-item"><label>Résztvevők</label><span>Zsombor & csapat (4 fő)</span></div>
+    <div class="cover-meta-item"><label>Napok száma</label><span>20 nap</span></div>
+    <div class="cover-meta-item"><label>Városok</label><span>Tokió · Kiotó · Oszaka · Nagaszaki · Fukuoka</span></div>
+  </div>
+  <div class="cover-stripe"></div>
+</div>
+
+<!-- ═══ SAVE / OFFLINE BAR ═══ -->
+<div class="save-bar">
+  <p class="save-bar-text">📴 <strong>Offline:</strong> Mentsd el a fájlt a telefonra (böngésző → Megosztás → Fájlba mentés), vagy nyomtasd PDF-ként — japánban internet nélkül is működik.</p>
+  <div class="save-btns">
+    <button class="save-btn" onclick="window.print()">🖨️ PDF / Nyomtatás</button>
+    <button class="save-btn sec" onclick="saveFile()">💾 HTML mentése</button>
+  </div>
+</div>
+
+
+
+<div class="page-num">Oldal 1</div>
+
+<!-- ═══ PRE-TRIP ═══ -->
+<div class="pretip">
+  <h2>🗓️ Elindulás előtt — teendők és előkészületek</h2>
+  <p class="pretip-intro">Ezeket az utazás előtt kell elintézni — javasolt sorrend: biztosítás → Visit Japan Web → eSIM rendelés → shinkansen jegyek → jegyek kinyomtatása.</p>
+  <div class="pretip-grid">
+    <div class="pretip-card pc-urgent">
+      <h3>⚠️ Vízum / Visit Japan Web</h3>
+      <p><strong>Magyar állampolgároknak NEM kell vízum</strong> Japánba (90 napos, vízummentes). Azonban a <strong>Visit Japan Web</strong> (vjw-lp.digital.go.jp) online regisztráció ajánlott — digitális bejelentőkártya és vámnyilatkozat, ami felgyorsítja a bevándorlási ellenőrzést. <strong>Ingyenes, kb. 15 perc</strong> — csináljátok meg min. 3 nappal az indulás előtt!</p>
+    </div>
+    <div class="pretip-card pc-money">
+      <h3>🛡️ Utasbiztosítás</h3>
+      <p>Japán az egyik legdrágább ország egészségügyi ellátás szempontjából — utasbiztosítás <strong>KÖTELEZŐ</strong>. Ajánlott: Generali, Union VIG, vagy Groupama utasbiztosítás. Győződj meg róla, hogy Japánt lefedi és meddig érvényes.</p>
+      <div style="margin-top:12px;">
+        <div class="pc-cost"><span>Becsült díj / fő (20 nap)</span><span style="color:#A5D6A7;font-weight:600;">~30 000 Ft</span></div>
+        <div class="pc-cost"><span>4 főre összesen</span><span style="color:#A5D6A7;font-weight:600;">~120 000 Ft</span></div>
+      </div>
+    </div>
+    <div class="pretip-card pc-info">
+      <h3>📱 Internet — eSIM</h3>
+      <ul>
+        <li><strong>Legjobb: Airalo app</strong> — Japán eSIM otthonról megrendelhető, aktiválás érkezéskor</li>
+        <li>Alternatíva: repülőtéri SIM kártya pickup (IIJmio, Docomo)</li>
+        <li>20 nap unlimited data: kb. <strong>20–25 000 Ft / fő</strong></li>
+        <li>Rendeld meg otthonról — repülőtéren drágább és sort kell állni!</li>
+      </ul>
+      <div style="margin-top:10px;">
+        <div class="pc-cost"><span>eSIM / fő (Csabi, Dénes, Dam)</span><span style="color:#81D4FA;font-weight:600;">20 000 Ft</span></div>
+        <div class="pc-cost"><span>Hotspot / fő (Zsombi)</span><span style="color:#81D4FA;font-weight:600;">25 000 Ft</span></div>
+      </div>
+    </div>
+    <div class="pretip-card pc-info">
+      <h3>🚆 Közlekedés — JR Pass nélkül</h3>
+      <ul>
+        <li><strong>Nem vesztek JR Pass-t</strong> — külön jegyekkel utaztok (spórolósabb a ti útvonalotokhoz)</li>
+        <li>IC Kártya (Suica/Pasmo): aktiválni érkezéskor Naritán vagy Tokyo Station-ön</li>
+        <li>Feltölteni egyszerre <strong>¥5 000-t</strong> — metro, busz, konbini fizetésre is jó</li>
+        <li>Shinkansen jegyeket <strong>előre megvenni</strong>: jr-net.co.jp (angolul működik)</li>
+        <li>Nozomi szupergyors vonat nem JR Pass kompatibilis — neked ez mindegy, de drágább</li>
+      </ul>
+    </div>
+    <div class="pretip-card pc-money">
+      <h3>💴 Pénz és ATM</h3>
+      <ul>
+        <li>Japánban rengeteg helyen <strong>csak készpénz</strong> fogadott el!</li>
+        <li>Legjobb ATM: <strong>7-Eleven és Japan Post</strong> bankok — VISA/MC elfogadják</li>
+        <li>Hozzatok érintetlenül <strong>¥30 000-t</strong> személyenként (~70 000 Ft) elsőnek</li>
+        <li>Japánban jobb a váltóárfolyam mint Magyarországon</li>
+        <li>Napi javasolt kéznél lévő összeg: ¥5 000–6 000</li>
+      </ul>
+    </div>
+    <div class="pretip-card pc-pack">
+      <h3>🧳 Csomagolás — Július hőség</h3>
+      <ul>
+        <li>Hőmérséklet: <strong>28–36°C</strong>, párás, esős időszak vége</li>
+        <li>Összecsukható esernyő (szélálló!), napvédő SPF 50+</li>
+        <li>Könnyű, légáteresztő ruha — 2-3 napos kombinálható szett</li>
+        <li>Kényelmes cipő — napi 15–20 km séta várható!</li>
+        <li>Powerbank + japán adapter (2 lapos, 110V — EU dugó NEM illik!)</li>
+        <li>Kisebb napközbeni hátizsák vagy konbini tasak</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="page-num dark-pn">Oldal 2</div>
+
+<!-- ═══ TOC ═══ -->
+<div class="toc">
+  <h2>Tartalomjegyzék</h2>
+  <div class="toc-grid">
+    <div class="toc-item"><span class="dbadge tokyo">Júl. 15.</span><a href="#nap-1" class="toc-link">🌆 Érkezés – Shinjuku fényei</a></div>
+    <div class="toc-item"><span class="dbadge tokyo">Júl. 16.</span><a href="#nap-2" class="toc-link">⛩️ Asakusa, Kappabashi, Nakameguro</a></div>
+    <div class="toc-item"><span class="dbadge tokyo">Júl. 17.</span><a href="#nap-3" class="toc-link">🏯 Palota, vintage, cyberpunk Shinjuku</a></div>
+    <div class="toc-item"><span class="dbadge tokyo">Júl. 18.</span><a href="#nap-4" class="toc-link">🌊 Kamakura & Enoshima sziget</a></div>
+    <div class="toc-item"><span class="dbadge tokyo">Júl. 19.</span><a href="#nap-5" class="toc-link">🛍️ Shibuya Crossing + Akihabara</a></div>
+    <div class="toc-item"><span class="dbadge kyoto">Júl. 20.</span><a href="#nap-6" class="toc-link">🚄 Shinkansen → Kiotó, sake negyed</a></div>
+    <div class="toc-item"><span class="dbadge kyoto">Júl. 21.</span><a href="#nap-7" class="toc-link">🏰 Nijo kastély + Kinkaku-ji</a></div>
+    <div class="toc-item"><span class="dbadge kyoto">Júl. 22.</span><a href="#nap-8" class="toc-link">🐒 Rakusai bambusz + majomhegy</a></div>
+    <div class="toc-item"><span class="dbadge kyoto">Júl. 23.</span><a href="#nap-9" class="toc-link">🦊 Fushimi Inari hajnalban + Gion</a></div>
+    <div class="toc-item"><span class="dbadge misc" style="background:#a31515;">Júl. 24.</span><a href="#nap-10" class="toc-link">🎆 Oszaka — Shinsekai, Umeda, Spo-Cha éjszaka</a></div>
+    <div class="toc-item"><span class="dbadge misc" style="background:#a31515;">Júl. 25.</span><a href="#nap-11" class="toc-link">🏮 Tenjin Matsuri — hajós felvonulás, tűzijáték</a></div>
+    <div class="toc-item"><span class="dbadge misc" style="background:#a31515;">Júl. 26.</span><a href="#nap-12" class="toc-link">🦌 Nara szarvasok + Dotonbori Glico Man</a></div>
+    <div class="toc-item"><span class="dbadge misc" style="background:#005f8e;">Júl. 27.</span><a href="#nap-13" class="toc-link">🚢 Nagaszaki — érkezés, kikötői este</a></div>
+    <div class="toc-item"><span class="dbadge misc" style="background:#005f8e;">Júl. 28.</span><a href="#nap-14" class="toc-link">☮️ Peace Park, Atombomba Múzeum, Inasa-hegy</a></div>
+    <div class="toc-item"><span class="dbadge misc" style="background:#005f8e;">Júl. 29.</span><a href="#nap-15" class="toc-link">🌿 Glover Garden, Chinatown, Szemüveg-híd</a></div>
+    <div class="toc-item"><span class="dbadge misc" style="background:#6a35a0;">Júl. 30.</span><a href="#nap-16" class="toc-link">🍜 Fukuoka — Daimyo, Ohori, Yatai éjszaka</a></div>
+    <div class="toc-item"><span class="dbadge misc" style="background:#6a35a0;">Júl. 31.</span><a href="#nap-17" class="toc-link">🌊 Dazaifu, Momochi tengerpart, búcsúvacsora</a></div>
+    <div class="toc-item"><span class="dbadge misc" style="background:#235a7f;">Aug. 1.</span><a href="#nap-18" class="toc-link">🚄 Vissza Tokióba, Shin-Koiwa, Kinshicho pláza</a></div>
+    <div class="toc-item"><span class="dbadge misc" style="background:#235a7f;">Aug. 2.</span><a href="#nap-19" class="toc-link">⛩️ Nikko egész nap + utolsó sushi + Donki</a></div>
+    <div class="toc-item"><span class="dbadge misc" style="background:#235a7f;">Aug. 3.</span><a href="#nap-20" class="toc-link">✈️ Hazarepülés — Narita 14:35</a></div>
+    <div class="toc-item"><span class="dbadge misc">Végén</span><a href="#praktikus" class="toc-link">🛂 Praktikus infók</a></div>
+    <div class="toc-item"><span class="dbadge misc">Végén</span><a href="#koltseg" class="toc-link">💰 Teljes költségösszesítő</a></div>
+  </div>
+</div>
+<div class="page-num">Oldal 3</div>
+
+<!-- ═══════════════════════════════════ -->
+<!--        TOKIÓ – 1. SZAKASZ          -->
+<!-- ═══════════════════════════════════ -->
+<div class="city-banner cb-tokyo" id="tokio-1">
+  <div class="city-emoji">🗼</div>
+  <div>
+    <div class="city-label">1. Szakasz</div>
+    <div class="city-name">Tokió</div>
+    <div class="city-dates">2026. július 15–19. · 5 nap · STS Hostel, Shinjuku</div>
+  </div>
+</div>
+
+<!-- NAP 1 -->
+<div class="dh dh-tokyo" id="nap-1">
+  <div class="day-emoji">🌆</div>
+  <div>
+    <div class="day-label">1. nap · 2026. július 15. · szerda</div>
+    <div class="day-title">Érkezés és Shinjuku fényei</div>
+    <div class="day-sub">Becsekkolás, első konbini-élmény, ingyenes panoráma, gyudon</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary">📝 Az első nap a letelepedésről és az ismerkedésről szól — nincs rohanás. Az este viszont lenyűgöző: Shinjuku felhőkarcolói és neonok fogadnak.</div>
+  <div class="hl"><strong>🏨 Szállás — foglalási info</strong>STS Hostel, Shinjuku — Check-in: <strong>15:00</strong>. Ha hamarabb érkeztek, csomagtárolás a recepción. Foglalási szám: <strong>ellenőrizd email-ben / Booking app</strong></div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct">15:00</td><td class="ca">Érkezés, becsekkolás, zuhany<small>Csomagok elrakása, első lélegzetvétel</small></td><td>STS Hostel, Shinjuku</td><td>🚆 Metro az állomásról</td><td>2 óra</td><td class="cn">Check-in 15:00-tól</td></tr>
+      <tr class="chill"><td class="ct">17:00</td><td class="ca">🌿 CHILL – Első konbini-élmény<small>7-Eleven: snackek, jeges teák, onigiri</small></td><td>Shinjuku környéke</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">Jeges matcha tea kötelező!</td></tr>
+      <tr><td class="ct">18:30</td><td class="ca">TMG 45. emelet — esti panoráma<small>Ingyenes kilátó, Tokió egész kiterjedése</small></td><td>Tokyo Metropolitan Gov. Bldg.</td><td>🚶 ~10 perc gyalog</td><td>2 óra</td><td class="cn"><span class="tag-free">INGYENES</span> Nyitva 23:00-ig</td></tr>
+      <tr><td class="ct">20:30</td><td class="ca">Vacsora: Gyudon marhahúsos rizstál<small>Yoshinoya vagy Matsuya – japán gyorsétterem</small></td><td>Hostel közelében</td><td>🚶 Gyalog</td><td>1 óra</td><td class="cn">~600–800 JPY / fő</td></tr>
+      <tr><td class="ct">21:30</td><td class="ca">Kabukicho — Godzilla fej séta (opcionális)</td><td>Kabukicho, Shinjuku</td><td>🚶 Gyalog</td><td>30 perc</td><td class="cn">Fáradt esetén skip</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul><li>TMG panoráma <strong>ingyenes</strong> — este a legjobb, kivilágítva.</li><li>IC Kártya (Suica) aktiválása repülőtéren vagy Shinjuku állomáson.</li><li>Konbini matcha soft serve: ~¥200 — kötelező próba.</li></ul><div class="alt"><strong>☔ Esős időre:</strong> Takashimaya Times Square bevásárlóközpont vagy egy Izakaya kocsma.</div></div>
+    <div class="cost-box "><div class="box-title">💴 Napi kiadások / fő · júl. 15. szerda <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>13 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — repülőn / konbini az érkezés után</div>
+        <div class="cb-bd-item">🍜 <strong>Ebéd</strong> — Shinjuku helyi ramen vagy donburi (~¥800)</div>
+        <div class="cb-bd-item">🍱 <strong>Vacsora</strong> — Omoide Yokocho yakitori / izakaya (~¥2 000)</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>3 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🛂 <strong>Reptér → Tokió</strong> — Skyliner (~¥2 570) + Suica IC kártya feltöltés</div>
+        <div class="cb-bd-item">🚇 Helyi metro az este folyamán</div>
+      </div>
+    </details>
+    <div class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>0 Ft</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>2 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">💧 <strong>Vending automaták</strong> első italok (klíma izzasztó volt)</div>
+        <div class="cb-bd-item">🍫 <strong>7-Eleven</strong> snack, csoki, jégkása</div>
+        <div class="cb-bd-item">📱 IC kártya első felöltés / első napi költések magasabbak</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>18 000 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="page-num">Oldal 4</div>
+
+<!-- NAP 2 -->
+<div class="dh dh-tokyo" id="nap-2">
+  <div class="day-emoji">⛩️</div>
+  <div>
+    <div class="day-label">2. nap · 2026. július 16. · csütörtök</div>
+    <div class="day-title">Tradíció, konyha és folyóparti este</div>
+    <div class="day-sub">Senso-ji, Kappabashi konyhai negyed, Ameyoko piac, Nakameguro csatorna</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary">📝 Tokió legrégebbi arca: szentély, konyhai negyed, utcai kaja — majd hangulatos esti séta a Nakameguro csatorna partján.</div>
+  <div class="hl ok"><strong>✅ Ma (csütörtök) lehetséges: Imperial Palace Keleti Kert!</strong>Ha fel akarjátok venni a programba, a Higashi Gyoen <strong>csütörtökön NYITVA és INGYENES</strong> (9:00–16:30). Illesszétek be reggel az Asakusa elé — kb. 1,5–2 óra, és gyönyörű tradicionális kert a városközpontban. A 3. napról (péntek = ZÁRVA) átrakva ide tökéletesen belefér.</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct">08:30</td><td class="ca">Reggeli — konbiniből<small>Onigiri, Melonpan, meleg szendvics</small></td><td>Hostel közelében</td><td>🚶 Gyalog</td><td>45 perc</td><td class="cn">~¥400</td></tr>
+      <tr><td class="ct">09:15</td><td class="ca">Átvonatozás Asakusába</td><td>Shinjuku → Asakusa</td><td>🚆 Toei Oedo metro</td><td>45 perc</td><td class="cn">IC kártyával</td></tr>
+      <tr><td class="ct">10:00</td><td class="ca">Senso-ji szentély & Nakamise utca<small>Tokió legrégebbi temploma, tradicionális árusok</small></td><td>Asakusa, Senso-ji</td><td>🚶 Gyalog</td><td>2 óra</td><td class="cn"><span class="tag-free">INGYENES</span></td></tr>
+      <tr><td class="ct">12:00</td><td class="ca">Kappabashi Street — konyhai negyed<small>Műanyag kaja-szuvenír vadászat, japán kések, edények</small></td><td>Kappabashi Dori</td><td>🚶 ~10 perc</td><td>1,5 óra</td><td class="cn"><span class="tag-tip">SZUVENÍR</span></td></tr>
+      <tr><td class="ct">13:30</td><td class="ca">Ebéd — Ameyoko piac, street food<small>Gyoza, tészta, olcsó és autentikus bódék</small></td><td>Ueno, Ameyoko</td><td>🚆 Metro + gyalog</td><td>2 óra</td><td class="cn">~¥800–1 200 / fő</td></tr>
+      <tr class="chill"><td class="ct">15:30</td><td class="ca">🌿 CHILL — Ueno Park / Sumida folyópart<small>Árnyékban ülés, helyi emberek figyelése, pihenés</small></td><td>Ueno Park</td><td>🚶 Gyalog</td><td>2 óra</td><td class="cn">Semmi rohanás!</td></tr>
+      <tr><td class="ct">17:30</td><td class="ca">Átmetrózás Nakameguróba</td><td>Ueno → Nakameguro</td><td>🚆 Metro</td><td>1 óra</td><td class="cn">~¥200</td></tr>
+      <tr><td class="ct">18:30</td><td class="ca">Esti séta — Nakameguro csatorna<small>Hangulatos folyóparti kis kávézók és éttermek</small></td><td>Nakameguro csatorna</td><td>🚶 Gyalog</td><td>2,5 óra</td><td class="cn">Este a legjobb!</td></tr>
+      <tr><td class="ct">20:30</td><td class="ca">Vacsora: Hanamaru Udon<small>Laktató, olcsó, autentikus udon tésztalánc</small></td><td>Nakameguro</td><td>🚶 Gyalog</td><td>1 óra</td><td class="cn">~¥500–700 / fő</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul><li>Senso-ji: reggel 10 előtt sokkal kevesebb turista.</li><li>Kappabashi: a műanyag sushi modellek a legjobb vicces szuvenír.</li><li>Nakameguro júliusban: zöld fűzfasor este, nagyon hangulatos.</li></ul><div class="alt"><strong>☔ Esős időre:</strong> Tokyo National Museum Uenóban (¥1 000–1 500).</div></div>
+    <div class="cost-box "><div class="box-title">💴 Napi kiadások / fő · júl. 16. csütörtök <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>13 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini onigiri + miso</div>
+        <div class="cb-bd-item">🍜 <strong>Ebéd</strong> — Asakusa kifőzde (tempura don / ramen)</div>
+        <div class="cb-bd-item">🍱 <strong>Vacsora</strong> — Nakameguro vagy Shinjuku helyi étterem</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>2 400 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚇 Shinjuku → Asakusa metroval</div>
+        <div class="cb-bd-item">🚇 Asakusa → Nakameguro → vissza Shinjuku</div>
+      </div>
+    </details>
+    <div class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>0 Ft</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍦 Kappabashi környékén jégkrém</div>
+        <div class="cb-bd-item">🎰 Gachapon vagy szuvenír</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>16 900 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="page-num">Oldal 5</div>
+
+<!-- NAP 3 -->
+<div class="dh dh-tokyo" id="nap-3">
+  <div class="day-emoji">🏯</div>
+  <div>
+    <div class="day-label">3. nap · 2026. július 17. · péntek</div>
+    <div class="day-title">Palota, vintage és cyberpunk Shinjuku</div>
+    <div class="day-sub">Imperial Palace kertjei, Shimokitazawa hipszter negyed, Omoide Yokocho füstös sikátor</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary">📝 A Császári Palota gyönyörű kertjeitől a vintage bootokon és indie kávézókon át Shinjuku neon-dzsungeléig — a legtarkalmasabb nap.</div>
+  <div class="hl danger"><strong>❌ FIGYELEM — Imperial Palace Keleti Kert PÉNTEKEN ZÁRVA!</strong>A 3. nap (júl. 17.) <strong>péntek</strong> — a Higashi Gyoen (Keleti Kert) hétfőn <em>és</em> pénteken is ZÁRVA van!<br>👉 <strong>Megoldás:</strong> Cseréld fel a 2. és 3. napot — júl. 16. (csütörtök) tökéletes a Palota-látogatásra (NYITVA, INGYENES), júl. 17-én (pénteken) pedig az Asakusa + Nakameguro program megy.</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct">10:00</td><td class="ca">Imperial Palace Keleti Kertje<small>Tradicionális kert, várfalak, csend a város szívében</small></td><td>Chiyoda, Tokió</td><td>🚆 Metro Otemachi-hoz</td><td>2 óra</td><td class="cn"><span class="tag-free">INGYENES</span> Csak csütörtökön!</td></tr>
+      <tr><td class="ct">12:30</td><td class="ca">Shimokitazawa — vintage & indie negyed<small>Vintage boltok, indie lemezboltok, laza séta 4 srácnak</small></td><td>Shimokitazawa</td><td>🚆 Metro ~30 perc</td><td>2,5 óra</td><td class="cn">Soup Curry ebéd: ~¥1 200</td></tr>
+      <tr class="chill"><td class="ct">15:00</td><td class="ca">🌿 CHILL — Indie kávézó Shimokitazawában<small>Töltőre telefonok, matcha latte, pihenés</small></td><td>Shimokitazawa</td><td>🚶 Gyalog</td><td>2,5 óra</td><td class="cn">Vagy visszamenni a hostelbe</td></tr>
+      <tr><td class="ct">18:00</td><td class="ca">Omoide Yokocho — füstös ikonikus sikátor<small>Grillezett nyársak, retro Japán hangulat</small></td><td>Omoide Yokocho, Shinjuku</td><td>🚆 Metro + gyalog</td><td>1,5 óra</td><td class="cn">✨ Kötelező fotó!</td></tr>
+      <tr><td class="ct">19:30</td><td class="ca">Kabukicho cyberpunk fények és séta<small>LED kijelzők, neon, Shinjuku legvadabb arca</small></td><td>Kabukicho, Shinjuku</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">Este 9-től a legjobb</td></tr>
+      <tr><td class="ct">21:00</td><td class="ca">Vacsora: CoCo Ichibanya curry<small>Japán kultikus curry lánc, választható 1–10 csípősség</small></td><td>Shinjuku</td><td>🚶 Gyalog</td><td>1 óra</td><td class="cn">~¥800–1 200 / fő</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul><li>CoCo Ichibanya: európainak a 3-as csípősség az "erős".</li><li>Shimokitazawa minden bolt más — bő 2–3 óra kell.</li><li>Shinjuku metro = óriás labirintus, Google Maps kötelező!</li></ul><div class="alt"><strong>☔ Esős időre:</strong> Shinjuku Gyoen Nemzeti Kert (¥500) vagy Tokyo Dome City.</div></div>
+    <div class="cost-box "><div class="box-title">💴 Napi kiadások / fő · júl. 17. péntek <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>16 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini</div>
+        <div class="cb-bd-item">🍜 <strong>Ebéd</strong> — Shimokitazawa kis kifőzde</div>
+        <div class="cb-bd-item">🥩 <strong>WAGYU EST</strong> — Gyukaku Shinjuku (~¥2 800 wagyu yakiniku 🔥)</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>1 600 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚇 Metro Shinjuku → Imperial Palace → Shimokitazawa</div>
+      </div>
+    </details>
+    <div class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>0 Ft</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">💧 Vending machine ital</div>
+        <div class="cb-bd-item">🛍️ Shimokitazawa vintage bolt — apró</div>
+        <div class="cb-bd-item">🍡 Snack séta közben</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>19 100 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="page-num">Oldal 6</div>
+
+<!-- NAP 4 -->
+<div class="dh dh-tokyo" id="nap-4">
+  <div class="day-emoji">🌊</div>
+  <div>
+    <div class="day-label">4. nap · 2026. július 18. · szombat</div>
+    <div class="day-title">Kamakura & Enoshima sziget</div>
+    <div class="day-sub">Nagy Buddha, tengerpart, sárkány-szentélyek, napnyugta a Fuji előtt</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary">📝 Egész napos kirándulás Tokióból délre — hatalmas bronz Buddha, óceánparti bazár, sziklabarlangok. Ha tiszta az ég: szemközt a Fuji-san.</div>
+  <div class="hl"><strong>🎫 Közlekedési info — Kamakura nap</strong>Shinjukuból <strong>JR Shonan-Shinjuku vonal</strong>, közvetlen, kb. <strong>1 óra</strong>. Visszafelé: Enoden kisvonattal Kamakurába → JR-rel Shinjukuba. IC kártyával fizet (~¥1 000/fő oda-vissza).</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct">08:00</td><td class="ca">Indulás + konbini reggeli a vonaton</td><td>Shinjuku Állomás</td><td>🚆 JR Shonan-Shinjuku</td><td>1 óra</td><td class="cn">Korán kelj — reggeli vonat nem zsúfolt</td></tr>
+      <tr><td class="ct">09:15</td><td class="ca">Kotoku-in — Nagy Buddha szobor<small>13 méteres szabadtéri bronz Buddha, UNESCO jelölt</small></td><td>Kamakura, Kotoku-in</td><td>🚶 + 🚌 busz</td><td>2,5 óra</td><td class="cn">Belépő: ¥300</td></tr>
+      <tr><td class="ct">12:00</td><td class="ca">Enoden kisvonat Enoshimára<small>Oldschool tengerparti villamos, hangulatos</small></td><td>Kamakura → Enoshima</td><td>🚆 Enoden kisvonat</td><td>30 perc</td><td class="cn">~¥200, IC kártyával</td></tr>
+      <tr><td class="ct">12:30</td><td class="ca">Ebéd — tengeri herkentyűs street food<small>Shirasu (apró hal) rizs, kis helyi kifőzdék</small></td><td>Enoshima Island</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">~¥1 000–1 500 / fő</td></tr>
+      <tr><td class="ct">14:00</td><td class="ca">Sárkány-szentélyek & Iwaya sziklabarlangok<small>Lépcsősor fel, sziklába vájt barlangrendszer</small></td><td>Enoshima, Iwaya Caves</td><td>🚶 Gyalog</td><td>2,5 óra</td><td class="cn">Barlang belépő: ¥500. Escalator: ¥360</td></tr>
+      <tr class="chill"><td class="ct">16:30</td><td class="ca">🌿 CHILL — Enoshima Beach, napnyugta<small>Hullámok zaja, homok, Fuji kilátás ha tiszta az ég</small></td><td>Enoshima Beach</td><td>🚶 Gyalog</td><td>2 óra</td><td class="cn">Ha tiszta: Fuji látható! 🗻</td></tr>
+      <tr><td class="ct">18:30</td><td class="ca">Visszautazás Shinjukuba</td><td>Enoshima → Shinjuku</td><td>🚆 Enoden + JR Shonan-Shinjuku</td><td>1,5 óra</td><td class="cn">~¥1 000 / fő</td></tr>
+      <tr><td class="ct">20:00</td><td class="ca">Vacsora: Ramen a hostel közelében</td><td>Shinjuku</td><td>🚶 Gyalog</td><td>1 óra</td><td class="cn">~¥800–1 000 / fő</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul><li>Fuji: csak tiszta, szélcsendes napon látható — reggeli és kora esti esélyesebb.</li><li>Enoshima escalator (¥360) megkíméli a lábakat a meredek lépcsőn.</li><li>A Shirasu (apró hal) rizstál enoshimai specialitás — kötelező próba!</li></ul><div class="alt"><strong>☔ Esős időre:</strong> Enoshima Aquarium (¥2 470) vagy Kamakura Múzeum (¥300).</div></div>
+    <div class="cost-box "><div class="box-title">💴 Napi kiadások / fő · júl. 18. szombat <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>13 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini</div>
+        <div class="cb-bd-item">🍜 <strong>Ebéd</strong> — Kamakura street food (shirasu rice bowl)</div>
+        <div class="cb-bd-item">🍱 <strong>Vacsora</strong> — Tokyo visszaérkezés után étkezde</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>1 200 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚆 JR Yokosuka Line Tokyo → Kamakura (~¥920 oda-vissza áram)</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>2 700 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🪷 <strong>Nagy Buddha (Kotoku-in)</strong> — ¥300</div>
+        <div class="cb-bd-item">🕳️ <strong>Enoshima barlang + escalator</strong> — ¥860</div>
+        <div class="cb-bd-item"><em>Összesen: ¥1 160 ≈ 2 700 Ft</em></div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🥤 Vending machine napon</div>
+        <div class="cb-bd-item">🍦 Kamakura matcha jégkrém</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>18 400 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="page-num">Oldal 7</div>
+
+<!-- NAP 5 -->
+<div class="dh dh-tokyo" id="nap-5">
+  <div class="day-emoji">🛍️</div>
+  <div>
+    <div class="day-label">5. nap · 2026. július 19. · vasárnap</div>
+    <div class="day-title">Shibuya Crossing, szuvenír és Akihabara</div>
+    <div class="day-sub">Meiji Jingu, Harajuku, Shibuya Crossing, futószalagos sushi, Akihabara neonok</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary">📝 A tokiói szakasz fináléja: szentélytől a világ leghíresebb zebráján át az elektronikavárosig. Ma este pakolás — holnap Shinkansen Kiotóba!</div>
+  <div class="hl"><strong>🚄 Holnap: Shinkansen Kiotóba!</strong>Ma este pakolás és korai fekvés! Shinkansen foglalás ellenőrzése előre — <strong>Tokyo Station → Kyoto Station, Nozomi szupergyors</strong>, ~2h15m. JR Pass helyett saját jegy (~¥14 000 / fő)!</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct">09:00</td><td class="ca">Meiji Jingu szentély & Yoyogi Park<small>Sűrű erdő Shinjuku szívében, reggeli séta</small></td><td>Harajuku, Meiji Jingu</td><td>🚆 Metro Harajukuhoz</td><td>1,75 óra</td><td class="cn"><span class="tag-free">INGYENES</span></td></tr>
+      <tr><td class="ct">10:45</td><td class="ca">Harajuku + Aoyama Square szuvenír<small>Tradicionális japán kézműves ajándékok, JETRO bolt</small></td><td>Takeshita Dori + Aoyama</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn"><span class="tag-tip">SZUVENÍR</span> Minőségi darabok</td></tr>
+      <tr><td class="ct">12:15</td><td class="ca">Shibuya Crossing + Hachiko szobor<small>A világ leghíresebb zebrája, csúcsforgalom</small></td><td>Shibuya, Hachiko tér</td><td>🚆 Metro Shibuyához</td><td>30 perc</td><td class="cn">📸 Fotó Hachikóval kötelező!</td></tr>
+      <tr><td class="ct">12:45</td><td class="ca">Ebéd: Kura Sushi / Uobei futószalagos sushi<small>Érintőképernyős rendelés, minőség fillérekért</small></td><td>Shibuya</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">~¥100–150/tányér, ~¥1 500/fő</td></tr>
+      <tr class="chill"><td class="ct">14:30</td><td class="ca">🌿 CHILL — Miyashita Park, tetőtéri park<small>Pad, gördeszkapálya, várospanoráma, zenehallgatás</small></td><td>Miyashita Park, Shibuya</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn"><span class="tag-free">INGYENES</span></td></tr>
+      <tr><td class="ct">16:30</td><td class="ca">Akihabara — Electric Town este<small>Neonok, Gachapon, UFO catcher, anime/manga áruházak</small></td><td>Akihabara</td><td>🚆 Metro ~20 perc</td><td>4,5 óra</td><td class="cn">Este a leglátványosabb!</td></tr>
+      <tr><td class="ct">21:00</td><td class="ca">Búcsúvacsora: Tonkatsu / Yakitori Izakaya<small>Ropogós rántott hús vagy nyársak egy japán pubban</small></td><td>Akihabara / Shinjuku</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">~¥1 500 / fő, sör is!</td></tr>
+      <tr><td class="ct">22:30</td><td class="ca">Visszatérés — PAKOLÁS Kiotóhoz!</td><td>STS Hostel, Shinjuku</td><td>🚆 Metro</td><td>—</td><td class="cn"><span class="tag-warn">PAKOLÁS!</span> Holnap Shinkansen!</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul><li>Shibuya Crossing legjobb fotó: a Starbucks 2. emeletéről.</li><li>Akihabarában Gachapon Hall-ban apró yen kell — hozzatok!</li><li>Ma este <strong>PAKOLJ!</strong> A vonatok nem várnak.</li></ul><div class="alt"><strong>☔ Esős időre:</strong> Akihabara beltéri (6 emeletes), Shibuya PARCO Pokémon Center 6. emelet.</div></div>
+    <div class="cost-box "><div class="box-title">💴 Napi kiadások / fő · júl. 19. vasárnap <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>13 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini</div>
+        <div class="cb-bd-item">🍜 <strong>Ebéd</strong> — Shibuya ramen vagy Ichiran</div>
+        <div class="cb-bd-item">🍣 <strong>Vacsora</strong> — Akihabara futószalagos sushi (~¥1 500)</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>1 200 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚇 Metro Shinjuku → Shibuya → Akihabara</div>
+      </div>
+    </details>
+    <div class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>0 Ft</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🎰 Akihabara gachapon (~¥500-1000)</div>
+        <div class="cb-bd-item">🎮 Játéktermi érme</div>
+        <div class="cb-bd-item">💧 Vending</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>15 700 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="page-num">Oldal 8</div>
+
+<!-- ═══════════════════════════════════ -->
+<!--        KIOTÓ – 2. SZAKASZ          -->
+<!-- ═══════════════════════════════════ -->
+<div class="city-banner cb-kyoto" id="kyoto">
+  <div class="city-emoji">⛩️</div>
+  <div>
+    <div class="city-label">2. Szakasz</div>
+    <div class="city-name">Kiotó</div>
+    <div class="city-dates">2026. július 20–23. · 4 nap · Bázis: JR Katsuragawa állomás közelében</div>
+    <div class="city-addr">📍 Szállás: Minami-ku, Kuzeōyabuchō, Kyoto</div>
+  </div>
+</div>
+
+<!-- NAP 6 -->
+<div class="dh dh-kyoto" id="nap-6">
+  <div class="day-emoji">🚄</div>
+  <div>
+    <div class="day-label">6. nap · 2026. július 20. · hétfő</div>
+    <div class="day-title">Shinkansen száguldás — Kiotó és a sake negyed</div>
+    <div class="day-sub">Nozomi vonaton Fuji kilátás, beköltözés, Fushimi folyóparti séta</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary ds-kyoto">📝 Az első kiotói nap a letelepedésről és a hangulat befogadásáról szól. A Fushimi Sake District nem ivásról szól — hanem gyönyörű fagerendás házakról, fűzfákról és a vidéki Japán csendjéről.</div>
+  <div class="hl"><strong>🚄 Shinkansen info — Tokió → Kiotó</strong>Tokyo Station → Kyoto Station, <strong>Nozomi szupergyors</strong> (~2 óra 15 perc). Jegy: ~<strong>¥14 000 / fő</strong> — előre megvenni! Jobb oldali ablakülés = esélyes <strong>Fuji-san kilátás</strong>! 🗻</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct ct-kyoto">08:30</td><td class="ca">Reggeli + átvonatozás Tokyo Stationre<small>Shinjukuból Tokyo Station, konbini reggeli az útra</small></td><td>Shinjuku → Tokyo Station</td><td>🚆 JR Chuo Line</td><td>1 óra</td><td class="cn">~¥200</td></tr>
+      <tr><td class="ct ct-kyoto">09:30</td><td class="ca">Nozomi Shinkansen — Kiotóba!<small>Pihenés, zene, Fuji ablakból, tájkép</small></td><td>Tokyo Station → Kyoto Station</td><td>🚄 Nozomi Shinkansen</td><td>2 óra 15 perc</td><td class="cn">Jobb oldali ülés = Fuji!</td></tr>
+      <tr><td class="ct ct-kyoto">12:00</td><td class="ca">Megérkezés Kiotóba — átszállás, beköltözés<small>JR Kyoto Line → Katsuragawa állomás, szállás elfoglalása</small></td><td>Kyoto Station → Katsuragawa</td><td>🚆 JR Sagano / Kyoto Line</td><td>1 óra</td><td class="cn">Check-in: <strong>ellenőrizd a foglalással</strong></td></tr>
+      <tr><td class="ct ct-kyoto">13:00</td><td class="ca">Ebéd — helyi Soba / Udon kifőzde<small>Keressétek Tabelog 3.1–3.3-as helyeket vagy egy katsu-helyet</small></td><td>Szállás közelében</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">~¥700–1 000 / fő</td></tr>
+      <tr><td class="ct ct-kyoto">14:30</td><td class="ca">Fushimi Sake District — folyóparti séta<small>Fagerendás házak, fűzfák a csatorna partján, sake-pincészetek hangulata</small></td><td>Fushimi Negyed, Kiotó</td><td>🚆 JR-rel Fushimi-Momoyama felé</td><td>3 óra</td><td class="cn">Séta ingyenes, kóstolás opcionális</td></tr>
+      <tr class="chill"><td class="ct ct-kyoto">17:30</td><td class="ca">🌿 CHILL — Fushimi Park / folyópart<small>Japán dinnyés szóda automatából, zöld tea, semmi rohanás</small></td><td>Fushimi folyópart</td><td>🚶 Gyalog</td><td>2 óra</td><td class="cn">Vidéki Japán hangulata ✨</td></tr>
+      <tr><td class="ct ct-kyoto">19:30</td><td class="ca">Vacsora — Kyoto Ramen Koji<small>Kyoto Station felső emeletén, több ramen stand egy helyen</small></td><td>Kyoto Station, Ramen Koji</td><td>🚆 JR vissza Kyoto-ra</td><td>2 óra</td><td class="cn">~¥900–1 100 / fő, légkond!</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul><li>Kiotóban a busz az alap közlekedés — IC kártyával ¥230/út, napi pass ¥700.</li><li>Fushimi Negyed: a Gekkeikan Sake Museum belépője ~¥600 — opcionális de érdekes.</li><li>Katsuragawa állomástól Kiotó belváros kb. 3–4 km — busszal könnyen megközelíthető.</li></ul><div class="alt"><strong>☔ Esős időre:</strong> Kyoto Station maga egy látványosság — a 10. emeleti sétány ingyenes!</div></div>
+    <div class="cost-box ky"><div class="box-title">💴 Napi kiadások / fő · júl. 20. hétfő <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>13 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini Shinjuku állomáson</div>
+        <div class="cb-bd-item">🍱 <strong>Ebéd</strong> — Ekiben a Shinkansenen (~¥1 200) 🚄</div>
+        <div class="cb-bd-item">🍶 <strong>Vacsora</strong> — Kiotó sake negyed, helyi étterem</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚌 <strong>Kiotó busz</strong> — sok megálló a sake negyedig (1 napos buszbérlet ~¥600)</div>
+        <div class="cb-bd-item"><em>Megj.: a Shinkansen jegy KÜLÖN! (32 900 Ft, lásd lent)</em></div>
+      </div>
+    </details>
+    <div class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>0 Ft</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">💧 Vending az úton</div>
+        <div class="cb-bd-item">🍡 Snack</div>
+        <div class="cb-bd-item">🎁 Esetleg sake mini-üveg ajándékba</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>16 000 Ft</span></div>
+    <div class="ci cat cat-shink"><span>🚄 Shinkansen: Tokió → Kiotó (Nozomi)</span><span>+32 900 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider ky"></div>
+<div class="page-num kyoto-pn">Oldal 9</div>
+
+<!-- NAP 7 -->
+<div class="dh dh-kyoto" id="nap-7">
+  <div class="day-emoji">🏰</div>
+  <div>
+    <div class="day-label">7. nap · 2026. július 21. · kedd</div>
+    <div class="day-title">Kontrasztok napja: Kastély és az Aranytemplom</div>
+    <div class="day-sub">Nijo kastély fülemüle-padlóval, Kinkaku-ji arany csillogás, Teramachi fedett bevásárlóutca</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary ds-kyoto">📝 Szamuráj kastélytól a tóban tükröződő aranytemplomon át a fedett, légkondis bevásárlóutcáig — a legkontrasztosabb kiotói nap.</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct ct-kyoto">08:30</td><td class="ca">Reggeli — 7-Eleven konbiniből</td><td>Szállás közelében</td><td>🚶 Gyalog</td><td>45 perc</td><td class="cn">~¥400</td></tr>
+      <tr><td class="ct ct-kyoto">09:30</td><td class="ca">Nijo Kastély — Fülemüle-padló<small>Sógun kiotói bázisa, szándékosan csikorgó padló nindzsa ellen</small></td><td>Nijo Castle, Kiotó</td><td>🚌 Busz 9/50 (Nijo-jo-mae)</td><td>2,5 óra</td><td class="cn">Belépő: ¥1 300 / fő</td></tr>
+      <tr><td class="ct ct-kyoto">12:00</td><td class="ca">Ebéd — ramen a kastély közelében<small>Kis utcai rámen stand vagy bolt, keressétek Tabelog alapján</small></td><td>Nijo kastély környéke</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">~¥800–1 000 / fő</td></tr>
+      <tr><td class="ct ct-kyoto">13:30</td><td class="ca">Kinkaku-ji — Aranytemplom<small>Tóban tükröződő, valódi aranylemezekkel borított zen-buddhista pavilon</small></td><td>Kinkaku-ji, Kiotó</td><td>🚌 Busz 12 vagy 59</td><td>2 óra</td><td class="cn">Belépő: ¥500 📸 Legjobb fotó: templommal szemben</td></tr>
+      <tr class="chill"><td class="ct ct-kyoto">15:30</td><td class="ca">🌿 CHILL — Kyoto Gyoen Császári Palota Park<small>Hatalmas park, le lehet feküdni a fűbe, csend a városban</small></td><td>Kyoto Imperial Palace Park</td><td>🚌 Busz</td><td>2,5 óra</td><td class="cn"><span class="tag-free">INGYENES</span> 24/7 nyitva</td></tr>
+      <tr><td class="ct ct-kyoto">18:00</td><td class="ca">Teramachi utca — fedett bevásárlóutca<small>Anime boltok, vintage, játéktermek, szuvenír — légkondis!</small></td><td>Teramachi, Kiotó</td><td>🚶 Gyalog (Gyoen-tól 10 perc)</td><td>3 óra</td><td class="cn"><span class="tag-tip">SZUVENÍR</span> Nyáron az AC = bónusz!</td></tr>
+      <tr><td class="ct ct-kyoto">21:00</td><td class="ca">Vacsora: CoCo Ichibanya vagy Teramachi kis étterem</td><td>Teramachi, Kiotó</td><td>🚶 Gyalog</td><td>1 óra</td><td class="cn">~¥800–1 000 / fő</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul><li>Nijo kastély fülemüle-padlón próbáljatok csöndesen sétálni — fizikailag képtelenség, vicces!</li><li>Kinkaku-ji: délután is szép, de délelőtt kevesebb tömeg.</li><li>Teramachi-ban a Manga Souko boltban régi mangákat is lehet nézegetni ingyen.</li></ul><div class="alt"><strong>☔ Esős időre:</strong> Teramachi tökéletesen fedett esőre. Nijo Kastély belső terme légkondi.</div></div>
+    <div class="cost-box ky"><div class="box-title">💴 Napi kiadások / fő · júl. 21. kedd <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>13 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini</div>
+        <div class="cb-bd-item">🍜 <strong>Ebéd</strong> — Kiotó ramen vagy udon a Nijo közelében</div>
+        <div class="cb-bd-item">🍱 <strong>Vacsora</strong> — kaiseki / izakaya</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>1 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚌 Kiotó buszbérlet napra (~¥600)</div>
+        <div class="cb-bd-item">🚇 Kis átszállás</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>4 200 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🏰 <strong>Nijo Kastély</strong> — ¥1 300</div>
+        <div class="cb-bd-item">🏯 <strong>Kinkaku-ji Aranytemplom</strong> — ¥500</div>
+        <div class="cb-bd-item"><em>Összesen: ¥1 800 ≈ 4 200 Ft</em></div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">💧 Vending</div>
+        <div class="cb-bd-item">🍦 Matcha jégkrém</div>
+        <div class="cb-bd-item">🎁 Mini szuvenír</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>19 700 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider ky"></div>
+<div class="page-num kyoto-pn">Oldal 10</div>
+
+<!-- NAP 8 -->
+<div class="dh dh-kyoto" id="nap-8">
+  <div class="day-emoji">🐒</div>
+  <div>
+    <div class="day-label">8. nap · 2026. július 22. · szerda</div>
+    <div class="day-title">Az igazi bambuszerdő és a majomhegy</div>
+    <div class="day-sub">Rakusai park turisták nélkül, Arashiyama vadon élő makákók, folyóparti zöld tea fagylalt</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary ds-kyoto">📝 A turisztikus Arashiyama helyett korán reggel a csendesebb Rakusai bambuszparkba megyünk — aztán a majomhegyre, ahol vadon élő japán makákók etethetők a rácson át. Utána a Katsura folyó és zöld tea jégkrém.</div>
+  <div class="hl"><strong>💡 Rakusai vs. Arashiyama bambusz</strong>A Rakusai Bamboo Park a szálláshoz közelebb van, sokkal kevesebb turista, ugyanolyan gyönyörű. Arashiyamában a bambuszerdőnél délre már tömeg van — mi az <strong>ebédet és a majomhegyet</strong> csináljuk ott!</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct ct-kyoto">08:00</td><td class="ca">Rakusai Bamboo Park — turisták nélkül!<small>Hatalmas, csendes, autentikus bambuszpark, friss reggeli levegő</small></td><td>Rakusai Bamboo Park, Nishikyo</td><td>🚌 Busz a szállástól</td><td>2,5 óra</td><td class="cn"><span class="tag-free">INGYENES</span> Korán reggel a legjobb!</td></tr>
+      <tr><td class="ct ct-kyoto">10:30</td><td class="ca">Átbuszozás Arashiyama negyedbe</td><td>Rakusai → Arashiyama</td><td>🚌 Helyi busz</td><td>30 perc</td><td class="cn">~¥230</td></tr>
+      <tr><td class="ct ct-kyoto">11:30</td><td class="ca">Ebéd Arashiyamában<small>Hideg soba tészta hőségben (zseniális!), vagy nyárson sült street food</small></td><td>Arashiyama főutca</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">~¥800–1 200. Hideg soba nyáron kötelező!</td></tr>
+      <tr><td class="ct ct-kyoto">13:00</td><td class="ca">Iwatayama Monkey Park — majomhegy!<small>Rövid, meredek erdei túra, vadon élő japán makákók. Banánt/almát adhattok a rácson</small></td><td>Arashiyama Monkey Park</td><td>🚶 Gyalog (meredek!)</td><td>2 óra</td><td class="cn">Belépő: ¥1 000. Kilátás az egész kiotói völgyre! 🏔️</td></tr>
+      <tr class="chill"><td class="ct ct-kyoto">15:00</td><td class="ca">🌿 CHILL — Katsura folyó, Togetsukyo híd<small>Folyóparti köveken ülés, hegyek, zöld teás jégkrém</small></td><td>Togetsukyo híd, Arashiyama</td><td>🚶 Gyalog</td><td>2,5 óra</td><td class="cn">Zöld tea jégkrém: ~¥350 — kötelező! 🍦</td></tr>
+      <tr><td class="ct ct-kyoto">18:00</td><td class="ca">Visszatérés a szállásra, pihenés</td><td>Arashiyama → Katsuragawa</td><td>🚆 JR Sagano Line</td><td>30 perc</td><td class="cn">~¥230</td></tr>
+      <tr><td class="ct ct-kyoto">19:30</td><td class="ca">Vacsora — laza a szállás közelében<small>Kis helyi kifőzde, ramen vagy katsu</small></td><td>Katsuragawa közelében</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">~¥700–900 / fő</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul><li>A majomhegyre vezető ösvény meredek — de csak 20 perc, megéri!</li><li>A makákók vadon élnek — ételt csak a védett házban adhattok nekik rácson át!</li><li>Togetsukyo hídnál csónak bérlés is elérhető (~¥1 500/óra) ha van kedv.</li></ul><div class="alt"><strong>☔ Esős időre:</strong> Tenryu-ji zen-kert (¥500, részben beltéri), Arashiyama Kimono Forest (esőben is szép).</div></div>
+    <div class="cost-box ky"><div class="box-title">💴 Napi kiadások / fő · júl. 22. szerda <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>13 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini</div>
+        <div class="cb-bd-item">🍜 <strong>Ebéd</strong> — Arashiyama yudofu (tofu) vagy ramen</div>
+        <div class="cb-bd-item">🍱 <strong>Vacsora</strong> — Pontocho sétálóutca</div>
+      </div>
+    </details>
+    <div class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>0 Ft</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>2 350 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🐒 <strong>Arashiyama Monkey Park</strong> — ¥1 000 (≈ 2 350 Ft)</div>
+        <div class="cb-bd-item">🆓 Bambusz liget ingyenes</div>
+        <div class="cb-bd-item">🆓 Togetsukyo híd ingyenes</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍦 Matcha jégkrém Arashiyama-ban</div>
+        <div class="cb-bd-item">💧 Vending</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>16 850 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider ky"></div>
+<div class="page-num kyoto-pn">Oldal 11</div>
+
+<!-- NAP 9 -->
+<div class="dh dh-kyoto" id="nap-9">
+  <div class="day-emoji">🦊</div>
+  <div>
+    <div class="day-label">9. nap · 2026. július 23. · csütörtök</div>
+    <div class="day-title">Az 1000 kapu szentélye és a gésák negyede</div>
+    <div class="day-sub">Fushimi Inari hajnali 7-re, Kiyomizu-dera fapalota, esti Gion lámpások — holnap Oszaka!</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary ds-kyoto">📝 A kiotói szakasz csúcspontja: hajnali 7-re a vörös kapukhoz turisták nélkül — aztán a völgyre néző fapalotán és a lámpásos gésa negyeden át búcsút intünk Kiotónak.</div>
+  <div class="hl"><strong>⚠️ Fushimi Inari — KORÁN kell menni!</strong>9 óra után heringparti van! Menjetek <strong>7:00-ra</strong> — a legszebb rész az alsó szakasz (kb. első 30-40 perc séta). A csúcsra felmenni NEM szükséges (2-3 óra extra lépcsőzés).</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct ct-kyoto">07:00</td><td class="ca">Fushimi Inari Taisha — 1000 vörös kapu<small>Ikonikus torii-kapu sor hajnali fényben, turisták nélkül</small></td><td>Fushimi Inari, Kiotó</td><td>🚆 JR Nara Line → Inari Áll.</td><td>2,5 óra</td><td class="cn"><span class="tag-free">INGYENES</span> 24 órás, mindig nyitva!</td></tr>
+      <tr><td class="ct ct-kyoto">09:30</td><td class="ca">Visszatérés — gyors zuhany<small>Szállásra vagy egyből belvárosba</small></td><td>Szállás</td><td>🚆 JR + busz</td><td>1 óra</td><td class="cn">Nyáron 7 óra után is izzasztó</td></tr>
+      <tr><td class="ct ct-kyoto">11:00</td><td class="ca">Kiyomizu-dera + Ninenzaka, Sannenzaka<small>Domboldalra épített fapalota, terasz, régi utcák tradicionális hangulattal</small></td><td>Kiyomizu-dera, Higashiyama</td><td>🚌 Busz 100 (Kyoto Stationről)</td><td>2 óra</td><td class="cn">Belépő: ¥500. Ninenzaka séta ingyenes.</td></tr>
+      <tr><td class="ct ct-kyoto">13:00</td><td class="ca">Ebéd — Ninenzaka rejtett udvaros étterem<small>Kis, eldugott helyek tradicionális kiotói hangulatban</small></td><td>Ninenzaka, Higashiyama</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">~¥1 000–1 500 / fő</td></tr>
+      <tr class="chill"><td class="ct ct-kyoto">14:30</td><td class="ca">🌿 CHILL — Maruyama Park<small>Tavak, hidak, hatalmas fák, pad az árnyékban, dumálás</small></td><td>Maruyama Park, Kiotó</td><td>🚶 Gyalog</td><td>2,5 óra</td><td class="cn"><span class="tag-free">INGYENES</span></td></tr>
+      <tr><td class="ct ct-kyoto">17:00</td><td class="ca">Gion negyed — esti lámpásos séta<small>Kiotó gésa-negyede alkonyatkor, régi faházak közt lámpások gyúlnak</small></td><td>Gion, Kiotó</td><td>🚶 Gyalog</td><td>2 óra</td><td class="cn">Ha szerencsések vagytok: Maiko-t láthattok! 🌸</td></tr>
+      <tr><td class="ct ct-kyoto">19:00</td><td class="ca">Búcsúvacsora Kiotótól: Okonomiyaki / Ramen<small>Japán sós palacsinta vagy forró ramen Gion szélén</small></td><td>Gion széle, Kiotó</td><td>🚶 Gyalog</td><td>2 óra</td><td class="cn">~¥900–1 200 / fő</td></tr>
+      <tr><td class="ct ct-kyoto">21:00</td><td class="ca">Visszatérés + PAKOLÁS — holnap Oszaka!</td><td>Szállás</td><td>🚌 Busz + 🚆 JR</td><td>—</td><td class="cn"><span class="tag-warn">PAKOLÁS!</span> Holnap indul az Oszaka szakasz!</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul><li>Fushimi Inari: ne menj fel a csúcsra — az alsó szakasz a szebb, és 30-40 perc bőven elég.</li><li>Gion negyedben Maiko-t fotózni csak messziről, zavarni őket udvariatlanság.</li><li>Ninenzaka utcán az Ishibekoji sikátor (nem turista) a leghangulatosabb sarok.</li></ul><div class="alt"><strong>☔ Esős időre:</strong> Fushimi Inari esőben is tökéletes (fenyők fedik az utat). Gion esőben még romantikusabb.</div></div>
+    <div class="cost-box ky"><div class="box-title">💴 Napi kiadások / fő · júl. 23. csütörtök <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>13 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini (HAJNALI Fushimi miatt korai!)</div>
+        <div class="cb-bd-item">🍜 <strong>Ebéd</strong> — kitsune udon Fushimi környékén</div>
+        <div class="cb-bd-item">🍱 <strong>Vacsora</strong> — Gion / Pontocho vacsora</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>1 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚆 JR Nara Line Fushimi-ig</div>
+        <div class="cb-bd-item">🚌 Busz Gion-ig</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>1 200 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🆓 <strong>Fushimi Inari INGYENES</strong> 🦊</div>
+        <div class="cb-bd-item">🏛️ <strong>Kiyomizu-dera</strong> — ¥500 (≈ 1 200 Ft)</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍦 Matcha softcream Kiyomizu úton</div>
+        <div class="cb-bd-item">🥢 Fushimi Inari food street snackek</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>16 700 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider ky"></div>
+<div class="page-num kyoto-pn">Oldal 12</div>
+
+<!-- ═══ PLACEHOLDER — HIÁNYZÓ NAPOK ═══ -->
+<!-- ═══════════════════════════════════ -->
+<!--       3. SZAKASZ: OSZAKA           -->
+<!-- ═══════════════════════════════════ -->
+<div class="city-banner cb-osaka" id="oszaka-nagasaki">
+  <div class="city-emoji">🦑</div>
+  <div>
+    <div class="city-label">3. Szakasz · Oszaka · 3 nap · 4 fő</div>
+    <div class="city-name">Oszaka</div>
+    <div class="city-dates">2026. július 24–26. · Nishinari Ward, Minamitsumori · Bázis: Tamade metróállomás (Yotsubashi vonal)</div>
+  </div>
+</div>
+
+<!-- NAP 10 – JÚL. 24. PÉNTEK -->
+<div class="dh dh-osaka" id="nap-10">
+  <div class="day-emoji">🎆</div>
+  <div>
+    <div class="day-label">10. nap · 2026. július 24. · péntek</div>
+    <div class="day-title">Modern fények, Umeda Sky Building és az éjszakai Spo-Cha</div>
+    <div class="day-sub">Átköltözés Kiotóból, Shinsekai negyed, Umeda panoráma, majd hajnali 4-ig Round 1</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary ds-osaka">📝 Energiabomba nap: reggel átköltözés, napközben a legjobb Oszaka negyedek, este futurisztikus kilátó, aztán péntek éjszaka teljes gőzzel: Round 1 Spo-Cha hajnalig.</div>
+  <div class="hl"><strong>🏨 Szállás — Nishinari Ward, Minamitsumori</strong>Bázisállomás: <strong>Tamade metróállomás</strong> (Yotsubashi vonal). Check-in: <strong>~11:00–11:30</strong> (kérjetek korai becsekkolást vagy hagyják le a csomagot).</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct ct-osaka">10:00</td><td class="ca">Kicsekkolás Kiotóból, átutazás<small>JR vonattal Kiotóból Namba / Shin-Imamiya állomásra</small></td><td>Kiotó → Oszaka, Minamitsumori</td><td>🚆 JR Yamatoji Line</td><td>1,5 óra</td><td class="cn">~¥800 / fő · lepakolás</td></tr>
+      <tr><td class="ct ct-osaka">11:30</td><td class="ca">Shinsekai negyed — old-school Oszaka<small>Tsutenkaku torony, óriási neonfények, retró hangulat</small></td><td>Shinsekai, Naniwa</td><td>🚶 Gyalog a szállástól</td><td>2,5 óra</td><td class="cn">Közel a szálláshoz!</td></tr>
+      <tr><td class="ct ct-osaka">12:30</td><td class="ca">Ebéd: Kushikatsu Daruma<small>Bundázott nyársak — Oszaka legismertebb étele, brutál olcsó</small></td><td>Shinsekai, Daruma lánc</td><td>🚶 Gyalog</td><td>1 óra</td><td class="cn">~¥1 000–1 500 / fő · <strong>kétszer mártani tilos!</strong></td></tr>
+      <tr class="chill"><td class="ct ct-osaka">14:00</td><td class="ca">🌿 CHILL — Tenjinbashi-suji Shopping Street<small>Japán leghosszabb fedett boltsora — helyi árak, óriási élmény</small></td><td>Tenjinbashi-suji, Kita</td><td>🚆 Metro Temmabashi felé</td><td>2 óra</td><td class="cn">Nem turista csapda!</td></tr>
+      <tr><td class="ct ct-osaka">17:00</td><td class="ca">Umeda Sky Building — nyitott tetőterasz<small>Futurisztikus felhőkarcoló, kör alakú kilátó — sötétedéskor sci-fi hangulat</small></td><td>Umeda Sky Building, Kita</td><td>🚆 Metro Umeda felé</td><td>2,5 óra</td><td class="cn">Belépő: ¥1 500 · <strong>Sötétedéskor a legjobb!</strong></td></tr>
+      <tr><td class="ct ct-osaka">19:30</td><td class="ca">Vacsora: Okonomiyaki vagy Gyudon<small>Oszakai sós palacsinta vagy marhahúsos rizs az Umeda negyedben</small></td><td>Umeda negyed</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">~¥800 / fő</td></tr>
+      <tr class="chill"><td class="ct ct-osaka">21:00</td><td class="ca">🌿 PREP &amp; REST — visszatérés, pihenés<small>Kötelező alvás és telefontöltés az éjszakai menet előtt</small></td><td>Szállás, Minamitsumori</td><td>🚆 Metro haza</td><td>2 óra</td><td class="cn">Fontos — 5 óra Spo-Cha jön!</td></tr>
+      <tr><td class="ct ct-osaka">23:00</td><td class="ca">Indulás — Round 1 Stadium Sennichimae<small>Tamade állomásról Yotsubashi metróval, 4 megálló Namba</small></td><td>Tamade → Namba</td><td>🚆 Yotsubashi metro</td><td>30 perc</td><td class="cn">Utolsó metró ~éjfél</td></tr>
+      <tr><td class="ct ct-osaka" style="color:#c0392b;font-weight:800;">23:30</td><td class="ca"><strong>🕹️ ROUND 1 SPO-CHA ÉJSZAKA!</strong><small>Midnight Packet — arcade, autós szim., bowling, darts, kosárlabda, mechanikus bika, görkori, lövészet</small></td><td>Round 1 Sennichimae, Namba</td><td>🚶 Gyalog az állomástól</td><td><strong>5 óra</strong></td><td class="cn"><strong>~¥3 200 / fő</strong> · Péntek éjjel = 🔥</td></tr>
+      <tr><td class="ct ct-osaka">04:30</td><td class="ca">Hazatérés — hajnali Oszaka séta<small>Gyalog ~25 perc a kihalt városban, vagy 4-felé osztott taxi</small></td><td>Namba → Szállás</td><td>🚶 Gyalog / 🚕 Taxi</td><td>30 perc</td><td class="cn">Taxi: ~¥1 500 összesen</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul>
+      <li><strong>Kushikatsu szabály:</strong> a mártásba kétszer mártani tilos — ha több kell, locsold rá kanállal.</li>
+      <li>Umeda Sky Building: online jegy valamivel olcsóbb lehet, érdemes előre nézni.</li>
+      <li>Spo-Cha Midnight Packet: a recepción angolul is boldogulni lehet, kb. ¥3 200.</li>
+      <li>Tenjinbashi-suji: kb. 2,6 km hosszú — egész végig menni kb. 45–60 perc séta.</li>
+    </ul></div>
+    <div class="cost-box os"><div class="box-title">💴 Napi kiadások / fő · júl. 24. péntek <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>13 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini</div>
+        <div class="cb-bd-item">🍢 <strong>Ebéd</strong> — Kushikatsu Daruma Shinsekai (~¥1 200, kétszer mártani tilos!)</div>
+        <div class="cb-bd-item">🥞 <strong>Vacsora</strong> — Okonomiyaki Umeda negyedben</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>800 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚆 JR Yamatoji Line Kiotó → Oszaka (~¥600 valós) <em>+ Yotsubashi metro Round 1-hez</em></div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>11 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🌃 <strong>Umeda Sky Building</strong> — ¥1 500</div>
+        <div class="cb-bd-item">🕹️ <strong>Round 1 Spo-Cha Midnight Packet</strong> — ¥3 200 (5 óra!)</div>
+        <div class="cb-bd-item"><em>Összesen: ¥4 700 ≈ 11 000 Ft</em></div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">💧 Vending Shinsekai-ban</div>
+        <div class="cb-bd-item">🎰 Tenjinbashi-suji apróságok</div>
+        <div class="cb-bd-item">🥤 Hajnali ital a Round 1 után</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>26 300 Ft</span></div>
+    <div class="ci cat cat-shink"><span>🚄 Shinkansen: Kiotó → Oszaka (JR helyi)</span><span>+1 410 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider" style="background:#a31515;"></div>
+<div class="page-num">Oldal 13</div>
+
+<!-- NAP 11 – JÚL. 25. SZOMBAT -->
+<div class="dh dh-osaka" id="nap-11">
+  <div class="day-emoji">🏮</div>
+  <div>
+    <div class="day-label">11. nap · 2026. július 25. · szombat</div>
+    <div class="day-title">Tenjin Matsuri — Japán egyik legnagyobb nyári fesztiválja</div>
+    <div class="day-sub">Regenerálódás a Spo-Cha után, tradicionális hajós felvonulás, 5000 tűzijáték, Yatai bódék</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary ds-osaka">📝 Mára az egész Spo-Cha éjszaka levezetése van tervezve: alvás ameddig kell, aztán Japán egyik legnagyobb Matsuri fesztiválja vár — tradicionális jelmezek, hajós felvonulás a folyón és 5000 tűzijáték a fejetek felett.</div>
+  <div class="hl"><strong>🎆 Tenjin Matsuri — Japán 3 legnagyobb fesztiválja egyike</strong>Minden évben <strong>július 24–25-én</strong> tartják. A szárazföldi felvonulás délelőtt kezdődik, a hajós menet (Funatogyo) és a tűzijáték <strong>18:00 után</strong> indul. Yutaka (tradicionális nyári kimonó) viselet mindenhol — ti is bérelhetnétek egyet egy ruhabolt előtt!</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr class="chill"><td class="ct ct-osaka">05:00</td><td class="ca">🌿 BRUTÁL CHILL — Alvás a Spo-Cha után<small>Semmi rohanás, ameddig jól esik</small></td><td>Szállás, Minamitsumori</td><td>—</td><td><strong>~8 óra</strong></td><td class="cn">Megérdemelt pihenés!</td></tr>
+      <tr><td class="ct ct-osaka">13:00</td><td class="ca">Késői reggeli/ebéd<small>Konbini vagy közeli kis kifőzde a szállás mellett</small></td><td>Szállás közelében</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">~¥700 / fő</td></tr>
+      <tr><td class="ct ct-osaka">14:30</td><td class="ca">Osaka Tenmangu szentély — szárazföldi felvonulás<small>Jelmezesek, dobosok, hordozható szentélyek (Mikoshi), hömpölygő tömeg Yukatában</small></td><td>Osaka Tenmangu, Kita-ku</td><td>🚆 Metro Minami-Morimachi felé</td><td>2 óra</td><td class="cn"><span class="tag-free">INGYENES</span></td></tr>
+      <tr><td class="ct ct-osaka">16:30</td><td class="ca">Séta le az Okawa folyópartra<small>Legjobb helyek a hajós felvonulás nézéséhez</small></td><td>Okawa folyópart, Kita</td><td>🚶 Gyalog</td><td>2 óra</td><td class="cn">Korán foglalj helyet!</td></tr>
+      <tr><td class="ct ct-osaka">18:30</td><td class="ca"><strong>🚢 Hajós felvonulás — Funatogyo</strong><small>Több tucat kivilágított, doboló tradicionális hajó úszik a vízen</small></td><td>Okawa folyó</td><td>🚶 Gyalog</td><td>2,5 óra</td><td class="cn">Életre szóló látvány!</td></tr>
+      <tr><td class="ct ct-osaka" style="color:#c0392b;font-weight:800;">19:30</td><td class="ca"><strong>🎆 Tűzijáték + Yatai fesztivál kaja!</strong><small>~5 000 tűzijáték · Takoyaki, Yakisoba, jégkása, helyi fiatalok közt ünnepelni</small></td><td>Okawa folyópart</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">~¥1 500–2 000 / fő kaja</td></tr>
+      <tr class="chill"><td class="ct ct-osaka">21:00</td><td class="ca">🌿 Visszatérés a szállásra<small>A tömeggel lassan hömpölygve haza, pihenés</small></td><td>Szállás, Minamitsumori</td><td>🚆 Metro haza</td><td>1 óra</td><td class="cn">Holnap: Nara!</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul>
+      <li>Yukata bérlés: a Tenmangu közelében van néhány bolt, ahol ~¥2 000–3 000-ért felvehető a tradicionális öltözék — vicc fotóknak kötelező.</li>
+      <li>Tűzijáték: a folyópart <strong>nagyon tömött</strong> lesz — 18:00-ra már érdemes jó helyet foglalni.</li>
+      <li>Yatai bódék: készpénz kell! Krtyát nem fogadnak el a fesztivál bódéknál.</li>
+      <li>Takoyaki: a polipgolyóból kettő-háromra megülitek a belső hőmérsékletét — hagyjátok kicsit hűlni!</li>
+    </ul></div>
+    <div class="cost-box os"><div class="box-title">💴 Napi kiadások / fő · júl. 25. szombat <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>13 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Késői reggeli/ebéd</strong> — konbini vagy közeli kifőzde</div>
+        <div class="cb-bd-item">🐙 <strong>Vacsora a fesztiválon</strong> — Yatai bódék: <strong>Takoyaki</strong> (polipgolyó), <strong>Yakisoba</strong> (sült tészta), <strong>Karaage</strong> (rántott csirke), <strong>jégkása</strong></div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>5 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚇 <strong>Yotsubashi metro Tamade ↔ Tenmangu</strong> — forgalmas, többszörös út, sok átszállás (5 000 Ft)</div>
+      </div>
+    </details>
+    <div class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>0 Ft</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">👘 Esetleg Yukata bérlés (opcionális, ~¥2 500)</div>
+        <div class="cb-bd-item">🥤 Fesztivál italok</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>19 500 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider" style="background:#a31515;"></div>
+<div class="page-num">Oldal 14</div>
+
+<!-- NAP 12 – JÚL. 26. VASÁRNAP -->
+<div class="dh dh-osaka" id="nap-12">
+  <div class="day-emoji">🦌</div>
+  <div>
+    <div class="day-label">12. nap · 2026. július 26. · vasárnap</div>
+    <div class="day-title">Nara szarvasai és a minimalizált Dotonbori</div>
+    <div class="day-sub">Nara Park hajbókoló szarvasokkal, világ legnagyobb bronz Buddhája, esti Glico Man fotó</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary ds-osaka">📝 Narában már az állomásnál szembejönnek a szarvasok — tömegközlekedésen hajbókolnak. Délután Dotonbori ikonikus neonfényei, de csak egy gyors kör — nem ragadunk le a turistatömegben.</div>
+  <div class="hl"><strong>🦌 Nara Park szarvasai — fontos!</strong>A <strong>Shika-senbei</strong> (szarvas-keksz) a bejáratnál kapható, ~¥200. A szarvasok néha erőszakosak: megragadják a szatyrot, fejbe böknek. Értékeseket zsebben tartani! A <strong>Todai-ji belépője ¥600</strong> — megéri teljesen.</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct ct-osaka">09:00</td><td class="ca">Indulás Narába<small>Kintetsu Nara Line — reggeli útközben konbiniből</small></td><td>Oszaka (Namba) → Nara</td><td>🚆 Kintetsu Nara Line</td><td>45 perc</td><td class="cn">~¥680 / fő</td></tr>
+      <tr><td class="ct ct-osaka">10:00</td><td class="ca">Nara Park — szarvaskeksz etetés<small>Hajbókoló szarvasok szabadon sétálnak, azonnal körülvesznek</small></td><td>Nara Park</td><td>🚶 Gyalog az állomástól</td><td>1 óra</td><td class="cn">Shika-senbei: ~¥200</td></tr>
+      <tr><td class="ct ct-osaka">11:00</td><td class="ca">Todai-ji — világ legnagyobb fából készült épülete<small>Gigantikus bronz Nagy Buddha (Daibutsu) — tekintélyparancsoló</small></td><td>Todai-ji, Nara</td><td>🚶 Gyalog</td><td>2 óra</td><td class="cn">Belépő: ¥600 / fő</td></tr>
+      <tr><td class="ct ct-osaka">13:00</td><td class="ca">Ebéd Narában — Tonkatsu vagy Ramen<small>A park melletti sétálóutcában keressetek Tabelog 3.3+ helyet</small></td><td>Nara sétálóutca</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">~¥1 000–1 200 / fő</td></tr>
+      <tr class="chill"><td class="ct ct-osaka">14:30</td><td class="ca">🌿 CHILL — Ukiwado Pavilon, tó felett<small>Gyönyörű fa pavilon a park csendesebb részén, hűvösen ülni, nézni a vizet</small></td><td>Ukiwado Pavilon, Nara Park</td><td>🚶 Gyalog</td><td>2 óra</td><td class="cn"><span class="tag-free">INGYENES</span> Teljesen kiszakadni!</td></tr>
+      <tr><td class="ct ct-osaka">16:30</td><td class="ca">Visszautazás Oszakába (Namba)<small>Kintetsu vonallal vissza</small></td><td>Nara → Namba, Oszaka</td><td>🚆 Kintetsu Nara Line</td><td>45 perc</td><td class="cn">~¥680 / fő</td></tr>
+      <tr><td class="ct ct-osaka">17:30</td><td class="ca">Dotonbori — gyors ikonikus kör<small>Glico Man kötelező fotó, csatorna neonfényei — nem ragadunk le!</small></td><td>Dotonbori, Namba</td><td>🚶 Gyalog az állomástól</td><td>2 óra</td><td class="cn">Csak a fényképek miatt!</td></tr>
+      <tr><td class="ct ct-osaka">19:30</td><td class="ca">Utolsó oszakai vacsora: Kushikatsu vagy Ramen<small>Vissza Shinsekaiba — egy utolsó nagy adag vagy egy Tabelog 3.3+ ramen</small></td><td>Shinsekai / Szállás közelében</td><td>🚆 Metro haza</td><td>2 óra</td><td class="cn">~¥1 000–1 200 / fő</td></tr>
+      <tr class="chill"><td class="ct ct-osaka">21:30</td><td class="ca">🌿 Szállás — pakolás!</td><td>Szállás, Minamitsumori</td><td>🚶 Gyalog</td><td>—</td><td class="cn">⚠️ Holnap korán indul a Shinkansen Nagaszakiba!</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul>
+      <li>Kintetsu Nara Line: gyorsabb és olcsóbb mint a JR — Nambából induljon!</li>
+      <li>Todai-ji belsejében van egy faoszlop, amelynek aljában egy kis lyuk van — az átbújás szerencsét hoz (pont akkora mint a Nagy Buddha orrlyuka).</li>
+      <li>Dotonbori: <strong>ne egyetek ott</strong> — a Glico Man előtti helyek turista áron mérik a Takoyakit. Csak fotó, aztán el!</li>
+      <li>Pakolás este: holnap a leghosszabb Shinkansen út — Nagaszaki messze van!</li>
+    </ul>
+      <div class="alt"><strong>ℹ️ Wakayama/Tomogashima kiesett:</strong> A tömörített naptár miatt ez sajnos nem fért bele — Nara sokkal közelebb, olcsóbb és 18 évesen kihagyhatatlan a srácokkal.</div>
+    </div>
+    <div class="cost-box os"><div class="box-title">💴 Napi kiadások / fő · júl. 26. vasárnap <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>16 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini (Kintetsu állomáson)</div>
+        <div class="cb-bd-item">🍱 <strong>Ebéd</strong> — Nara sétálóutca Tonkatsu vagy Tabelog 3.3+ hely</div>
+        <div class="cb-bd-item">🥩 <strong>WAGYU EST</strong> — Dotonbori yakiniku (~¥2 800 wagyu) 🔥</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>1 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚆 <strong>Kintetsu Nara Line</strong> oda-vissza (Namba → Nara, ~¥680 RT)</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>1 400 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🦌 <strong>Shika-senbei (szarvas keksz)</strong> — ¥200</div>
+        <div class="cb-bd-item">🪷 <strong>Todai-ji Daibutsu</strong> — ¥600</div>
+        <div class="cb-bd-item"><em>Összesen: ¥800 ≈ 1 400 Ft</em></div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍦 Nara mochi jégkrém</div>
+        <div class="cb-bd-item">💧 Vending sok melegben</div>
+        <div class="cb-bd-item">📷 Dotonbori Glico Man fotó (ingyenes)</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>19 900 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider" style="background:#a31515;"></div>
+<div class="page-num">Oldal 15</div>
+
+<!-- ═══ TÖBBI SZAKASZ — HAMAROSAN ══ -->
+<!-- ═══════════════════════════════════ -->
+<!--       4. SZAKASZ: NAGASZAKI        -->
+<!-- ═══════════════════════════════════ -->
+<div class="city-banner cb-nagasaki" id="nagasaki">
+  <div class="city-emoji">🚢</div>
+  <div>
+    <div class="city-label">4. Szakasz · Nagaszaki · 3 nap · 4 fő</div>
+    <div class="city-name">Nagaszaki</div>
+    <div class="city-dates">2026. július 27–29. · Atago negyed, domboldali apartman · Bázis: Shingaminato villamosmegálló</div>
+  </div>
+</div>
+
+<!-- NAP 13 – JÚL. 27. HÉTFŐ -->
+<div class="dh dh-nagasaki" id="nap-13">
+  <div class="day-emoji">🚄</div>
+  <div>
+    <div class="day-label">13. nap · 2026. július 27. · hétfő</div>
+    <div class="day-title">A nagy utazás délre és a kikötői fények</div>
+    <div class="day-sub">Shinkansen az országon át, Ekiben ebéd 300 km/h-nál, domboldali beköltözés, kikötői este</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary ds-nagasaki">📝 A leghosszabb és legszebb Shinkansen-nap: két vonaton száguldasz át a fél szigeten, megérkezel a nosztalgikus, domboldali Nagaszakiba, ahol a sós tengeri levegő és a csillogó kikötő vár.</div>
+  <div class="hl"><strong>🚄 Shinkansen info — Oszaka → Nagaszaki</strong>Shin-Osaka → Hakata (Sanyo Shinkansen), ott átszállás → Nagaszaki (Nishi-Kyushu Shinkansen, Kamome vonat). Teljes útvonal: kb. <strong>5 óra</strong> · Ár: <strong>~¥19 000 / fő</strong>. Ekiben (vasúti uzsonnásdoboz) a Shin-Osaka állomáson vegyétek meg — élmény 300 km/h-nál falatozni!</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct ct-nagasaki">08:30</td><td class="ca">Indulás Shin-Osaka állomásra<small>Ekiben megvétel az állomáson indulás előtt</small></td><td>Szállás → Shin-Osaka</td><td>🚆 Metro Shin-Osaka felé</td><td>1 óra</td><td class="cn">Ekiben: ~¥1 200</td></tr>
+      <tr><td class="ct ct-nagasaki">09:30</td><td class="ca">Sanyo Shinkansen — Shin-Osaka → Hakata<small>Első szakasz: Kyushu-sziget kapujáig</small></td><td>Shin-Osaka → Hakata</td><td>🚄 Sanyo Shinkansen</td><td>2,5 óra</td><td class="cn">Ekiben az úton! 🍱</td></tr>
+      <tr><td class="ct ct-nagasaki">12:00</td><td class="ca">Átszállás Hakatán → Kamome Shinkansen<small>Vadonatúj Nishi-Kyushu Shinkansen — tenger, hegyek, pálmák</small></td><td>Hakata → Nagasaki</td><td>🚄 Kamome Shinkansen</td><td>1,5 óra</td><td class="cn">Ablak balra = tenger</td></tr>
+      <tr><td class="ct ct-nagasaki">13:30</td><td class="ca">Megérkezés Nagaszakiba — beköltözés<small>Villamossal az Atago negyedbe, lepakolás, felfrissülés</small></td><td>Nagasaki Áll. → Shingaminato megálló</td><td>🚃 Villamos</td><td>1 óra</td><td class="cn">Szállás: Atago negyed</td></tr>
+      <tr class="chill"><td class="ct ct-nagasaki">14:30</td><td class="ca">🌿 CHILL — Ismerkedés a negyeddel<small>Lépcsős, szűk domboldali sikátorok, anime helyszín-hangulat, konbini feltöltés</small></td><td>Atago negyed, Nagaszaki</td><td>🚶 Gyalog</td><td>2,5 óra</td><td class="cn">Teljesen más világ!</td></tr>
+      <tr><td class="ct ct-nagasaki">17:00</td><td class="ca">Nagaszaki Seaside Park & Kikötő<small>Hatalmas hegyek + tenger + sós levegő — elképesztő panoráma</small></td><td>Nagaszaki Kikötő, Seaside Park</td><td>🚃 Villamos</td><td>2,5 óra</td><td class="cn"><span class="tag-free">INGYENES</span></td></tr>
+      <tr><td class="ct ct-nagasaki">19:30</td><td class="ca">Vacsora — Dejima Wharf kikötői éttermek<small>Hangulatos kiülős helyek a kikötői mólón</small></td><td>Nagasaki Dejima Wharf</td><td>🚶 Gyalog</td><td>2 óra</td><td class="cn">~¥1 500 / fő</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul>
+      <li><strong>Ekiben</strong> (vasúti uzsonnásdoboz) a Shin-Osaka állomás aluljárójában kapható — a helyi specialitásokat tárják elénk, érdemes kettőt is venni szimplán az élmény kedvéért.</li>
+      <li>Kamome Shinkansen: az ülések egy részénél forgó szék van — lehet az irány szerint ülni.</li>
+      <li>Villamos-bérlet (1 napos): ¥500 — megéri ha sokat utaztok aznap.</li>
+      <li>Dejima Wharf: a kikötői asztaloktól látni a hatalmas teherhajókat — este gyönyörű.</li>
+    </ul></div>
+    <div class="cost-box ng"><div class="box-title">💴 Napi kiadások / fő · júl. 27. hétfő <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>13 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini Shin-Osaka állomáson</div>
+        <div class="cb-bd-item">🍱 <strong>Ebéd a vonaton</strong> — Ekiben Shin-Osaka állomásról (~¥1 200) 🚄</div>
+        <div class="cb-bd-item">🍣 <strong>Vacsora</strong> — Dejima Wharf kikötői étterem</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>700 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚃 <strong>Villamos</strong> Nagasaki Áll. → Shingaminato (Atago) — ~¥150</div>
+        <div class="cb-bd-item"><em>Megj.: a két Shinkansen jegy KÜLÖN! (44 650 Ft, lásd lent)</em></div>
+      </div>
+    </details>
+    <div class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>0 Ft</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">💧 Vending az úton</div>
+        <div class="cb-bd-item">🍡 Snack</div>
+        <div class="cb-bd-item">🎁 Hakata állomás kis souvenír</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>15 200 Ft</span></div>
+    <div class="ci cat cat-shink"><span>🚄 Shinkansen: Oszaka → Nagaszaki (Sanyo+Kamome)</span><span>+44 650 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider" style="background:#005f8e;"></div>
+<div class="page-num">Oldal 16</div>
+
+<!-- NAP 14 – JÚL. 28. KEDD -->
+<div class="dh dh-nagasaki" id="nap-14">
+  <div class="day-emoji">☮️</div>
+  <div>
+    <div class="day-label">14. nap · 2026. július 28. · kedd</div>
+    <div class="day-title">A történelem és a világ egyik legszebb esti kilátása</div>
+    <div class="day-sub">Peace Park, Atombomba Múzeum, Chanpon ebéd, Mount Inasa éjszakai panoráma</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary ds-nagasaki">📝 Nagaszaki legnehezebb és legemlékezetesebb napja: a béke és a pusztítás emléke reggel, majd a világ 3 legszebb éjszakai panorámájának egyike este — az Inasa-hegyről a csillogó öböl.</div>
+  <div class="hl"><strong>ℹ️ Nagasaki Chanpon — a város saját étele</strong>Sűrű, laktató tésztaleves sertéshússal, hallal és zöldségekkel. Nagaszaki eredetileg kínai hatásból fejlesztette ki — olcsó, egészséges, elképesztő finom. A múzeum környékén keressetek <strong>Tabelog 3.2+</strong> értékelésű helyet.</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct ct-nagasaki">09:00</td><td class="ca">Reggeli — laza, konbiniből vagy szálláson<small></small></td><td>Szállás közelében</td><td>🚶 Gyalog</td><td>45 perc</td><td class="cn">~¥400</td></tr>
+      <tr><td class="ct ct-nagasaki">10:00</td><td class="ca">Nagasaki Peace Park — Béke Szobor & Hypocenter<small>Monumentális kék szobor + az atombomba robbanásának pontos középpontja</small></td><td>Nagasaki Peace Park</td><td>🚃 Villamos</td><td>2 óra</td><td class="cn"><span class="tag-free">INGYENES</span> Csendes, zöld park</td></tr>
+      <tr><td class="ct ct-nagasaki">12:00</td><td class="ca">Nagasaki Atomic Bomb Museum<small>Megrázó, de kihagyhatatlan — az 1945-ös esemény és a város újjászületése</small></td><td>Atombomba Múzeum</td><td>🚶 Gyalog (szomszédos)</td><td>1,5 óra</td><td class="cn">Belépő: ¥200 / fő</td></tr>
+      <tr><td class="ct ct-nagasaki">13:30</td><td class="ca">Ebéd — Nagasaki Chanpon<small>A város saját étele — sűrű, laktató tésztaleves helyi alapanyagokból</small></td><td>Múzeum környéke</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">~¥900 / fő</td></tr>
+      <tr class="chill"><td class="ct ct-nagasaki">15:00</td><td class="ca">🌿 CHILL — Matsumori szentély vagy közeli park<small>Csendes, árnyékos, feldolgozni a múzeumot, lazítani a hőségben</small></td><td>Matsumori szentély, Nagaszaki</td><td>🚃 Villamos</td><td>2,5 óra</td><td class="cn"><span class="tag-free">INGYENES</span></td></tr>
+      <tr><td class="ct ct-nagasaki" style="color:#01579B;font-weight:800;">18:00</td><td class="ca"><strong>🌃 Mount Inasa — éjszakai panoráma!</strong><small>Felvonóval (Ropeway) fel a csúcsra — világ 3 legszebb éjszakai kilátása</small></td><td>Inasa-hegy, Nagaszaki</td><td>🚃 Villamos + 🚡 Ropeway</td><td>3 óra</td><td class="cn">Ropeway: ¥1 230 RT · Este a legjobb!</td></tr>
+      <tr><td class="ct ct-nagasaki">21:00</td><td class="ca">Vacsora a belvárosban<small>Gyors Gyudon vagy Curry (Sukiya lánc)</small></td><td>Nagaszaki belváros</td><td>🚃 Villamos</td><td>1 óra</td><td class="cn">~¥700 / fő</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul>
+      <li>A Peace Park és a Hypocenter (Atombomba Középpont) egymástól kb. 10 perc séta — mindkettő kihagyhatatlan.</li>
+      <li>Múzeum után érdemes pár percet csendben lenni a parkban — megterhelő tartalom, de fontos.</li>
+      <li>Mount Inasa Ropeway: felmegy <strong>17:00 után</strong> — naplemente + sötétedés + éjszakai fények egyszerre elkaphatók, ez a legjobb.</li>
+      <li>A ropeway-t érdemes legalább 15–20 perccel korábban megközelíteni — sort kell állni.</li>
+    </ul></div>
+    <div class="cost-box ng"><div class="box-title">💴 Napi kiadások / fő · júl. 28. kedd <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>13 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini</div>
+        <div class="cb-bd-item">🍜 <strong>Ebéd</strong> — <strong>Nagasaki Chanpon</strong> (sűrű tésztaleves) ~¥900</div>
+        <div class="cb-bd-item">🍛 <strong>Vacsora</strong> — Sukiya gyors gyudon/curry (~¥700)</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>1 200 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚃 <strong>Villamos</strong> nap folyamán (Peace Park, Múzeum, Inasa)</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>3 400 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">☮️ <strong>Atombomba Múzeum</strong> — ¥200</div>
+        <div class="cb-bd-item">🚡 <strong>Mount Inasa Ropeway</strong> oda-vissza — ¥1 230</div>
+        <div class="cb-bd-item"><em>Összesen: ¥1 430 ≈ 3 400 Ft</em></div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">💧 Vending</div>
+        <div class="cb-bd-item">🥤 Sós ital Inasa után</div>
+        <div class="cb-bd-item">📸 Esti panoráma — fotó-emlék</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>19 100 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider" style="background:#005f8e;"></div>
+<div class="page-num">Oldal 17</div>
+
+<!-- NAP 15 – JÚL. 29. SZERDA -->
+<div class="dh dh-nagasaki" id="nap-15">
+  <div class="day-emoji">🌿</div>
+  <div>
+    <div class="day-label">15. nap · 2026. július 29. · szerda</div>
+    <div class="day-title">Európai hatások, a legrégebbi híd és laza délután</div>
+    <div class="day-sub">Glover Garden domboldalon, Nagaszaki Chinatown, Szemüveg-híd, rózsa fagylalt a folyóparton</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary ds-nagasaki">📝 Nagaszaki legkedvesebb és leglazább napja: régi nyugati villák a domboldalon, japán Chinatown, egy híd ami szemüveget formáz a vízben, és rózsa alakú fagyizás a folyóparton.</div>
+  <div class="hl"><strong>🌹 Chirin-Chirin Ice — helyi rózsa fagylalt</strong>A Meganebashi híd közelében árusítják a nagaszaki specialitást: kézzel formázott, rózsa alakú fagyit (~¥200). Kötelező megkóstolni — aprópénzzel!</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct ct-nagasaki">09:00</td><td class="ca">Reggeli — konbini vagy kifőzde</td><td>Szállás közelében</td><td>🚶 Gyalog</td><td>45 perc</td><td class="cn">~¥400</td></tr>
+      <tr><td class="ct ct-nagasaki">10:00</td><td class="ca">Glover Garden — domboldali szabadtéri múzeum<small>19. századi nyugati kereskedők villái, mozi-szerű kertek, kilátás a kikötőre</small></td><td>Glover Garden, Minamiyamate</td><td>🚃 Villamos</td><td>2,5 óra</td><td class="cn">Belépő: ¥620 / fő · Tengerjáró hajók a kikötőben!</td></tr>
+      <tr><td class="ct ct-nagasaki">12:30</td><td class="ca">Ebéd — Nagaszaki Chinatown (Shinchi)<small>Sara Udon (ropogós tésztás Chanpon) vagy Kakuni Manju (omlós császárhúsos gőzölt zsemle)</small></td><td>Shinchi Chinatown, Nagaszaki</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">~¥1 000 / fő · Kakuni Manju ~¥200 street food</td></tr>
+      <tr><td class="ct ct-nagasaki">14:00</td><td class="ca">Meganebashi — Szemüveg-híd<small>Japán legrégebbi kőhídja — tükörképe szemüveget formáz, szív kövek a falakban</small></td><td>Meganebashi, Nakashima folyó</td><td>🚃 Villamos</td><td>1,5 óra</td><td class="cn"><span class="tag-free">INGYENES</span> Keressétek a szív köveket!</td></tr>
+      <tr class="chill"><td class="ct ct-nagasaki">15:30</td><td class="ca">🌿 CHILL — Nakashima folyópart, rózsa fagylalt<small>Kőlépcsőkre ülni, lógatni a lábatokat a víz felett, Chirin-Chirin Ice</small></td><td>Nakashima folyópart</td><td>🚶 Gyalog</td><td>3 óra</td><td class="cn">Rózsa fagylalt: ~¥200 🌹</td></tr>
+      <tr><td class="ct ct-nagasaki">19:00</td><td class="ca">Utolsó nagaszaki vacsora<small>Helyi sarki kifőzde, aztán korai pakolás — holnap Fukuoka!</small></td><td>Belváros / Szállás közelében</td><td>🚃 Villamos</td><td>2 óra</td><td class="cn">~¥1 000 / fő · ⚠️ Pakolás után!</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul>
+      <li>Glover Garden tetején van egy mozgólépcső-rendszer — felfelé érdemes azzal menni, lefelé gyalog, mert gyönyörű a kilátás.</li>
+      <li>Kakuni Manju: olyan mint a gőzölt kínai zsemle, de nagaszaki módra — kettő bőven elég ebéd előtt snacknek.</li>
+      <li>Meganebashi szív kövek: a híd melletti kőfalakba beleépítve, 5–6 darab van elrejtve, keresés kb. 20–30 perces játék.</li>
+      <li>Chirin-Chirin Ice: csak készpénzzel fizetnek, aprópénzt hozzatok!</li>
+    </ul>
+      <div class="alt"><strong>🚢 Holnap: Nagaszaki → Fukuoka!</strong> Kamome Shinkansen visszafelé (~¥5 500 / fő, ~1,5 óra). Az utazás utolsó közös állomása — Fukuoka Kego negyede és a Yatai bódék várnak!</div>
+    </div>
+    <div class="cost-box ng"><div class="box-title">💴 Napi kiadások / fő · júl. 29. szerda <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>13 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini</div>
+        <div class="cb-bd-item">🥟 <strong>Ebéd Chinatownban</strong> — Sara Udon (ropogós tésztás) vagy Kakuni Manju (~¥1 000)</div>
+        <div class="cb-bd-item">🍱 <strong>Vacsora</strong> — helyi sarki kifőzde</div>
+      </div>
+    </details>
+    <div class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>0 Ft</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🌷 <strong>Glover Garden</strong> — ¥620</div>
+        <div class="cb-bd-item">🌹 <strong>Chirin-Chirin Ice</strong> (rózsa fagylalt) — ¥200</div>
+        <div class="cb-bd-item"><em>Összesen: ~¥820 ≈ 1 500 Ft</em></div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍦 Plusz Chirin-Chirin</div>
+        <div class="cb-bd-item">💧 Vending</div>
+        <div class="cb-bd-item">🥟 Kakuni Manju street food snack</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>16 000 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider" style="background:#005f8e;"></div>
+<div class="page-num">Oldal 18</div>
+
+<!-- ═══════════════════════════════════ -->
+<!--       5. SZAKASZ: FUKUOKA          -->
+<!-- ═══════════════════════════════════ -->
+<div class="city-banner cb-fukuoka" id="fukuoka">
+  <div class="city-emoji">🍜</div>
+  <div>
+    <div class="city-label">5. Szakasz · Fukuoka · 2 nap · 4 fő (utolsó közös)</div>
+    <div class="city-name">Fukuoka</div>
+    <div class="city-dates">2026. július 30–31. · Chuo-ku, Kego negyed (Takahashi Building) · Bázis: Akasaka / Tenjin metróállomás</div>
+  </div>
+</div>
+
+<!-- NAP 16 – JÚL. 30. CSÜTÖRTÖK -->
+<div class="dh dh-fukuoka" id="nap-16">
+  <div class="day-emoji">🍜</div>
+  <div>
+    <div class="day-label">16. nap · 2026. július 30. · csütörtök</div>
+    <div class="day-title">Streetwear, a zseniális tópart és a legendás Yatai éjszaka</div>
+    <div class="day-sub">Vonat Nagaszakiból, Daimyo hipszter negyed, Ohori Park, este utcai Yatai bódék</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary ds-fukuoka">📝 Az utolsó közös város: rövid utazás Nagaszakiból, fiatalos streetwear negyed, hatalmas tópark a délután, este a legendás folyóparti Yatai bódék — Fukuoka legkihagyhatatlanabb élménye.</div>
+  <div class="hl"><strong>🚄 Utazás Nagaszakiból Fukuokába</strong>Nagasaki → Hakata: Kamome (Nishi-Kyushu Shinkansen), <strong>~1,5 óra · ~¥5 500 / fő</strong>. Konbini reggeli a vonaton.</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct ct-fukuoka">09:00</td><td class="ca">Reggel: konbini, indulás Hakata felé<small>Kamome Shinkansen — gyors, kényelmes út</small></td><td>Nagasaki → Hakata</td><td>🚄 Kamome Shinkansen</td><td>2 óra</td><td class="cn">~¥5 500 / fő</td></tr>
+      <tr><td class="ct ct-fukuoka">11:00</td><td class="ca">Megérkezés Hakatára → Kego beköltözés<small>Metróval Akasaka/Tenjin felé, lepakolás, gyors zuhany</small></td><td>Hakata → Kego, Chuo-ku</td><td>🚇 Fukuoka metro</td><td>1,5 óra</td><td class="cn">Takahashi Building</td></tr>
+      <tr><td class="ct ct-fukuoka">12:30</td><td class="ca">Ebéd a Daimyo negyedben — Tonkotsu Ramen!<small>Igazi tősgyökeres fukuokai sertéscsont-leves vékony tésztával — Shin-Shin vagy Ichiran Tenjin</small></td><td>Daimyo, Tenjin</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">~¥700–900 / fő · Életetek ramenje!</td></tr>
+      <tr><td class="ct ct-fukuoka">14:00</td><td class="ca">Daimyo + Tenjin séta — streetwear & vibe<small>Supreme, Stüssy, helyi márkák, jó zenék, sok fiatal</small></td><td>Daimyo + Tenjin utcák</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">Fukuoka hipszter szíve</td></tr>
+      <tr class="chill"><td class="ct ct-fukuoka">15:30</td><td class="ca">🌿 CHILL — Ohori Park (Ohori Koen)<small>Hatalmas park, óriási tó (régi várárok), kis szigetek, hidak, hattyús vízibicikli bérlés</small></td><td>Ohori Park, Chuo-ku</td><td>🚶 Gyalog vagy 🚇 metro 2 megálló</td><td>3 óra</td><td class="cn"><span class="tag-free">INGYENES</span> Vízibicikli: ~¥1 100/30 perc/2 fő</td></tr>
+      <tr><td class="ct ct-fukuoka">18:30</td><td class="ca">Visszatérés a szállásra, készülődés az estére<small>Átöltözés, készpénz előkészítése</small></td><td>Szállás, Kego</td><td>🚇 Metro</td><td>1 óra</td><td class="cn">Yatai-okhoz készpénz kell!</td></tr>
+      <tr><td class="ct ct-fukuoka" style="color:#5d2e8c;font-weight:800;">19:30</td><td class="ca"><strong>🏮 A FUKUOKAI YATAI ÉLMÉNY!</strong><small>Fa tetős, ponyvás utcai étkezőközpontok, 8–10 fős pultok — Hakata Hitokuchi Gyoza, Yakitori, ramen</small></td><td>Nakasu folyópart + Tenjin utcák</td><td>🚇 Metro Nakasu felé</td><td>3 óra</td><td class="cn">~¥2 500–3 500 / fő · 🔥 Helyiek imádnak dumálni!</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul>
+      <li><strong>Tonkotsu Ramen</strong>: ha menősködni akartok, "kaedama"-t kérni — extra tészta a meglevő leveshez ~¥150-ért.</li>
+      <li><strong>Yatai</strong> bódék 18:00 után nyitnak — 20:00–21:00 között a legnagyobb a hangulat.</li>
+      <li>Yatai-nál <strong>csak készpénz</strong> — vegyetek le ~¥3 000–4 000-t / fő ATM-ből előtte.</li>
+      <li>Hakata Hitokuchi Gyoza: 10 db / adag, apró és ropogós — két adag kell.</li>
+      <li>Ohori Park: vízibicikli 30 perces blokkokban, érdemes kettőt bérelni.</li>
+    </ul></div>
+    <div class="cost-box fk"><div class="box-title">💴 Napi kiadások / fő · júl. 30. csütörtök <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>13 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini a Kamome Shinkansenen</div>
+        <div class="cb-bd-item">🍜 <strong>Ebéd</strong> — <strong>Tonkotsu Ramen</strong> Daimyo negyed (Shin-Shin vagy Ichiran, ~¥800) 🔥</div>
+        <div class="cb-bd-item">🏮 <strong>Vacsora — YATAI bódékban</strong>: Hakata Hitokuchi Gyoza, Yakitori, Tonkotsu (~¥3 000)</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>600 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚇 Fukuoka metro Hakata → Akasaka/Tenjin</div>
+        <div class="cb-bd-item"><em>Megj.: a Kamome Shinkansen KÜLÖN! (12 925 Ft, lásd lent)</em></div>
+      </div>
+    </details>
+    <div class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>0 Ft</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🥤 Vending</div>
+        <div class="cb-bd-item">🎰 Daimyo streetwear nézelődés (apróságok)</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>15 100 Ft</span></div>
+    <div class="ci cat cat-shink"><span>🚄 Shinkansen: Nagaszaki → Fukuoka (Kamome)</span><span>+12 925 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider" style="background:#6a35a0;"></div>
+<div class="page-num">Oldal 19</div>
+
+<!-- NAP 17 – JÚL. 31. PÉNTEK -->
+<div class="dh dh-fukuoka" id="nap-17">
+  <div class="day-emoji">🌊</div>
+  <div>
+    <div class="day-label">17. nap · 2026. július 31. · péntek</div>
+    <div class="day-title">Történelmi szentély, a tengerpart és a búcsúbuli</div>
+    <div class="day-sub">Dazaifu szentély + Umegae Mochi, Momochi tengerpart, Fukuoka Tower, utolsó közös vacsora</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary ds-fukuoka">📝 A 4 fős csapat utolsó közös napja: reggel kirándulás a tudás istenének szentélyéhez, délután fukuokai tengerpart, este BÚCSÚ Izakaya / Yakiniku — holnap szétválás!</div>
+  <div class="hl"><strong>🥮 Umegae Mochi — Dazaifu specialitás</strong>Meleg, sült rizssütemény édes babpasztával (~¥150 / db). A Dazaifu Tenmangu felé vezető utcán mindenhol árulják — kötelező megkóstolni! A híres <strong>fakockákból kirakott Starbucks</strong> is itt van: építészeti remekmű, érdemes lefotózni (és bemenni egy hideg matcha frappuccinora).</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct ct-fukuoka">08:30</td><td class="ca">Reggeli, majd Tenjin → Dazaifu<small>Nishitetsu vonallal kigurulás a városon kívülre</small></td><td>Tenjin → Dazaifu</td><td>🚆 Nishitetsu vonal</td><td>1 óra</td><td class="cn">~¥420 / fő</td></tr>
+      <tr><td class="ct ct-fukuoka">09:30</td><td class="ca">Dazaifu Tenmangu — tudás istenének szentélye<small>Hatalmas sintoista szentély, japán diákok ide jönnek vizsga előtt</small></td><td>Dazaifu Tenmangu</td><td>🚶 Gyalog az állomásról</td><td>2,5 óra</td><td class="cn"><span class="tag-free">INGYENES</span> Umegae Mochi az úton!</td></tr>
+      <tr><td class="ct ct-fukuoka">12:00</td><td class="ca">Visszautazás Tenjinbe + gyors ebéd<small>Sukiya / Matsuya — olcsó marhahúsos rizs, gyorsan és laktatóan</small></td><td>Tenjin, Fukuoka</td><td>🚆 Nishitetsu vissza</td><td>1,5 óra</td><td class="cn">~¥500 / fő</td></tr>
+      <tr><td class="ct ct-fukuoka">13:30</td><td class="ca">Buszozás a tengerpartra<small>Fukuoka Tower / Momochihama irányába</small></td><td>Tenjin → Momochihama</td><td>🚌 Helyi busz</td><td>1 óra</td><td class="cn">~¥240 / fő</td></tr>
+      <tr class="chill"><td class="ct ct-fukuoka">14:30</td><td class="ca">🌿 CHILL — Momochihama Beach + Fukuoka Tower<small>Tükrös futurisztikus torony, homokos part, lábfej a vízbe, zenehallgatás</small></td><td>Momochihama Beach, Sawara-ku</td><td>🚶 Gyalog</td><td>4 óra</td><td class="cn">Tower belépő (opc.): ¥800 · Strand: <span class="tag-free">INGYENES</span></td></tr>
+      <tr><td class="ct ct-fukuoka">18:30</td><td class="ca">Visszautazás, készülődés az utolsó éjszakára<small></small></td><td>Momochihama → Kego</td><td>🚌 Busz / 🚇 metro</td><td>1 óra</td><td class="cn">Pakolás holnapra!</td></tr>
+      <tr><td class="ct ct-fukuoka" style="color:#5d2e8c;font-weight:800;">19:30</td><td class="ca"><strong>🍻 A 4 fő utolsó közös vacsorája!</strong><small>Hangulatos helyi Izakaya (japán pub) vagy olcsóbb Yakiniku (asztali grill) Tenjinben</small></td><td>Izakaya / Yakiniku, Tenjin</td><td>🚇 Metro Tenjin felé</td><td>2,5 óra</td><td class="cn">~¥2 500–3 500 / fő · Beszéljétek át az eddigieket!</td></tr>
+      <tr><td class="ct ct-fukuoka">22:00</td><td class="ca">Esti séta a kivilágított Fukuokában<small>Tenjin neonok, búcsú a csapattól, irány a szállás</small></td><td>Tenjin → Kego</td><td>🚶 Gyalog</td><td>1 óra</td><td class="cn">Holnap szétválunk!</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul>
+      <li><strong>Umegae Mochi</strong>: melegen a legjobb — a Dazaifu Tenmangu felé vezető fő utcán keresd a frissen sütőt.</li>
+      <li><strong>Starbucks Dazaifu</strong> (Kengo Kuma építész): érdemes bemenni — fakockákból az egész belső tér, és van klíma. Hideg matcha frappuccino tökéletes!</li>
+      <li>Fukuoka Tower: a torony külső tükrös borítása nappal és éjjel is jól néz ki — fel nem feltétlenül kell menni.</li>
+      <li>Tengerparton: árnyékot nehéz találni, vegyetek bele napvédőt + vizet.</li>
+      <li>Búcsúvacsora: az Izakaya rendszerint nomihodai (korlátlan ital) opciót kínál — 2 órás ~¥2 500 / fő.</li>
+    </ul></div>
+    <div class="cost-box fk"><div class="box-title">💴 Napi kiadások / fő · júl. 31. péntek <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>16 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini</div>
+        <div class="cb-bd-item">🥮 <strong>Umegae Mochi</strong> Dazaifuban (~¥150, kétszer is!)</div>
+        <div class="cb-bd-item">🍛 <strong>Ebéd</strong> — Sukiya gyudon (~¥500)</div>
+        <div class="cb-bd-item">🥩 <strong>BÚCSÚVACSORA</strong> — Tenjin Izakaya / Yakiniku (~¥3 000 nomihodaival)</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>1 700 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚆 <strong>Nishitetsu vonat</strong> Dazaifu oda-vissza (~¥840)</div>
+        <div class="cb-bd-item">🚌 Busz a tengerpartra Momochi-ba (~¥240)</div>
+        <div class="cb-bd-item">🚇 Metro este Tenjinbe</div>
+      </div>
+    </details>
+    <div class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>0 Ft</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🥮 Umegae Mochi snackek</div>
+        <div class="cb-bd-item">☕ Hideg matcha frappuccino a Dazaifu Starbucksban</div>
+        <div class="cb-bd-item">💧 Vending strandon</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>19 200 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider" style="background:#6a35a0;"></div>
+<div class="page-num">Oldal 20</div>
+
+<!-- ═══════════════════════════════════ -->
+<!--    6. SZAKASZ: TOKIÓ II. (2 FŐ)    -->
+<!-- ═══════════════════════════════════ -->
+<div class="city-banner cb-tokyo2" id="tokio-2">
+  <div class="city-emoji">🗼</div>
+  <div>
+    <div class="city-label">6. Szakasz · Tokió II. · 3 nap · 2 fő (a csapat fele)</div>
+    <div class="city-name">Tokió II. — Kettesben</div>
+    <div class="city-dates">2026. augusztus 1–3. · Cypress Inn Tokyo, Katsushika-ku (Shin-Koiwa) · Bázis: JR Shin-Koiwa állomás</div>
+  </div>
+</div>
+
+<!-- NAP 18 – AUG 1. SZOMBAT -->
+<div class="dh dh-tokyo2" id="nap-18">
+  <div class="day-emoji">🚄</div>
+  <div>
+    <div class="day-label">18. nap · 2026. augusztus 1. · szombat</div>
+    <div class="day-title">Visszatérés Északkelet-Tokióba és az óriás pláza</div>
+    <div class="day-sub">5 órás Shinkansen, búcsú a kínai csapattól Hakatán, beköltözés Shin-Koiwára, Kinshicho pláza</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary ds-tokyo2">📝 Ma búcsúztok a kínai irány csapattól Hakatán, felültök a Nozomira és 5 óra alatt visszatértek Tokióba. Délután ismerkedés Shin-Koiwával, este óriás pláza Kinshicho-ban — rohanásmentes átállás a kettes ritmusra.</div>
+  <div class="hl"><strong>👋 A nagy szétválás — Hakata állomáson</strong>A 4 fő itt válik szét: <strong>2 srác → Guangzhou (Kína)</strong>, <strong>ti ketten → Nozomi Shinkansen Tokióba</strong>. Búcsúfotó kötelező, kávé együtt indulás előtt. Hakata → Tokyo: <strong>~5 óra · ~¥23 000 / fő</strong>.</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct ct-tokyo2">08:30</td><td class="ca">Reggel: utolsó búcsú Hakata állomáson<small>Ekiben vásárlás, búcsúkávé, búcsúfotó</small></td><td>Hakata Állomás</td><td>🚇 Metro / 🚶 Gyalog</td><td>1 óra</td><td class="cn">Ekiben: ~¥1 200</td></tr>
+      <tr><td class="ct ct-tokyo2">09:30</td><td class="ca">Nozomi Shinkansen — Hakata → Tokyo<small>Zene, fotók válogatása, élmények átbeszélése, Ekiben ebéd</small></td><td>Hakata → Tokyo Station</td><td>🚄 Nozomi Shinkansen</td><td>~5 óra</td><td class="cn">~¥23 000 / fő · Pihenős út!</td></tr>
+      <tr><td class="ct ct-tokyo2">13:30</td><td class="ca">Tokyo Station → Shin-Koiwa<small>JR Sobu Rapid — 13 perc, kényelmes</small></td><td>Tokyo Station → Shin-Koiwa</td><td>🚆 JR Sobu Rapid</td><td>30 perc</td><td class="cn">~¥210 / fő</td></tr>
+      <tr><td class="ct ct-tokyo2">14:00</td><td class="ca">Beköltözés Cypress Inn-be, lepakolás<small>Katsushika-ku, Shin-Koiwa</small></td><td>Cypress Inn Tokyo, Shin-Koiwa</td><td>🚶 Gyalog</td><td>30 perc</td><td class="cn">Új bázis kettesben</td></tr>
+      <tr class="chill"><td class="ct ct-tokyo2">14:30</td><td class="ca">🌿 CHILL — Ismerkedés Shin-Koiwával<small>Autentikus lakóövezet, Shingoiwa Park, helyi kis utcák, konbini hideg ital</small></td><td>Shin-Koiwa, Katsushika</td><td>🚶 Gyalog</td><td>2,5 óra</td><td class="cn">Sokkal csendesebb mint Shinjuku!</td></tr>
+      <tr><td class="ct ct-tokyo2">17:00</td><td class="ca">Kinshicho negyed — óriás pláza<small>Arcakit Kinshicho áruház, hatalmas 100¥ Daiso, szuvenír lelőhelyek</small></td><td>Kinshicho, Sumida</td><td>🚆 JR Sobu 2 megálló</td><td>3 óra</td><td class="cn">Laza nézelődés, nem zsúfolt</td></tr>
+      <tr><td class="ct ct-tokyo2">20:00</td><td class="ca">Vacsora — Shin-Koiwa Lumier Shotengai<small>Fedett bevásárlóutca a szállás mellett, helyi árak, igazi tokiói atmoszféra</small></td><td>Shin-Koiwa Lumier, fedett utca</td><td>🚆 JR vissza Shin-Koiwára</td><td>1,5 óra</td><td class="cn">~¥900 / fő · Meleg étel, helyi árak</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul>
+      <li>Hakata Ekiben: a "Kashiwa Meshi" (csirkés rizs) tipikus kyushu specialitás — érdemes ezt választani búcsúzóul.</li>
+      <li>Shin-Koiwa Lumier Shotengai: fedett, klímás bevásárlóutca — nyáron áldás. Az állomástól északra induló utca.</li>
+      <li>Kinshicho Daiso: 5 emeletes, mindenből van. Tökéletes utolsó vásárlás, ha hely van még a bőröndben.</li>
+      <li>Tokyo Sky Tree közvetlenül látszik Shin-Koiwáról is — esti séta közben jó fotó!</li>
+    </ul></div>
+    <div class="cost-box t2"><div class="box-title">💴 Napi kiadások / fő · aug. 1. szombat <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>13 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini Hakata állomáson</div>
+        <div class="cb-bd-item">🍱 <strong>Ekiben a vonaton</strong> — Hakata specialitás Kashiwa Meshi (csirkés rizs, ~¥1 200) 🚄</div>
+        <div class="cb-bd-item">🍜 <strong>Vacsora</strong> — Shin-Koiwa Lumier Shotengai helyi árakon (~¥900)</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>400 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚆 JR Tokyo Station → Shin-Koiwa (Sobu Rapid, ~¥210)</div>
+        <div class="cb-bd-item">🚇 Metro Kinshicho RT (~¥320)</div>
+        <div class="cb-bd-item"><em>Megj.: a Nozomi Shinkansen KÜLÖN! (54 050 Ft, lásd lent)</em></div>
+      </div>
+    </details>
+    <div class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>0 Ft</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🛍️ Daiso 100¥ apróságok Kinshichoban</div>
+        <div class="cb-bd-item">💧 Vending</div>
+        <div class="cb-bd-item">🥤 Búcsúkávé Hakatán</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>14 900 Ft</span></div>
+    <div class="ci cat cat-shink"><span>🚄 Shinkansen: Fukuoka → Tokió (Nozomi)</span><span>+54 050 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider" style="background:#235a7f;"></div>
+<div class="page-num">Oldal 21</div>
+
+<!-- NAP 19 – AUG 2. VASÁRNAP -->
+<div class="dh dh-tokyo2" id="nap-19">
+  <div class="day-emoji">⛩️</div>
+  <div>
+    <div class="day-label">19. nap · 2026. augusztus 2. · vasárnap</div>
+    <div class="day-title">Egynapos Nikko, utolsó sushi és Don Quijote hajnalig</div>
+    <div class="day-sub">Toshogu szentély az erdőben, Kegon-vízesés, Chuzenji-tó · este búcsú sushi és Donki</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary ds-tokyo2">📝 Napközben világörökségi szentélyek a fenyőerdőben, 100 méteres vízesés, hegyi tó és hideg patakvíz — este pedig az utolsó tokiói buli kettesben: futószalagos sushi tálcák és Don Quijote éjszakai szuvenírroham hajnalig.</div>
+  <div class="hl"><strong>🚆 Nikko közlekedés</strong>Shin-Koiwa → Asakusa (JR + Ginza vonal), majd <strong>Tobu Spacia / Tobu Limited Express</strong> → Tobu-Nikko állomás. <strong>~2,5 óra · ~¥2 700 / fő egyirányba</strong>. Korán indulj (7:30) — délután már tömött a kilátó!</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct ct-tokyo2">07:30</td><td class="ca">Korai indulás Nikko felé<small>Shin-Koiwa → Asakusa → Tobu-Nikko, szendvics/kávé reggeli a vonaton</small></td><td>Shin-Koiwa → Tobu-Nikko</td><td>🚆 JR + Ginza + Tobu Spacia</td><td>2,5 óra</td><td class="cn">~¥2 700 / fő egyirányba</td></tr>
+      <tr><td class="ct ct-tokyo2">10:00</td><td class="ca">Toshogu szentély (Nikko) — UNESCO világörökség<small>Tokugawa Ieyasu sógun nyughelye, díszített faragások, ősi fenyőerdő</small></td><td>Toshogu, Nikko</td><td>🚌 Tobu busz az állomásról</td><td>2,5 óra</td><td class="cn">Belépő: ¥1 600 / fő</td></tr>
+      <tr><td class="ct ct-tokyo2">12:30</td><td class="ca">Ebéd Nikkóban — Yuba (szójatej-föl)<small>Helyi specialitás, tésztával vagy rizzsel, nagyon laktató és különleges</small></td><td>Nikko sétálóutca</td><td>🚶 Gyalog</td><td>1 óra</td><td class="cn">~¥1 200 / fő</td></tr>
+      <tr><td class="ct ct-tokyo2">13:30</td><td class="ca">Kegon-vízesés + Chuzenji-tó<small>100 m magasból lezúduló brutál vízesés, liftes kilátóterasz, tópart</small></td><td>Kegon Falls, Chuzenji-ko</td><td>🚌 Hegyi busz felfelé</td><td>3 óra</td><td class="cn">Lift: ¥570 · Busz: ¥1 250 RT</td></tr>
+      <tr class="chill"><td class="ct ct-tokyo2">16:30</td><td class="ca">🌿 CHILL — Shinkyo szent híd<small>Vörösre lakkozott híd, folyóparti sziklák, hegyi patak zúgása</small></td><td>Shinkyo Bridge, Nikko</td><td>🚌 Busz lefelé</td><td>1 óra</td><td class="cn"><span class="tag-free">INGYENES</span> · Hűs patakparti pihenés</td></tr>
+      <tr><td class="ct ct-tokyo2">17:30</td><td class="ca">Visszautazás Tokióba<small>Tobu-Nikko → Asakusa → Shin-Koiwa</small></td><td>Tobu-Nikko → Shin-Koiwa / Akihabara</td><td>🚆 Tobu + JR</td><td>2 óra</td><td class="cn">~¥2 700 / fő</td></tr>
+      <tr><td class="ct ct-tokyo2" style="color:#1a3d5c;font-weight:800;">19:30</td><td class="ca"><strong>🍣 Az utolsó nagy sushizás kettesben!</strong><small>Sushiro vagy Kura Sushi — vasárnap este pörgős, búcsúzóul teli tálcák</small></td><td>Sushiro / Kura Sushi, Akihabara köz.</td><td>🚶 Gyalog</td><td>1,5 óra</td><td class="cn">~¥1 800 / fő</td></tr>
+      <tr><td class="ct ct-tokyo2">21:00</td><td class="ca">🛍️ Don Quijote — éjszakai szuvenírroham<small>Akihabarai egység, hajnali 5-ig nyitva! KitKat, fura japán édességek, szuvenír</small></td><td>Don Quijote, Akihabara</td><td>🚶 Gyalog</td><td>2 óra</td><td class="cn">Ide az összes maradék yent!</td></tr>
+      <tr><td class="ct ct-tokyo2">23:00</td><td class="ca">Visszatérés — VÉGSŐ PAKOLÁS<small>Bőröndök, minden ellenőrzése, korai alvás</small></td><td>Cypress Inn, Shin-Koiwa</td><td>🚆 JR Sobu</td><td>—</td><td class="cn"><span class="tag-warn">PAKOLÁS!</span> Holnap 8:00 ébresztő!</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Tippek</div><ul><li>Don Quijote Akihabara = 7+ emelet, éjjel-nappal nyitva — hagyjatok rá időt!</li><li>KitKat ajánlott ízek: matcha, wasabi, sake — otthon nagy siker.</li><li>Maradék yen érmék: vending machine a reptéren UNICEF charity boxnál.</li></ul></div>
+    <div class="cost-box t2"><div class="box-title">💴 Napi kiadások / fő · aug. 2. vasárnap <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>13 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini Shin-Koiwa</div>
+        <div class="cb-bd-item">🥢 <strong>Ebéd Nikkóban</strong> — <strong>Yuba</strong> (szójatej-föl helyi specialitás, ~¥1 200)</div>
+        <div class="cb-bd-item">🍣 <strong>Vacsora</strong> — utolsó nagy futószalagos sushizás Sushiro/Kura (~¥1 800)</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>400 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚆 JR/Ginza Line a városon belül</div>
+        <div class="cb-bd-item">🚌 Nikko hegyi busz Kegonig (~¥1 250 RT)</div>
+        <div class="cb-bd-item"><em>⚠️ Megj.: Tobu Spacia Nikko RT ~5 400 Ft külön! (nincs az Excelben)</em></div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>5 100 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">⛩️ <strong>Toshogu Szentély</strong> — ¥1 600</div>
+        <div class="cb-bd-item">🌊 <strong>Kegon-vízesés Lift</strong> — ¥570</div>
+        <div class="cb-bd-item"><em>Összesen: ¥2 170 ≈ 5 100 Ft</em></div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🥤 Vending Nikkóban (hűsölő)</div>
+        <div class="cb-bd-item">🍫 <strong>Don Quijote roham</strong> — KitKat (matcha, wasabi, sake), gachapon, fura japán édességek (~¥1 000–4 000)</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>20 000 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="page-num">Oldal 14</div>
+
+<!-- AUG 3 — HAZAREPÜLÉS -->
+<div class="dh dh-tokyo2" id="nap-20">
+  <div class="day-emoji">✈️</div>
+  <div>
+    <div class="day-label">20. nap · 2026. augusztus 3. · hétfő</div>
+    <div class="day-title">Hazautazás napja — Narita, 14:35</div>
+    <div class="day-sub">Utolsó konbini reggeli, JR Sobu Rapid Naritáig, duty-free, irány Budapest!</div>
+  </div>
+</div>
+<div class="day-body">
+  <div class="day-summary ds-home">📝 A legfontosabb nap — minden az időre megy. 11:04-es vonat Shin-Koiwáról, 12:15 Narita, 14:35 indulás Guangzhou felé, majd Budapest. Ne késsétek le!</div>
+  <div class="hl" style="border-color:var(--red); background:var(--red-light);"><strong style="color:var(--red);">🛫 KRITIKUS MENETREND — EZT NEM LEHET LEKÉSNI!</strong>Repülő: <strong>14:35 Narita (NRT)</strong> → Guangzhou → Budapest. Legkésőbb <strong>12:30-ra a repülőtéren kell lenni</strong>. Vonat: <strong>11:04-es JR Sobu Rapid</strong> Shin-Koiwáról, ~70 perc. Lekésett vonat = lekésett repülő.</div>
+  <table class="dt">
+    <thead><tr><th>⏰ Idő</th><th>Tevékenység</th><th>📍 Hely</th><th>🚆 Közlekedés</th><th>Időtartam</th><th>Megjegyzés</th></tr></thead>
+    <tbody>
+      <tr><td class="ct">08:00</td><td class="ca">Ébredés, utolsó ellenőrzés, checkout<small>Útlevél, töltők, szuvenír — SEMMI nem marad ott!</small></td><td>Cypress Inn, Shin-Koiwa</td><td>—</td><td>1 óra</td><td class="cn">Checkout: <strong>ellenőrizd előre a szállással</strong></td></tr>
+      <tr><td class="ct">09:00</td><td class="ca">Utolsó reggeli — konbini vagy Matsuya<small>Utolsó Onigiri, Melonpan és tejeskávé japánban</small></td><td>Shin-Koiwa melletti konbini</td><td>🚶 Gyalog</td><td>1 óra</td><td class="cn">~¥400–600</td></tr>
+      <tr class="chill"><td class="ct">10:00</td><td class="ca">🌿 CHILL — Utolsó tokiói séta bőröndökkel<small>Maradék apró yen elköltése italautomatáknál, búcsú Tokiótól</small></td><td>Shin-Koiwa utcák</td><td>🚶 Gyalog</td><td>45 perc</td><td class="cn">Érmék = automatákba! 🥤</td></tr>
+      <tr><td class="ct ct-red">10:50</td><td class="ca" style="font-weight:700;">⚠️ KIÉRKEZNI a Shin-Koiwa peron elé!</td><td>Shin-Koiwa Állomás</td><td>🚶 Gyalog</td><td>—</td><td class="cn"><span class="tag-warn">LEGKÉSŐBB!</span></td></tr>
+      <tr><td class="ct ct-red">11:04</td><td class="ca" style="font-weight:700;">🚆 JR Sobu Line Rapid — Narita Airport<small>Átszállás nélkül, direktben a repülőtérig</small></td><td>Shin-Koiwa → Narita Airport</td><td>🚆 JR Sobu Rapid (Narita Direct)</td><td>~70 perc</td><td class="cn">IC kártya vagy ~¥1 340 külön jegy</td></tr>
+      <tr><td class="ct ct-red">12:15</td><td class="ca" style="font-weight:700;">Megérkezés Narita Repülőtérre<small>Poggyász feladás, biztonsági ellenőrzés — 2h20 perccel az indulás előtt</small></td><td>Narita International Airport</td><td>—</td><td>2 óra</td><td class="cn"><span class="tag-warn">TERMINÁL ellenőrzése előre!</span></td></tr>
+      <tr><td class="ct">12:45</td><td class="ca">Duty-free a tranzit zónában<small>Royce' csoki, Tokyo Banana, prémium matcha — ha van maradt yen</small></td><td>Narita Tranzit Zóna</td><td>—</td><td>1 óra 15 perc</td><td class="cn">Maradék yen itt is elkölthető!</td></tr>
+      <tr><td class="ct" style="font-weight:700; color:#1a1a2e;">14:35</td><td class="ca" style="font-weight:700;">🛫 Felszállás — Guangzhou (CAN) → Budapest!<small>またいつか — viszontlátásra, Japán!</small></td><td>Narita Airport</td><td>✈️ Repülő</td><td>—</td><td class="cn">またいつか！🇯🇵</td></tr>
+    </tbody>
+  </table>
+  <div class="day-bottom">
+    <div class="tips-box"><div class="box-title">💡 Utolsó tippek</div><ul><li>Útlevél, repülőjegy, töltők, gyógyszer — checkout előtt ellenőrzési lista!</li><li>Guangzhou rövid tranzithoz általában nem kell kínai vízum, de <strong>ELLENŐRIZD</strong> a légitársasággal!</li><li>Maradék apró yen: UNICEF charity box a reptéren — vagy hazahozod emlékbe.</li><li>A repülőtéri tranzit zónában Royce' csoki és Tokyo Banana a legjobb duty-free szuvenír.</li></ul></div>
+    <div class="cost-box "><div class="box-title">💴 Napi kiadások / fő · aug. 3. hétfő <span style="font-size:10px; font-weight:400; color:#888;">(kattints a soron a részletekért)</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-food"><span>🍱 Étkezés</span><span>3 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🍙 <strong>Reggeli</strong> — konbini Shin-Koiwa (utolsó onigiri + Melonpan!)</div>
+        <div class="cb-bd-item">✈️ <strong>Reptéri snack</strong> tranzitban (utolsó yenek)</div>
+      </div>
+    </details>
+    <details class="cb-detail">
+      <summary class="ci cat cat-trans"><span>🚆 Közlekedés (helyi)</span><span>3 000 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🚆 <strong>JR Sobu Line (Rapid) → Narita Airport</strong> — közvetlen járat (~¥1 320)</div>
+      </div>
+    </details>
+    <div class="ci cat cat-tix"><span>🎫 Belépők / Programok</span><span>0 Ft</span></div>
+    <details class="cb-detail">
+      <summary class="ci cat cat-misc"><span>🛍️ Egyéb (snack, ajándék)</span><span>1 500 Ft</span></summary>
+      <div class="cb-breakdown">
+        <div class="cb-bd-item">🛍️ Reptéri duty-free utolsó vásárlások — Royce csoki, Tokyo Banana</div>
+        <div class="cb-bd-item">💴 Maradék yen érmék: vending automaták vagy UNICEF charity box</div>
+      </div>
+    </details>
+    <div class="ci cat cat-total"><span>📊 Napi összes / fő</span><span>7 500 Ft</span></div>
+  </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="page-num">Oldal 15</div>
+
+<!-- ═══ PRACTICAL ═══ -->
+<div class="practical" id="praktikus">
+  <h2>🛂 Praktikus információk</h2>
+  <div class="prac-grid">
+    <div class="prac-card">
+      <h3>🏨 Szállások – összesítő</h3>
+      <p><strong>Tokió I. (Júl. 15–19):</strong> STS Hostel, Shinjuku — foglalás: [HIÁNYZÓ]<br><strong>Kiotó (Júl. 20–23):</strong> Minami-ku, Kuzeōyabuchō, Kyoto – Katsuragawa állomás közelében<br><strong>Oszaka (Júl. 24–26):</strong> Nishinari-ku, Minamitsumori, Osaka<br><strong>Nagaszaki (Júl. 27–29):</strong> Atago negyed, domboldali apartman<br><strong>Fukuoka (Júl. 30–31):</strong> Chuo-ku, Kego negyed (Takahashi Building)<br><strong>Tokió II. (Aug. 1–3):</strong> Cypress Inn Tokyo, Katsushika-ku (Shin-Koiwa)</p>
+    </div>
+    <div class="prac-card">
+      <h3>🚆 Közlekedési összefoglaló</h3>
+      <ul>
+        <li><strong>IC Kártya (Suica):</strong> metro, busz, konbini fizetés mindenhol</li>
+        <li><strong>Kiotóban:</strong> busz ¥230/út, napi pass ¥700 éri meg</li>
+        <li><strong>Shinkansen:</strong> Nozomi vonat, saját jegyekkel (JR Pass nélkül)</li>
+        <li>Google Maps offline letöltés KÖTELEZŐ minden városhoz!</li>
+      </ul>
+    </div>
+    <div class="prac-card">
+      <h3>📱 Internet & eSIM</h3>
+      <ul>
+        <li><strong>Ajánlott: Airalo eSIM</strong> (otthonról rendelni!)</li>
+        <li><strong>Zsombi:</strong> Hordozható hotspot 30 GB — 25 000 Ft</li>
+        <li><strong>Csabi, Dénes, Dam:</strong> eSIM 50 GB — 20 000 Ft / fő</li>
+        <li>7-Eleven és metro állomások: ingyenes WiFi backup</li>
+      </ul>
+    </div>
+    <div class="prac-card">
+      <h3>💴 Pénz, ATM, napilimit</h3>
+      <ul>
+        <li>Japánban sok helyen <strong>csak készpénz</strong> fogadott el!</li>
+        <li>7-Eleven / FamilyMart ATM: VISA/MC elfogadják</li>
+        <li>Napi étkezési keret: <strong>~5 530 JPY (~13 000 Ft)</strong></li>
+        <li>IC kártyára egyszerre tölts ¥5 000-t</li>
+        <li>Adapter kell! Japán: 2 lapos, 110V — EU dugó nem illik!</li>
+      </ul>
+    </div>
+    <div class="prac-card emergency">
+      <h3>🆘 Vészhelyzeti számok</h3>
+      <div class="phone-row">
+        <span class="phone-badge">110 — Rendőrség</span>
+        <span class="phone-badge">119 — Mentő / Tűz</span>
+      </div>
+      <p style="margin-top:12px;"><strong>Magyar Nagykövetség Tokió:</strong><br>2-17-14 Mita, Minato-ku, Tokyo<br>Tel: <strong>+81-3-3798-8801</strong><br>Konzuli ügyelet: +36-1-458-1000</p>
+    </div>
+    <div class="prac-card">
+      <h3>🌧️ Időjárás — Július–Augusztus</h3>
+      <ul>
+        <li>Hőmérséklet: <strong>28–36°C</strong>, párás, tikkasztó!</li>
+        <li>Esős időszak (tsuyu) vége júliusban — de záporokra számítani kell</li>
+        <li>Kötelező: összecsukható esernyő, szélálló!</li>
+        <li>Napvédő SPF 50+, vizespalack folyamatosan!</li>
+        <li>Kiotó és Oszaka forróbb mint Tokió (medencében van)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="page-num navy-pn">Oldal 16</div>
+
+<!-- ═══ COST SUMMARY ═══ -->
+<div class="csec" id="koltseg">
+  <h2>💰 Teljes költségösszesítő</h2>
+  <p class="cs-intro">Fejenként számolva, az Excel táblázat alapján. Árfolyam: 1 JPY ≈ 2,35 Ft.<br><strong>Repülőjegy NEM</strong> tartalmazza · A szállás, az étkezés és a napi költések benne vannak.</p>
+
+  <div class="answer-box">
+    <h3>✅ A keret nagyjából stimmel: ~542 000 Ft napi kiadások (Excel) + ~146 000 Ft shinkansenek + ~52 500 Ft infrastruktúra</h3>
+    <p>A napi kiadás kategóriái: 🏨 szállás, 🍱 étkezés, 🚆 helyi közlekedés, 🎫 belépők és programok, 🛍️ egyéb (snack, ajándék). A 4 közlekedési szakasz Shinkansen-jegyei <strong>külön kerülnek elszámolásra</strong>, mert előre fizetendők (jr-net.co.jp). Az infrastruktúra (eSIM + biztosítás) szintén előre kifizetve.</p>
+    <div class="meal-grid">
+      <div class="meal-item"><strong>~542 e Ft</strong>Napi Excel keret</div>
+      <div class="meal-item"><strong>~146 e Ft</strong>Shinkansenek</div>
+      <div class="meal-item"><strong>~52 e Ft</strong>Infra (eSIM, biztosítás)</div>
+      <div class="meal-item"><strong>+100 e Ft</strong>Tartalék</div>
+    </div>
+    <p style="margin-top:12px; font-size:13px; color:#1a5c1a; font-weight:500;">💰 <strong>Teljes Japán-keret repjegy nélkül: ~840 000 Ft / fő</strong> (Excel + shinkansen + infra + 100 e tartalék)</p>
+  </div>
+
+  <!-- SZÁLLÁS -->
+  <div class="cs-group">
+    <div class="csg-head"><h3>🏨 1. Szállás — szállodák / apartmanok / hostel</h3><span class="csg-sub">191 910 Ft / fő</span></div>
+    <table class="cs-table">
+      <tr><td>Tokió I. — STS Hostel, Shinjuku (5 éj × 12 890 Ft)</td><td class="cs-jpy">~¥5 480/éj</td><td class="cs-huf">64 450 Ft</td></tr>
+      <tr><td>Kiotó — Minami-ku, Kuzeōyabuchō (4 éj × 9 795 Ft)</td><td class="cs-jpy">~¥4 170/éj</td><td class="cs-huf">39 180 Ft</td></tr>
+      <tr><td>Oszaka — Nishinari-ku, Minamitsumori (3 éj × 7 150 Ft)</td><td class="cs-jpy">~¥3 040/éj</td><td class="cs-huf">21 450 Ft</td></tr>
+      <tr><td>Nagaszaki — Atago, domboldali apartman (3 éj × 8 070 Ft)</td><td class="cs-jpy">~¥3 430/éj</td><td class="cs-huf">24 210 Ft</td></tr>
+      <tr><td>Fukuoka — Chuo-ku Kego, Takahashi Building (2 éj × 8 990 Ft)</td><td class="cs-jpy">~¥3 820/éj</td><td class="cs-huf">17 980 Ft</td></tr>
+      <tr><td>Tokió II. — Cypress Inn, Shin-Koiwa (2 éj × 12 320 Ft)</td><td class="cs-jpy">~¥5 240/éj</td><td class="cs-huf">24 640 Ft</td></tr>
+      <tr class="cs-sub-row"><td colspan="2"><strong>Szállás összesen</strong> <span style="font-size:11px; font-weight:400; color:#888;">(19 éj)</span></td><td class="cs-huf"><strong>191 910 Ft</strong></td></tr>
+    </table>
+  </div>
+
+  <!-- ÉTKEZÉS -->
+  <div class="cs-group">
+    <div class="csg-head"><h3>🍱 2. Étkezés — reggeli, ebéd, vacsora</h3><span class="csg-sub">259 000 Ft / fő</span></div>
+    <table class="cs-table">
+      <tr><td>16 normál nap × 13 000 Ft/nap (konbini reggeli, ebéd, vacsora)</td><td class="cs-jpy">~¥5 530/nap</td><td class="cs-huf">208 000 Ft</td></tr>
+      <tr><td>3 wagyu / matsuri / búcsú est × 16 000 Ft/nap (extra ¥2 500–3 000 vacsora)</td><td class="cs-jpy">~¥6 800/nap</td><td class="cs-huf">48 000 Ft</td></tr>
+      <tr><td>Hazautazás napja (aug. 3.) — csak reggeli + reptér</td><td class="cs-jpy">~¥1 300</td><td class="cs-huf">3 000 Ft</td></tr>
+      <tr><td class="cs-note" colspan="3" style="color:#2E7D32; font-size:11.5px; font-style:italic;">🥩 Wagyu / extra estek (júl. 17., 26., 31.): Tokió Gyukaku, Oszaka Dotonbori yakiniku, Fukuoka helyi wagyu. ¥2 500–3 000/fő valódi wagyu minőségért.</td></tr>
+      <tr class="cs-sub-row"><td colspan="2"><strong>Étkezés összesen</strong></td><td class="cs-huf"><strong>259 000 Ft</strong></td></tr>
+    </table>
+  </div>
+
+  <!-- HELYI KÖZLEKEDÉS -->
+  <div class="cs-group">
+    <div class="csg-head"><h3>🚆 3. Helyi közlekedés — metro, busz, villamos, IC kártya</h3><span class="csg-sub">27 700 Ft / fő</span></div>
+    <table class="cs-table">
+      <tr><td>Tokió I. (5 nap)</td><td class="cs-jpy">~¥3 700</td><td class="cs-huf">9 400 Ft</td></tr>
+      <tr><td>Kiotó (4 nap) — busz alapú</td><td class="cs-jpy">~¥1 500</td><td class="cs-huf">3 500 Ft</td></tr>
+      <tr><td>Oszaka (3 nap) — metro, Tenjin Matsuri forgalmasabb</td><td class="cs-jpy">~¥2 900</td><td class="cs-huf">6 800 Ft</td></tr>
+      <tr><td>Nagaszaki (3 nap) — villamos alap</td><td class="cs-jpy">~¥800</td><td class="cs-huf">1 900 Ft</td></tr>
+      <tr><td>Fukuoka (2 nap) — metro</td><td class="cs-jpy">~¥980</td><td class="cs-huf">2 300 Ft</td></tr>
+      <tr><td>Tokió II. (3 nap) — JR + metro + reptéri vonat</td><td class="cs-jpy">~¥1 600</td><td class="cs-huf">3 800 Ft</td></tr>
+      <tr class="cs-sub-row"><td colspan="2"><strong>Helyi közlekedés összesen</strong></td><td class="cs-huf"><strong>27 700 Ft</strong></td></tr>
+    </table>
+  </div>
+
+  <!-- BELÉPŐK -->
+  <div class="cs-group">
+    <div class="csg-head"><h3>🎫 4. Belépők és programok</h3><span class="csg-sub">32 850 Ft / fő</span></div>
+    <table class="cs-table">
+      <tr><td>Kamakura Nagy Buddha (Kotoku-in)</td><td class="cs-jpy">¥300</td><td class="cs-huf">705 Ft</td></tr>
+      <tr><td>Enoshima barlang + escalator</td><td class="cs-jpy">¥860</td><td class="cs-huf">2 021 Ft</td></tr>
+      <tr><td>Nijo Kastély (Kiotó)</td><td class="cs-jpy">¥1 300</td><td class="cs-huf">3 055 Ft</td></tr>
+      <tr><td>Kinkaku-ji Aranytemplom (Kiotó)</td><td class="cs-jpy">¥500</td><td class="cs-huf">1 175 Ft</td></tr>
+      <tr><td>Arashiyama Monkey Park (Kiotó)</td><td class="cs-jpy">¥1 000</td><td class="cs-huf">2 350 Ft</td></tr>
+      <tr><td>Kiyomizu-dera (Kiotó)</td><td class="cs-jpy">¥500</td><td class="cs-huf">1 175 Ft</td></tr>
+      <tr><td>Umeda Sky Building Oszaka</td><td class="cs-jpy">¥1 500</td><td class="cs-huf">3 525 Ft</td></tr>
+      <tr><td>Round 1 Spo-Cha Oszaka (Midnight Packet)</td><td class="cs-jpy">¥3 200</td><td class="cs-huf">7 520 Ft</td></tr>
+      <tr><td>Nara Todai-ji + Shika-senbei</td><td class="cs-jpy">¥800</td><td class="cs-huf">1 880 Ft</td></tr>
+      <tr><td>Nagaszaki Atombomba Múzeum</td><td class="cs-jpy">¥200</td><td class="cs-huf">470 Ft</td></tr>
+      <tr><td>Mount Inasa Ropeway (Nagaszaki esti panoráma)</td><td class="cs-jpy">¥1 230</td><td class="cs-huf">2 891 Ft</td></tr>
+      <tr><td>Glover Garden (Nagaszaki)</td><td class="cs-jpy">¥620</td><td class="cs-huf">1 457 Ft</td></tr>
+      <tr><td>Nikko: Toshogu szentély + Kegon-vízesés lift</td><td class="cs-jpy">¥2 170</td><td class="cs-huf">5 100 Ft</td></tr>
+      <tr class="cs-sub-row"><td colspan="2"><strong>Belépők összesen</strong></td><td class="cs-huf"><strong>~32 850 Ft</strong></td></tr>
+    </table>
+  </div>
+
+  <!-- EGYÉB -->
+  <div class="cs-group">
+    <div class="csg-head"><h3>🛍️ 5. Egyéb napi — snack, vending machine, apró ajándékok</h3><span class="csg-sub">30 500 Ft / fő</span></div>
+    <table class="cs-table">
+      <tr><td>1. nap (júl. 15.) — IC kártya, első konbini, indulás napja</td><td class="cs-jpy">~¥850</td><td class="cs-huf">2 000 Ft</td></tr>
+      <tr><td>Többi nap (19 nap × 1 500 Ft) — vending automaták, jégkrém, gachapon, KitKat-ek</td><td class="cs-jpy">~¥640/nap</td><td class="cs-huf">28 500 Ft</td></tr>
+      <tr><td class="cs-note" colspan="3" style="color:#666; font-size:11.5px; font-style:italic;">A nagy szuvenír vásárlás (Don Quijote, Kappabashi) javasolt módon az utolsó tokiói napokon — itt akár 5–10 e Ft is elköthető még a maradék ¥ érmékből.</td></tr>
+      <tr class="cs-sub-row"><td colspan="2"><strong>Egyéb összesen</strong></td><td class="cs-huf"><strong>30 500 Ft</strong></td></tr>
+    </table>
+  </div>
+
+  <!-- SUB-TOTAL: EXCEL ALAP -->
+  <div style="background:#f5fff5; border:2px solid #4CAF50; border-radius:10px; padding:14px 20px; margin:12px 0; display:flex; justify-content:space-between; align-items:center;">
+    <div><strong style="font-size:14px; color:#2E7D32;">📊 Excel napi keret összesen</strong><br><span style="font-size:11px; color:#666;">Szállás + étkezés + helyi közl. + belépők + egyéb (20 nap)</span></div>
+    <div style="font-size:22px; font-weight:700; color:#2E7D32;">541 960 Ft</div>
+  </div>
+
+  <!-- SHINKANSEN — KÜLÖN -->
+  <div class="cs-group">
+    <div class="csg-head" style="background:#FF9800;"><h3>🚄 6. Városközi közlekedés — Shinkansenek (előre fizetendő!)</h3><span class="csg-sub">~145 935 Ft / fő</span></div>
+    <table class="cs-table">
+      <tr><td>Tokió → Kiotó (Nozomi)</td><td class="cs-jpy">¥14 000</td><td class="cs-huf">32 900 Ft</td></tr>
+      <tr><td>Oszaka → Nagaszaki (Sanyo + Kamome, átszállással Hakatán)</td><td class="cs-jpy">¥19 000</td><td class="cs-huf">44 650 Ft</td></tr>
+      <tr><td>Nagaszaki → Fukuoka (Kamome)</td><td class="cs-jpy">¥5 500</td><td class="cs-huf">12 925 Ft</td></tr>
+      <tr><td>Fukuoka → Tokió (Nozomi)</td><td class="cs-jpy">¥23 000</td><td class="cs-huf">54 050 Ft</td></tr>
+      <tr><td>Kiotó → Oszaka (JR helyi — már a napi keretben)</td><td class="cs-jpy">¥600</td><td class="cs-huf">benne van</td></tr>
+      <tr><td class="cs-note" colspan="3" style="color:#bf6000; font-size:11.5px; font-style:italic;">⚠️ Ezek a jegyek <strong>előre megveendők</strong> a jr-net.co.jp oldalon (vagy ekiNet). Nem szerepelnek az Excel napi költésében — külön tervezni!</td></tr>
+      <tr class="cs-sub-row" style="background:#fff3e0;"><td colspan="2"><strong>Shinkansenek összesen</strong></td><td class="cs-huf"><strong>~145 935 Ft</strong></td></tr>
+    </table>
+  </div>
+
+  <!-- INFRASTRUKTÚRA -->
+  <div class="cs-group">
+    <div class="csg-head" style="background:#0288D1;"><h3>🌐 7. Infrastruktúra — eSIM/hotspot + utasbiztosítás (előre fizetendő!)</h3><span class="csg-sub">~52 500 Ft / fő</span></div>
+    <table class="cs-table">
+      <tr><td>Internet — Csabi, Dénes, Dam: eSIM 50 GB / 20 nap (Airalo)</td><td class="cs-jpy">—</td><td class="cs-huf">20 000 Ft</td></tr>
+      <tr><td>Internet — Zsombi: hordozható hotspot 30 GB / 20 nap</td><td class="cs-jpy">—</td><td class="cs-huf">25 000 Ft</td></tr>
+      <tr><td>Utasbiztosítás (20 nap, Japán-kompatibilis fedezet)</td><td class="cs-jpy">—</td><td class="cs-huf">30 000 Ft</td></tr>
+      <tr><td>Visit Japan Web regisztráció</td><td class="cs-jpy">—</td><td class="cs-huf">INGYENES</td></tr>
+      <tr class="cs-sub-row" style="background:#e1f5fe;"><td colspan="2"><strong>Infrastruktúra összesen</strong> <span style="font-size:11px; font-weight:400; color:#888;">(Zsombi: ~55k · Csabi/Dénes/Dam: ~50k)</span></td><td class="cs-huf"><strong>~50–55 000 Ft</strong></td></tr>
+    </table>
+  </div>
+
+  <!-- GRAND TOTAL -->
+  <div class="cs-grand">
+    <div class="cs-grand-label">
+      <small>Teljes Japán-keret / fő — repülőjegy nélkül</small>
+      Excel + Shinkansenek + Infra
+    </div>
+    <div class="cs-grand-right">
+      <div class="grand-huf">~740 000 Ft</div>
+      <div class="grand-jpy">+ 100 000 Ft tartalék = <strong style="color:#FFB74D;">~840 000 Ft</strong></div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px; background:#EBF5FF; border:1px solid rgba(30,144,255,0.3); border-radius:10px; padding:16px 20px; font-size:12.5px;">
+    <strong style="display:block; font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--blue-dark); margin-bottom:10px;">📊 Egyenlegben — gyors áttekintés (repülőjegy NÉLKÜL)</strong>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px 24px;">
+      <div>🏨 Szállás (19 éj): <strong>191 910 Ft</strong></div>
+      <div>🍱 Étkezés (20 nap, 3 wagyu est): <strong>259 000 Ft</strong></div>
+      <div>🚆 Helyi közlekedés: <strong>27 700 Ft</strong></div>
+      <div>🎫 Belépők és programok: <strong>32 850 Ft</strong></div>
+      <div>🛍️ Egyéb (snack, ajándék): <strong>30 500 Ft</strong></div>
+      <div style="color:#2E7D32; font-weight:600;">📊 Excel részösszeg: <strong>541 960 Ft</strong></div>
+      <div>🚄 Shinkansenek: <strong>145 935 Ft</strong></div>
+      <div>🌐 Infra (eSIM + biztosítás): <strong>~52 500 Ft</strong></div>
+      <div style="color:var(--blue-dark); font-weight:700; grid-column:1 / -1; padding-top:8px; border-top:1px dashed rgba(30,144,255,.3); margin-top:4px;">💰 ÖSSZESEN (repjegy nélkül): <strong>~740 000 Ft / fő</strong></div>
+      <div style="color:#FF9800; font-weight:700; grid-column:1 / -1;">+ 100 000 Ft tartalék = <strong>~840 000 Ft / fő</strong></div>
+      <div style="color:var(--gray-700); grid-column:1 / -1; padding-top:6px; font-size:11.5px;">✈️ Repülőjegy (különálló): ~355 000 Ft / fő</div>
+    </div>
+  </div>
+
+  <div class="cs-extras">
+    <h4>➕ / ➖ Egyéb tételek és megjegyzések</h4>
+    <div class="cs-extras-grid">
+      <div class="cs-extra-item">➕ <strong>Coin locker napközben:</strong> ~¥400–700 / alkalom, ha szükséges (átszállási napokon)</div>
+      <div class="cs-extra-item">➕ <strong>Guangzhou tranzit:</strong> rövid tranzit általában mentes, de ellenőrizd a légitársasággal!</div>
+      <div class="cs-extra-item">➖ <strong>Ingyenes helyek:</strong> Fushimi Inari, TMG panoráma, Imperial Palace Park (csütörtök!), Meiji Jingu, Peace Park, Ohori Park</div>
+      <div class="cs-extra-item">⚠️ <strong>Készpénz hozni:</strong> min. ¥30 000 / fő, mert sok hely (különösen Yatai!) csak készpénzt fogad el</div>
+    </div>
+  </div>
+</div>
+<div class="page-num">Oldal 17</div>
+
+<div class="todo-section" id="teendok">
+  <h2>✅ Teljes elintézendők listája — indulás előtt</h2>
+  <div class="todo-grid">
+    <div class="todo-item"><div class="todo-cb"></div>Visit Japan Web online regisztráció (vjw-lp.digital.go.jp) — <strong>ingyenes!</strong></div>
+    <div class="todo-item"><div class="todo-cb"></div>Utasbiztosítás megkötése (min. 20 napra, Japán-fedezet kell!)</div>
+    <div class="todo-item"><div class="todo-cb"></div>eSIM rendelése Airalo appon keresztül otthonról</div>
+    <div class="todo-item"><div class="todo-cb"></div>Shinkansen jegyek megvásárlása — Tokió→Kiotó és a többi szakasz</div>
+    <div class="todo-item"><div class="todo-cb"></div>Suica / Pasmo IC kártya aktiválása érkezéskor (Narita vagy Tokyo St.)</div>
+    <div class="todo-item"><div class="todo-cb"></div>STS Hostel foglalás visszaigazolás + screenshot</div>
+    <div class="todo-item"><div class="todo-cb"></div>Kiotói szállás (Minami-ku, Kuzeōyabuchō) foglalás visszaigazolás</div>
+    <div class="todo-item"><div class="todo-cb"></div>Cypress Inn (Shin-Koiwa) foglalás visszaigazolás</div>
+    <div class="todo-item"><div class="todo-cb"></div>Google Maps — Tokió, Kiotó, Oszaka, Nagaszaki offline letöltve</div>
+    <div class="todo-item"><div class="todo-cb"></div>Tabelog app letöltve (étterem keresés Japánban)</div>
+    <div class="todo-item"><div class="todo-cb"></div>Japán yen váltás — min. ¥30 000 / fő fizikai készpénz érkezéskor</div>
+    <div class="todo-item"><div class="todo-cb"></div>Útlevél érvényesség ellenőrzése: minimum 2027. február utánig érvényes legyen</div>
+    <div class="todo-item"><div class="todo-cb"></div>Repülőjegy visszaigazolás kinyomtatva / screenshotolva</div>
+    <div class="todo-item"><div class="todo-cb"></div>Repülő online check-in (24–48 h-val indulás előtt)</div>
+    <div class="todo-item"><div class="todo-cb"></div>Nagykövetség száma (+81-3-3798-8801) minden telefonba mentve</div>
+    <div class="todo-item"><div class="todo-cb"></div>Powerbank feltöltve + japán adapter (2 lapos, 110V!)</div>
+    <div class="todo-item"><div class="todo-cb"></div>Guangzhou tranzit vízum kérdés tisztázva a légitársasággal</div>
+    <div class="todo-item"><div class="todo-cb"></div>Összecsukható szélálló esernyő, napvédő SPF 50+ bepakolva</div>
+  </div>
+
+  <div style="margin-top:28px; background:var(--red-light); border:1.5px solid var(--red); border-radius:10px; padding:18px 22px;">
+    <strong style="color:var(--red); font-size:13px; display:block; margin-bottom:8px;">⚠️ LEGFONTOSABB EMLÉKEZTETŐK</strong>
+    <p style="font-size:13px; color:var(--gray-800); line-height:1.8;">
+      Japánban a vonatok <strong>percre pontosan közlekednek</strong> — a Shinkansen és a JR vonatok nem várnak. <strong>August 3-án 11:04-re</strong> Shin-Koiwa peronjára kell érni, különben lekésitek a repülőt. IC kártyán <strong>mindig legyen ¥1 000</strong>. Japánban nyilvános helyen hangos telefonálás és evés közben járkálás szokatlan — legyetek csöndesek és kedvesek. <strong>Adapter KÖTELEZŐ</strong> — japán aljzat 2 lapos, 110V, az európai dugó nem illik bele!
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <span>🗾 Japán Útiterv 2026 · Zsombor & csapat · Júl. 15 – Aug. 3. · 20 nap · 5 város</span>
+  <strong>Jó utat! またいつか！</strong>
+</div>
+<div class="page-num" style="background:var(--blue); color:white; padding:6px 64px 12px; text-align:right;">Oldal 18</div>
+
+</div>
+
+<script>
+// ── Save HTML file ──────────────────────────────
+function saveFile() {
+  const blob = new Blob([document.documentElement.outerHTML], {type:'text/html;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'japan_utiterv_2026.html';
+  a.click();
+}
+
+// ── PWA Service Worker (csak HTTPS-en működik telepítéshez) ──
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    const CACHE = 'japan-2026-v1';
+    self.addEventListener('install', e => {
+      e.waitUntil(caches.open(CACHE).then(c => c.addAll(['/'])));
+      self.skipWaiting();
+    });
+    self.addEventListener('fetch', e => {
+      e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match('/'))));
+    });
+  `;
+  const blob = new Blob([swCode], {type:'application/javascript'});
+  navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(() => {});
+}
+
+// ── Install prompt ──────────────────────────────
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const btn = document.createElement('button');
+  btn.className = 'save-btn';
+  btn.textContent = '📱 App-ként telepítés';
+  btn.style.background = '#1E90FF';
+  btn.style.color = 'white';
+  btn.onclick = () => { deferredPrompt.prompt(); deferredPrompt = null; btn.remove(); };
+  document.querySelector('.save-btns').appendChild(btn);
+});
+</script>
+
+<script>
+
+// ── Drawer open/close ───────────────────────────────────
+const drawer = document.getElementById('mobile-drawer');
+const overlay = document.getElementById('nav-overlay');
+const navToggle = document.getElementById('nav-toggle');
+
+function openDrawer() {
+  drawer.classList.add('open');
+  overlay.style.display = 'block';
+  requestAnimationFrame(() => overlay.classList.add('open'));
+  document.body.style.overflow = 'hidden';
+  navToggle.textContent = '✕';
+}
+function closeDrawer() {
+  drawer.classList.remove('open');
+  overlay.classList.remove('open');
+  setTimeout(() => { overlay.style.display = 'none'; }, 250);
+  document.body.style.overflow = '';
+  navToggle.textContent = '☰';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+// ── Progress bar ────────────────────────────────────────
+const bar = document.getElementById('progress-bar');
+const backTop = document.getElementById('back-top');
+const sideNav = document.getElementById('side-nav');
+const coverH = document.querySelector('.cover')?.offsetHeight || 400;
+
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = (scrolled / total * 100) + '%';
+
+  // Show/hide back-to-top (sidebar is always visible from start)
+  if (scrolled > coverH) {
+    backTop.classList.add('visible');
+  } else {
+    backTop.classList.remove('visible');
+  }
+
+  // Active section highlight — sidebar
+  const allIds = ['teendok','koltseg','praktikus','nap-20','nap-19','nap-18','tokio-2','nap-17','nap-16','fukuoka','nap-15','nap-14','nap-13','nagasaki','nap-12','nap-11','nap-10','oszaka-nagasaki','nap-9','nap-8','nap-7','nap-6','kyoto','nap-5','nap-4','nap-3','nap-2','nap-1','tokio-1'];
+
+  let activeId = null;
+  for (const id of allIds) {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top <= 90) { activeId = id; break; }
+  }
+
+  // Sidebar link highlight
+  const snLinks = sideNav.querySelectorAll('.sn-link');
+  snLinks.forEach(l => l.classList.remove('sn-active'));
+  if (activeId) {
+    const match = sideNav.querySelector('[data-id="' + activeId + '"]');
+    if (match) {
+      match.classList.add('sn-active');
+      // Scroll sidebar to keep active link visible
+      const linkTop = match.offsetTop;
+      const navH = sideNav.offsetHeight;
+      if (linkTop < sideNav.scrollTop || linkTop > sideNav.scrollTop + navH - 40) {
+        sideNav.scrollTop = linkTop - navH / 2;
+      }
+    }
+  }
+}, {passive:true});
+
+// ── Collapsible day headers ─────────────────────────────
+document.querySelectorAll('.dh').forEach(dh => {
+  // Find next sibling that's a .day-body (skip page-num divs)
+  let sibling = dh.nextElementSibling;
+  while (sibling && !sibling.classList.contains('day-body')) {
+    sibling = sibling.nextElementSibling;
+  }
+  if (!sibling) return;
+
+  dh.addEventListener('click', (e) => {
+    // Don't collapse if clicking a link inside
+    if (e.target.tagName === 'A') return;
+    const collapsed = sibling.classList.toggle('collapsed');
+    dh.classList.toggle('collapsed', collapsed);
+    dh.setAttribute('aria-expanded', !collapsed);
+  });
+  dh.setAttribute('aria-expanded', 'true');
+  dh.setAttribute('role', 'button');
+  dh.setAttribute('tabindex', '0');
+  dh.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') dh.click(); });
+});
+
+// ── TOC + sidebar click — expand target day if collapsed ──
+document.querySelectorAll('.toc-link, .sn-link').forEach(link => {
+  link.addEventListener('click', e => {
+    const id = link.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (!target) return;
+    // If it's a dh, expand it
+    if (target.classList.contains('dh') || target.classList.contains('city-banner')) {
+      let sibling = target.nextElementSibling;
+      while (sibling && !sibling.classList.contains('day-body')) sibling = sibling.nextElementSibling;
+      if (sibling && sibling.classList.contains('collapsed')) {
+        sibling.classList.remove('collapsed');
+        target.classList.remove('collapsed');
+      }
+    }
+  });
+});
+
+// ── Keyboard shortcut: press T → top ───────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === 't' && !e.ctrlKey && !e.metaKey && document.activeElement.tagName !== 'INPUT') {
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+});
+</script>
+
+</body>
+</html>
