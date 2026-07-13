@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Japán Útiterv</title>
+  <desc id="desc">Hegyet, felkelő napot és útvonalat ábrázoló alkalmazásikon.</desc>
+  <rect width="512" height="512" rx="112" fill="#0a2a4a"/>
+  <circle cx="362" cy="153" r="78" fill="#ffb74d"/>
+  <path d="M54 348 180 202l60 69 48-55 170 194H54Z" fill="#eaf5ff"/>
+  <path d="m180 202 60 69-31 36-40-28-36 21Z" fill="#fff"/>
+  <path d="M111 411c52-80 108-95 169-46 49 39 84 36 127-9" fill="none" stroke="#1e90ff" stroke-width="25" stroke-linecap="round"/>
+  <circle cx="111" cy="411" r="18" fill="#ffb74d"/>
+  <circle cx="407" cy="356" r="18" fill="#ffb74d"/>
+</svg>

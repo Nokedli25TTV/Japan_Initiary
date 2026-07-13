@@ -8,9 +8,25 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Japán 2026">
-<link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22Jap%C3%A1n+%C3%9Atiterv+2026%22%2C%22short_name%22%3A%22Jap%C3%A1n+2026%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230a2a4a%22%2C%22theme_color%22%3A%22%230a2a4a%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg+xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'+viewBox%3D'0+0+100+100'%253E%253Crect+width%3D'100'+height%3D'100'+fill%3D'%25230a2a4a'%2F%253E%253Ctext+y%3D'.9em'+font-size%3D'90'%253E%F0%9F%97%BE%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22any%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./app-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./app-icon-192.png">
 <title>Japán Útiterv 2026 – Zsombor & csapat</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+  // Ne induljon el a külső betűkészlet letöltése adattakarékos módban.
+  (() => {
+    const saved = localStorage.getItem('japan-data-saver');
+    const prefersSaving = navigator.connection?.saveData === true;
+    const enabled = saved === 'on' || (saved === null && prefersSaving);
+    if (enabled) document.documentElement.classList.add('data-saver');
+    else {
+      const fonts = document.createElement('link');
+      fonts.rel = 'stylesheet';
+      fonts.href = 'https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap';
+      document.head.appendChild(fonts);
+    }
+  })();
+</script>
 <style>
   /* ============================================
      LÁTNIVALÓK – natív HTML5 <details> accordion
@@ -621,9 +637,77 @@
     .cover h1 { font-size:38px; }
     .toc-grid,.day-bottom,.prac-grid,.todo-grid,.pretip-grid,.cs-extras-grid,.meal-grid { grid-template-columns:1fr; }
   }
+
+  /* ── MOBILE-FIRST BOTTOM NAV + DATA SAVER ── */
+  .mobile-bottom-nav { display:none; }
+  .offline-state {
+    display:inline-flex; align-items:center; gap:7px; min-height:32px; padding:5px 11px;
+    border:1px solid rgba(255,255,255,.22); border-radius:999px;
+    color:rgba(255,255,255,.88); font-size:11px; font-weight:600;
+  }
+  .offline-state::before { content:''; width:8px; height:8px; border-radius:50%; background:#FFB74D; }
+  .offline-state.ready::before { background:#66BB6A; }
+  .offline-state.offline::before { background:#42A5F5; }
+  .data-saver-toggle[aria-pressed="true"] { background:#2E7D32; color:#fff; border-color:#2E7D32; }
+  html.data-saver { --serif:Georgia,'Times New Roman',serif; --sans:system-ui,-apple-system,'Segoe UI',sans-serif; }
+  html.data-saver *, html.data-saver *::before, html.data-saver *::after {
+    animation-duration:.001ms !important; animation-iteration-count:1 !important;
+    transition-duration:.001ms !important; scroll-behavior:auto !important;
+  }
+  html.data-saver .cover::before { display:none; }
+
+  @media (max-width:700px) {
+    html { scroll-padding-bottom:calc(78px + env(safe-area-inset-bottom)); }
+    body {
+      min-width:320px; padding-bottom:calc(70px + env(safe-area-inset-bottom));
+      background:#fff; font-size:15px; -webkit-text-size-adjust:100%;
+    }
+    .page { width:100%; max-width:none; box-shadow:none; }
+    .cover { min-height:360px; padding-top:42px; padding-bottom:40px; }
+    .cover-sub { font-size:16px; margin-bottom:30px; }
+    .cover-meta { gap:18px 24px; }
+    .cover-meta-item { min-width:calc(50% - 12px); }
+    .save-bar { gap:12px; padding-top:16px; padding-bottom:16px; }
+    .save-bar-text { font-size:13px; line-height:1.55; }
+    .save-btns { width:100%; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+    .save-btn { min-height:44px; padding:8px 12px; text-align:center; border-radius:12px; }
+    .offline-state { width:100%; justify-content:center; }
+    .dh { min-height:76px; padding-right:42px !important; }
+    .dh, .poi-summary, .toc-link, .todo-item, .phone-badge { min-height:44px; }
+    .dt, .cs-table { display:block; width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    .dt th, .dt td, .cs-table th, .cs-table td { min-width:96px; }
+    .day-body { overflow-x:hidden; }
+    .practical, .pretip, .todo-section { padding-top:34px; padding-bottom:36px; }
+    .footer { gap:10px; align-items:flex-start; flex-direction:column; padding-bottom:26px; }
+    [id] { scroll-margin-bottom:calc(78px + env(safe-area-inset-bottom)); }
+
+    #nav-toggle { display:none; }
+    #back-top { bottom:calc(82px + env(safe-area-inset-bottom)); right:14px; }
+    .mobile-bottom-nav {
+      position:fixed; left:0; right:0; bottom:0; z-index:1050;
+      display:grid; grid-template-columns:repeat(5,minmax(0,1fr));
+      padding:5px 5px calc(5px + env(safe-area-inset-bottom));
+      background:rgba(10,42,74,.97); border-top:1px solid rgba(255,255,255,.16);
+      box-shadow:0 -5px 22px rgba(0,0,0,.24); backdrop-filter:blur(14px);
+    }
+    .mobile-bottom-link {
+      appearance:none; border:0; background:transparent; color:rgba(255,255,255,.7);
+      min-width:0; min-height:54px; padding:4px 2px; border-radius:10px;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+      text-decoration:none; font:600 10px/1.1 var(--sans); cursor:pointer;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .mobile-bottom-link:focus-visible { outline:2px solid var(--orange); outline-offset:-2px; }
+    .mobile-bottom-link.active { color:#fff; background:rgba(30,144,255,.24); }
+    .mobile-bottom-icon { font-size:20px; line-height:1; }
+  }
+
+  @media print {
+    .mobile-bottom-nav, .offline-state, .data-saver-toggle { display:none !important; }
+  }
 </style>
 </head>
-<body>
+<body id="top">
 
 <!-- ── PROGRESS BAR ── -->
 <div id="progress-bar"></div>
@@ -686,7 +770,26 @@
 
 
 <!-- ── HAMBURGER ── -->
-<button id="nav-toggle" onclick="openDrawer()" aria-label="Menü megnyitása">☰</button>
+<button id="nav-toggle" onclick="openDrawer()" aria-label="Menü megnyitása" aria-controls="mobile-drawer" aria-expanded="false">☰</button>
+
+<!-- ── MOBILE BOTTOM NAV ── -->
+<nav id="bottom-nav" class="mobile-bottom-nav" aria-label="Mobil gyorsnavigáció">
+  <a class="mobile-bottom-link active" href="#top" data-bottom-id="top" aria-label="Kezdőlap">
+    <span class="mobile-bottom-icon" aria-hidden="true">⌂</span><span>Kezdőlap</span>
+  </a>
+  <button class="mobile-bottom-link" type="button" onclick="openDrawer()" data-bottom-id="days" aria-label="Napok menü megnyitása" aria-controls="mobile-drawer">
+    <span class="mobile-bottom-icon" aria-hidden="true">🗓️</span><span>Napok</span>
+  </button>
+  <a class="mobile-bottom-link" href="#praktikus" data-bottom-id="praktikus">
+    <span class="mobile-bottom-icon" aria-hidden="true">🛂</span><span>Infók</span>
+  </a>
+  <a class="mobile-bottom-link" href="#koltseg" data-bottom-id="koltseg">
+    <span class="mobile-bottom-icon" aria-hidden="true">¥</span><span>Költségek</span>
+  </a>
+  <a class="mobile-bottom-link" href="#teendok" data-bottom-id="teendok">
+    <span class="mobile-bottom-icon" aria-hidden="true">✓</span><span>Teendők</span>
+  </a>
+</nav>
 
 
 <!-- ── SIDE NAV ── -->
@@ -758,11 +861,13 @@
 
 <!-- ═══ SAVE / OFFLINE BAR ═══ -->
 <div class="save-bar">
-  <p class="save-bar-text">📴 <strong>Offline:</strong> Mentsd el a fájlt a telefonra (böngésző → Megosztás → Fájlba mentés), vagy nyomtasd PDF-ként — japánban internet nélkül is működik.</p>
+  <p class="save-bar-text">📴 <strong>Offline:</strong> Telepítsd appként, és az útiterv internet nélkül is elérhető marad. Az első megnyitáshoz egyszer szükséges internetkapcsolat.</p>
+  <span id="offline-state" class="offline-state" role="status" aria-live="polite">Offline mentés előkészítése…</span>
   <div class="save-btns">
     <a class="save-btn" href="#poi-directory">📖 Összes látnivaló</a>
     <button class="save-btn" onclick="window.print()">🖨️ PDF / Nyomtatás</button>
     <button class="save-btn sec" onclick="saveFile()">💾 HTML mentése</button>
+    <button id="data-saver-toggle" class="save-btn sec data-saver-toggle" type="button" aria-pressed="false">⚡ Adattakarékos mód</button>
   </div>
 </div>
 
@@ -3066,21 +3171,68 @@ function saveFile() {
   a.click();
 }
 
-// ── PWA Service Worker (csak HTTPS-en működik telepítéshez) ──
-if ('serviceWorker' in navigator) {
-  const swCode = `
-    const CACHE = 'japan-2026-v1';
-    self.addEventListener('install', e => {
-      e.waitUntil(caches.open(CACHE).then(c => c.addAll(['/'])));
-      self.skipWaiting();
-    });
-    self.addEventListener('fetch', e => {
-      e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match('/'))));
-    });
-  `;
-  const blob = new Blob([swCode], {type:'application/javascript'});
-  navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(() => {});
+// ── PWA + valódi offline gyorsítótár (HTTPS vagy localhost) ──
+const offlineState = document.getElementById('offline-state');
+
+function updateConnectionState() {
+  if (!navigator.onLine) {
+    offlineState.textContent = 'Offline mód – a mentett útiterv látható';
+    offlineState.classList.add('offline');
+    return;
+  }
+  offlineState.classList.remove('offline');
 }
+
+window.addEventListener('online', updateConnectionState);
+window.addEventListener('offline', updateConnectionState);
+updateConnectionState();
+
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  navigator.serviceWorker.register('./sw.js', {scope:'./'})
+    .then(() => navigator.serviceWorker.ready)
+    .then(() => {
+      offlineState.textContent = 'Offline használatra kész';
+      offlineState.classList.add('ready');
+      updateConnectionState();
+    })
+    .catch(() => {
+      offlineState.textContent = 'Offline mentés nem érhető el';
+    });
+} else {
+  offlineState.textContent = location.protocol === 'file:'
+    ? 'Offline apphoz nyisd meg HTTPS-en'
+    : 'A böngésző nem támogatja az offline módot';
+}
+
+// ── Adattakarékos mód ───────────────────────────
+const dataSaverToggle = document.getElementById('data-saver-toggle');
+
+function loadWebFonts() {
+  if (document.querySelector('link[href*="fonts.googleapis.com"]')) return;
+  const fonts = document.createElement('link');
+  fonts.rel = 'stylesheet';
+  fonts.href = 'https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap';
+  document.head.appendChild(fonts);
+}
+
+function setDataSaver(enabled, persist = true) {
+  document.documentElement.classList.toggle('data-saver', enabled);
+  dataSaverToggle.setAttribute('aria-pressed', String(enabled));
+  dataSaverToggle.textContent = enabled ? '✓ Adattakarékos mód aktív' : '⚡ Adattakarékos mód';
+  if (persist) localStorage.setItem('japan-data-saver', enabled ? 'on' : 'off');
+  if (!enabled) loadWebFonts();
+}
+
+setDataSaver(document.documentElement.classList.contains('data-saver'), false);
+dataSaverToggle.addEventListener('click', () => {
+  setDataSaver(!document.documentElement.classList.contains('data-saver'));
+});
+
+// A később hozzáadott képek is mobilbarát, késleltetett betöltést kapnak.
+document.querySelectorAll('img').forEach(img => {
+  if (!img.hasAttribute('loading')) img.loading = 'lazy';
+  if (!img.hasAttribute('decoding')) img.decoding = 'async';
+});
 
 // ── Install prompt ──────────────────────────────
 let deferredPrompt;
@@ -3088,12 +3240,23 @@ window.addEventListener('beforeinstallprompt', e => {
   e.preventDefault();
   deferredPrompt = e;
   const btn = document.createElement('button');
+  btn.id = 'install-app';
   btn.className = 'save-btn';
   btn.textContent = '📱 App-ként telepítés';
   btn.style.background = '#1E90FF';
   btn.style.color = 'white';
-  btn.onclick = () => { deferredPrompt.prompt(); deferredPrompt = null; btn.remove(); };
+  btn.onclick = async () => {
+    await deferredPrompt.prompt();
+    deferredPrompt = null;
+    btn.remove();
+  };
   document.querySelector('.save-btns').appendChild(btn);
+});
+
+window.addEventListener('appinstalled', () => {
+  document.getElementById('install-app')?.remove();
+  offlineState.textContent = 'App telepítve – offline használatra kész';
+  offlineState.classList.add('ready');
 });
 </script>
 
@@ -3106,24 +3269,30 @@ const navToggle = document.getElementById('nav-toggle');
 
 function openDrawer() {
   drawer.classList.add('open');
+  drawer.setAttribute('aria-hidden', 'false');
   overlay.style.display = 'block';
   requestAnimationFrame(() => overlay.classList.add('open'));
   document.body.style.overflow = 'hidden';
   navToggle.textContent = '✕';
+  navToggle.setAttribute('aria-expanded', 'true');
 }
 function closeDrawer() {
   drawer.classList.remove('open');
+  drawer.setAttribute('aria-hidden', 'true');
   overlay.classList.remove('open');
   setTimeout(() => { overlay.style.display = 'none'; }, 250);
   document.body.style.overflow = '';
   navToggle.textContent = '☰';
+  navToggle.setAttribute('aria-expanded', 'false');
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+drawer.setAttribute('aria-hidden', 'true');
 
 // ── Progress bar ────────────────────────────────────────
 const bar = document.getElementById('progress-bar');
 const backTop = document.getElementById('back-top');
 const sideNav = document.getElementById('side-nav');
+const bottomNavItems = document.querySelectorAll('[data-bottom-id]');
 const coverH = document.querySelector('.cover')?.offsetHeight || 400;
 
 window.addEventListener('scroll', () => {
@@ -3162,6 +3331,12 @@ window.addEventListener('scroll', () => {
       }
     }
   }
+
+  // Mobile bottom navigation highlight
+  let bottomId = 'top';
+  if (activeId === 'praktikus' || activeId === 'koltseg' || activeId === 'teendok') bottomId = activeId;
+  else if (activeId?.startsWith('nap-') || ['tokio-1','kyoto','oszaka-nagasaki','nagasaki','fukuoka','tokio-2'].includes(activeId)) bottomId = 'days';
+  bottomNavItems.forEach(item => item.classList.toggle('active', item.dataset.bottomId === bottomId));
 }, {passive:true});
 
 // ── Collapsible day headers ─────────────────────────────
